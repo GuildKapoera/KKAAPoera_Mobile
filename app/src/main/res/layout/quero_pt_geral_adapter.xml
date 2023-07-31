@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="4dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:background="@drawable/bordas_arredondadas">
+
+    <!-- Primeira Linha -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Coluna Mesclada -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#QueroPT"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Coluna 2 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Horário"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Coluna 3 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtHorario"
+                android:layout_width="wrap_content"
+                android:maxLines="1"
+                android:textColor="@color/kap_gold"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+    </LinearLayout>
+    </LinearLayout>
+
+    <!-- Segunda Linha -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Coluna 1 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Responsável"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais, como TextViews, EditTexts, etc., para mostrar os dados do usuário -->
+        </LinearLayout>
+
+        <!-- Coluna 2 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left">
+
+            <TextView
+                android:id="@+id/txtResponsavel"
+                android:layout_width="wrap_content"
+                android:maxLines="1"
+                android:textColor="@color/kap_gold"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais para a coluna 2 -->
+        </LinearLayout>
+
+        <!-- Coluna 3 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contato"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
+        </LinearLayout>
+
+        <!-- Coluna 4 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left">
+
+            <TextView
+                android:id="@+id/txtContato"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/kap_gold"
+                android:textSize="14sp" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
+        </LinearLayout>
+    </LinearLayout>
+    <!-- Terceira Linha -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Coluna 1 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:text="Level max"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais, como TextViews, EditTexts, etc., para mostrar os dados do usuário -->
+        </LinearLayout>
+
+        <!-- Coluna 2 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtLevelMaximo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/kap_gold"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais para a coluna 2 -->
+        </LinearLayout>
+
+        <!-- Coluna 3 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Level min"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
+        </LinearLayout>
+
+        <!-- Coluna 4 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtLevelMinimo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/kap_gold"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
+        </LinearLayout>
+    </LinearLayout>
+    <!-- Quarta Linha -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Coluna 1 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vocação"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais, como TextViews, EditTexts, etc., para mostrar os dados do usuário -->
+        </LinearLayout>
+
+        <!-- Coluna 2 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nick"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais para a coluna 2 -->
+        </LinearLayout>
+
+        <!-- Coluna 3 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Level"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
+        </LinearLayout>
+
+        <!-- Coluna 4 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- LINHA EK -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Coluna 1 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EK"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais, como TextViews, EditTexts, etc., para mostrar os dados do usuário -->
+        </LinearLayout>
+
+        <!-- Coluna 2 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtEKNome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLines="1"
+                android:textColor="@color/kap_gold"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais para a coluna 2 -->
+        </LinearLayout>
+
+        <!-- Coluna 3 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtEKLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/kap_gold"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
+        </LinearLayout>
+
+        <!-- Coluna 4 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:gravity="center">
+
+            <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
+        </LinearLayout>
+    </LinearLayout>
+    <!-- LINHA ED -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Coluna 1 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ED"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais, como TextViews, EditTexts, etc., para mostrar os dados do usuário -->
+        </LinearLayout>
+
+        <!-- Coluna 2 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtEDNome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLines="1"
+                android:textColor="@color/kap_gold"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais para a coluna 2 -->
+        </LinearLayout>
+
+        <!-- Coluna 3 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtEDLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/kap_gold"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
+        </LinearLayout>
+
+        <!-- Coluna 4 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:gravity="center">
+
+            <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
+        </LinearLayout>
+    </LinearLayout>
+    <!-- LINHA MS -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Coluna 1 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MS"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais, como TextViews, EditTexts, etc., para mostrar os dados do usuário -->
+        </LinearLayout>
+
+        <!-- Coluna 2 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtMSNome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLines="1"
+                android:textColor="@color/kap_gold"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais para a coluna 2 -->
+        </LinearLayout>
+
+        <!-- Coluna 3 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtMSLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/kap_gold"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
+        </LinearLayout>
+
+        <!-- Coluna 4 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:gravity="center">
+
+            <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
+        </LinearLayout>
+    </LinearLayout>
+    <!-- LINHA RP -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Coluna 1 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RP"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais, como TextViews, EditTexts, etc., para mostrar os dados do usuário -->
+        </LinearLayout>
+
+        <!-- Coluna 2 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtRPNome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:maxLines="1"
+                android:textColor="@color/kap_gold"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais para a coluna 2 -->
+        </LinearLayout>
+
+        <!-- Coluna 3 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtRPLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/kap_gold"
+                android:textStyle="bold" />
+
+            <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
+        </LinearLayout>
+
+        <!-- Coluna 4 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.6"
+            android:gravity="center">
+
+            <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <!-- Botões -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp">
+
+        <Button
+            android:id="@+id/btnEntrarNaPT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="4dp"
+            android:backgroundTint="@color/kap_gold"
+            android:onClick="entrarNaPt"
+            android:text="Entrar na PT"
+            android:textColor="#000000" />
+
+    </LinearLayout>
+</LinearLayout>

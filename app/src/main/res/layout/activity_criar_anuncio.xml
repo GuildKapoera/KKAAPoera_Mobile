@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_tela_login_reg"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/editTextTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="240dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/background_caixadetexto"
+        android:drawablePadding="6dp"
+        android:ems="10"
+        android:hint="Título do Anúncio"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#A9FFFFFF" />
+
+    <EditText
+        android:id="@+id/editTextDescricao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/background_caixadetexto"
+        android:drawablePadding="6dp"
+        android:ems="10"
+        android:hint="Descrição (máximo 3 linhas)"
+        android:inputType="text"
+        android:maxLines="3"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#A9FFFFFF" />
+
+    <EditText
+        android:id="@+id/editTextImagem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/background_caixadetexto"
+        android:drawablePadding="6dp"
+        android:ems="10"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textColor="#FFFFFF"
+        android:hint="URL da .gif (tibiawiki)"
+        android:textColorHint="#A9FFFFFF" />
+
+    <EditText
+        android:id="@+id/editTextPreco"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/background_caixadetexto"
+        android:drawablePadding="6dp"
+        android:ems="10"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:textColor="#FFFFFF"
+        android:hint="Preço"
+        android:textColorHint="#A9FFFFFF" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupTipoAnuncio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:id="@+id/radioButtonCompra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="6dp"
+            android:ems="10"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:padding="8dp"
+            android:text="Compra"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="@color/kap_gold"
+            android:textColorLink="@color/kap_gold" />
+
+        <RadioButton
+            android:id="@+id/radioButtonVenda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="6dp"
+            android:ems="10"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:text="Venda"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="@color/kap_gold"
+            android:textColorLink="@color/kap_gold" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonSalvarAnuncio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/kap_gold"
+            android:textColor="#000000"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="Salvar Anúncio" />
+
+        <Button
+            android:id="@+id/buttonVoltarAnuncio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/kap_gold"
+            android:textColor="#000000"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:text="Voltar" />
+    </LinearLayout>
+
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAnuncios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:visibility="gone" />
+
+</LinearLayout>

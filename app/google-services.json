@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "422968612402",
+    "project_id": "kaapoera",
+    "storage_bucket": "kaapoera.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422968612402:android:12f67ca4712beef3f88e2b",
+        "android_client_info": {
+          "package_name": "com.guild.kaapoera"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422968612402-blpbrrvpeq3mk05gfhohe39er484oso6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.guild.kaapoera",
+            "certificate_hash": "3d86616efd3f0e1bbe780c879c534df86346d02a"
+          }
+        },
+        {
+          "client_id": "422968612402-uf1tausekdu7jg50akl877am41kgr0us.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdMiUDlJS-2ijemEHr_S5eE_3lIAI_vpk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "422968612402-uf1tausekdu7jg50akl877am41kgr0us.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

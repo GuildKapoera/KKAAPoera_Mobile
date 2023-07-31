@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_tela_login_reg"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".Activity.QueroPTCriarPTActivity">
+
+    <FrameLayout
+        android:id="@+id/frameLayoutAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="126dp">
+
+        <ImageView
+            android:id="@+id/imageViewAvatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/default_avatar"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/textViewCharacterName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold|italic" />
+    </FrameLayout>
+
+    <!-- Informações Iniciais -->
+    <TextView
+        android:id="@+id/tvNomePersonagem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome do Personagem:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"/>
+
+    <TextView
+        android:id="@+id/tvContato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contato:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"/>
+
+    <TextView
+        android:id="@+id/tvVocacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vocação:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"/>
+
+    <TextView
+        android:id="@+id/tvLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Horário: "
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"/>
+    <EditText
+        android:id="@+id/editTextHora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_caixadetexto"
+        android:gravity="center"
+        android:maxLength="5"
+        android:hint="00:00"
+        android:inputType="time"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#A9FFFFFF"/>
+    </LinearLayout>
+
+    <!-- Botões -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="16dp">
+
+        <Button
+            android:id="@+id/btnCriarPT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Criar PT"
+            android:backgroundTint="@color/kap_gold"
+            android:textColor="#000000"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="8dp"/>
+
+        <Button
+            android:id="@+id/btnVoltar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Voltar"
+            android:backgroundTint="@color/kap_gold"
+            android:textColor="#000000"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="8dp"/>
+    </LinearLayout>
+</LinearLayout>

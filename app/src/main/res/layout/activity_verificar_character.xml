@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_tela_login_reg"
+    android:gravity="center|center_horizontal"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingTop="230dp"
+    android:paddingRight="20dp"
+    tools:context=".Activity.VerificarCharacterActivity">
+
+    <TextView
+        android:id="@+id/textViewMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:text="Você ainda não possui um personagem vinculado a este usuário. Para isso, cole o seguinte código no comentário do seu personagem, digite o nome do personagem e clique em verificar."
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/textViewUID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/kap_gold"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageViewCopy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_content_copy_24"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:clickable="true"
+            android:onClick="copyUIDToClipboard" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/editTextCharacterName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@android:color/darker_gray"
+        android:hint="Nome do seu personagem"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#A9FFFFFF" />
+
+    <Button
+        android:id="@+id/buttonVerify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/kap_gold"
+        android:textColor="#000000"
+        android:text="Verificar"
+        android:onClick="verificarPersonagem" />
+
+    <Button
+        android:id="@+id/buttonDeslogar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/kap_gold"
+        android:textColor="#000000"
+        android:onClick="deslogar"
+        android:text="Deslogar" />
+
+</LinearLayout>

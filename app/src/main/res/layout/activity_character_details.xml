@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_tela_login_reg"
+    android:gravity="left|center_vertical"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingTop="230dp"
+    android:paddingRight="20dp"
+    tools:context=".Activity.CharacterDetailsActivity">
+
+    <TextView
+        android:id="@+id/textViewCharacterName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Character Name: "
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/textViewCharacterSex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Character Sex: "
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/textViewCharacterVocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Character Vocation: "
+        android:textColor="#FFFFFF"/>
+
+    <TextView
+        android:id="@+id/textViewCharacterLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Character Level: "
+        android:textColor="#FFFFFF"/>
+
+    <TextView
+        android:id="@+id/textViewCharacterWorld"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Character World: "
+        android:textColor="#FFFFFF"/>
+
+    <TextView
+        android:id="@+id/textViewGuildName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guild Name: "
+        android:textColor="#FFFFFF"/>
+
+    <TextView
+        android:id="@+id/textViewComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/kap_gold"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/textViewGuildName" />
+
+    <EditText
+        android:id="@+id/editTextUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Nome do usuário"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#A9FFFFFF" />
+
+    <EditText
+        android:id="@+id/editTextUserPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Telefone de contato"
+        android:inputType="phone"
+        android:minHeight="48dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#A9FFFFFF" />
+
+    <Button
+        android:id="@+id/buttonVincular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/kap_gold"
+        android:textColor="#000000"
+        android:text="Vincular Personagem"
+        android:onClick="enviarInformacoesPara" />
+
+</LinearLayout>
