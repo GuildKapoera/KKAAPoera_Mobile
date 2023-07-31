@@ -56,7 +56,8 @@
                 android:layout_height="64dp"
                 android:layout_marginRight="10dp"
                 android:onClick="abrirCriarAnuncio"
-                android:src="@drawable/baseline_post_add_24" />
+                android:src="@drawable/baseline_post_add_24"
+                android:foreground="@drawable/compraevenda_click_effect_criar"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -83,7 +84,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:onClick="gerenciarMeusAnuncios"
-                android:src="@drawable/baseline_drive_folder_upload_24" />
+                android:src="@drawable/baseline_drive_folder_upload_24"
+                android:foreground="@drawable/compraevenda_click_effect_vermeus"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -110,7 +112,8 @@
                 android:layout_height="64dp"
                 android:layout_marginLeft="18dp"
                 android:onClick="abrirTodosAnuncios"
-                android:src="@drawable/baseline_list_alt_24" />
+                android:src="@drawable/baseline_list_alt_24"
+                android:foreground="@drawable/compraevenda_clickeffect_vertodos"/>
 
             <TextView
                 android:layout_width="wrap_content"

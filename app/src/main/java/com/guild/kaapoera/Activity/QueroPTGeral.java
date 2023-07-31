@@ -2,6 +2,7 @@ package com.guild.kaapoera.Activity;
 
 public class QueroPTGeral {
     //Variaveis do firestore QueroPT
+
     private String PTid;
     private String EKnome;
     private String EKcontato;
@@ -63,4 +64,5 @@ public class QueroPTGeral {
     public void setMSlevel(int MSlevel){this.MSlevel = MSlevel;}
     public String getPTid() { return PTid; }
     public void setPTid(String PTid) {this.PTid = PTid;}
+
 }

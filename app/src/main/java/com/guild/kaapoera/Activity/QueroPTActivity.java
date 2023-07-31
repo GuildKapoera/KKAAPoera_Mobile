@@ -23,10 +23,10 @@ public class QueroPTActivity extends AppCompatActivity {
     }
 
     // Método que será chamado quando a ImageButton "Ver Minhas PTs" for clicada
-    //public void abrirQueroPTMinhasPTs(View view) {
-    //    Intent intent = new Intent(this, QueroPTMinhasPTsActivity.class);
-    //    startActivity(intent);
-    //}
+    public void abrirQueroPTMinhasPTs(View view) {
+        Intent intent = new Intent(this, QueroPTMinhasPTsActivity.class);
+        startActivity(intent);
+    }
 
     // Método que será chamado quando a ImageButton "Ver Todas PTs" for clicada
     public void abrirQueroPTGeral(View view) {

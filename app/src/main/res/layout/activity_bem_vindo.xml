@@ -57,7 +57,8 @@
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:onClick="abrirQueroPT"
-                android:src="@drawable/baseline_groups_24" />
+                android:src="@drawable/baseline_groups_24"
+                android:foreground="@drawable/queropt_click_effect"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -129,6 +130,7 @@
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:src="@drawable/baseline_shopping_bag_24"
+                android:foreground="@drawable/compraevenda_click_effect"
                 android:onClick="abrirCompraEVenda"/>
 
             <TextView

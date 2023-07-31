@@ -30,6 +30,7 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
     private List<QueroPTGeral> queroPTList;
     private FirebaseAuth mAuth;
 
+
     public QueroPTGeralAdapter(Context context, List<QueroPTGeral> queroPTList) {
         this.context = context;
         this.queroPTList = queroPTList;
@@ -96,6 +97,18 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                             case "Elite Knight":
                                                 // Verificar se há vaga para Elite Knight na PT
                                                 if (queroPT.getEKnome().isEmpty() && level >= queroPT.getLevelMinimo() && level <= queroPT.getLevelMaximo()) {
+                                                    // Calcular os novos valores para levelMinimo e levelMaximo
+                                                    int novoLevelMinimo = (level * 2) / 3;
+                                                    int novoLevelMaximo = (level * 3) / 2;
+
+                                                    // Verificar se os novos valores são maiores que os atuais e, se sim, atualizar os campos no objeto queroPT
+                                                    if (novoLevelMinimo > queroPT.getLevelMinimo()) {
+                                                        queroPT.setLevelMinimo(novoLevelMinimo);
+                                                    } else {  }
+                                                    if (novoLevelMaximo < queroPT.getLevelMaximo()) {
+                                                        queroPT.setLevelMaximo(novoLevelMaximo);
+                                                    } else {  }
+
                                                     // Atualizar os campos da PT com as informações do usuário
                                                     queroPT.setEKnome(nomePersonagem);
                                                     queroPT.setEKcontato(telefone);
@@ -105,7 +118,9 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                                     ptDocRef.update(
                                                                     "EKnome", queroPT.getEKnome(),
                                                                     "EKcontato", queroPT.getEKcontato(),
-                                                                    "EKlevel", queroPT.getEKlevel()
+                                                                    "EKlevel", queroPT.getEKlevel(),
+                                                                    "LevelMinimo", queroPT.getLevelMinimo(),
+                                                                    "LevelMaximo", queroPT.getLevelMaximo()
                                                                     // Adicione aqui os outros campos para as outras vocações, se necessário.
                                                             )
                                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -113,6 +128,7 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                                                 public void onSuccess(Void aVoid) {
                                                                     // Sucesso ao atualizar os dados da PT
                                                                     Toast.makeText(context, "Você entrou na PT!", Toast.LENGTH_SHORT).show();
+                                                                    notifyItemChanged(position);
 
                                                                 }
                                                             })
@@ -132,6 +148,18 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                             case "Royal Paladin":
                                                 // Verificar se há vaga para Royal Paladin na PT
                                                 if (queroPT.getRPnome().isEmpty() && level >= queroPT.getLevelMinimo() && level <= queroPT.getLevelMaximo()) {
+                                                    // Calcular os novos valores para levelMinimo e levelMaximo
+                                                    int novoLevelMinimo = (level * 2) / 3;
+                                                    int novoLevelMaximo = (level * 3) / 2;
+
+                                                    // Verificar se os novos valores são maiores que os atuais e, se sim, atualizar os campos no objeto queroPT
+                                                    if (novoLevelMinimo > queroPT.getLevelMinimo()) {
+                                                        queroPT.setLevelMinimo(novoLevelMinimo);
+                                                    } else {  }
+                                                    if (novoLevelMaximo < queroPT.getLevelMaximo()) {
+                                                        queroPT.setLevelMaximo(novoLevelMaximo);
+                                                    } else { }
+
                                                     // Atualizar os campos da PT com as informações do usuário
                                                     queroPT.setRPnome(nomePersonagem);
                                                     queroPT.setRPcontato(telefone);
@@ -142,7 +170,9 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                                     ptDocRef.update(
                                                                     "RPnome", queroPT.getRPnome(),
                                                                     "RPcontato", queroPT.getRPcontato(),
-                                                                    "RPlevel", queroPT.getRPlevel()
+                                                                    "RPlevel", queroPT.getRPlevel(),
+                                                                    "LevelMinimo", queroPT.getLevelMinimo(),
+                                                                    "LevelMaximo", queroPT.getLevelMaximo()
                                                                     // Adicione aqui os outros campos para as outras vocações, se necessário.
                                                             )
                                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -150,6 +180,7 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                                                 public void onSuccess(Void aVoid) {
                                                                     // Sucesso ao atualizar os dados da PT
                                                                     Toast.makeText(context, "Você entrou na PT!", Toast.LENGTH_SHORT).show();
+                                                                    notifyItemChanged(position);
 
                                                                 }
                                                             })
@@ -170,6 +201,18 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                             case "Elder Druid":
                                                 // Verificar se há vaga para Elder Druid na PT
                                                 if (queroPT.getEDnome().isEmpty() && level >= queroPT.getLevelMinimo() && level <= queroPT.getLevelMaximo()) {
+                                                    // Calcular os novos valores para levelMinimo e levelMaximo
+                                                    int novoLevelMinimo = (level * 2) / 3;
+                                                    int novoLevelMaximo = (level * 3) / 2;
+
+                                                    // Verificar se os novos valores são maiores que os atuais e, se sim, atualizar os campos no objeto queroPT
+                                                    if (novoLevelMinimo > queroPT.getLevelMinimo()) {
+                                                        queroPT.setLevelMinimo(novoLevelMinimo);
+                                                    } else {  }
+                                                    if (novoLevelMaximo < queroPT.getLevelMaximo()) {
+                                                        queroPT.setLevelMaximo(novoLevelMaximo);
+                                                    } else {  }
+
                                                     // Atualizar os campos da PT com as informações do usuário
                                                     queroPT.setEDnome(nomePersonagem);
                                                     queroPT.setEDcontato(telefone);
@@ -179,7 +222,9 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                                     ptDocRef.update(
                                                                     "EDnome", queroPT.getEDnome(),
                                                                     "EDcontato", queroPT.getEDcontato(),
-                                                                    "EDlevel", queroPT.getEDlevel()
+                                                                    "EDlevel", queroPT.getEDlevel(),
+                                                                    "LevelMinimo", queroPT.getLevelMinimo(),
+                                                                    "LevelMaximo", queroPT.getLevelMaximo()
                                                                     // Adicione aqui os outros campos para as outras vocações, se necessário.
                                                             )
                                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -187,6 +232,7 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                                                 public void onSuccess(Void aVoid) {
                                                                     // Sucesso ao atualizar os dados da PT
                                                                     Toast.makeText(context, "Você entrou na PT!", Toast.LENGTH_SHORT).show();
+                                                                    notifyItemChanged(position);
 
                                                                 }
                                                             })
@@ -207,6 +253,18 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                             case "Master Sorcerer":
                                                 // Verificar se há vaga para Master Sorcerer na PT
                                                 if (queroPT.getMSnome().isEmpty() && level >= queroPT.getLevelMinimo() && level <= queroPT.getLevelMaximo()) {
+                                                    // Calcular os novos valores para levelMinimo e levelMaximo
+                                                    int novoLevelMinimo = (level * 2) / 3;
+                                                    int novoLevelMaximo = (level * 3) / 2;
+
+                                                    // Verificar se os novos valores são maiores que os atuais e, se sim, atualizar os campos no objeto queroPT
+                                                    if (novoLevelMinimo > queroPT.getLevelMinimo()) {
+                                                        queroPT.setLevelMinimo(novoLevelMinimo);
+                                                    } else {  }
+                                                    if (novoLevelMaximo < queroPT.getLevelMaximo()) {
+                                                        queroPT.setLevelMaximo(novoLevelMaximo);
+                                                    } else {  }
+
                                                     // Atualizar os campos da PT com as informações do usuário
                                                     queroPT.setMSnome(nomePersonagem);
                                                     queroPT.setMScontato(telefone);
@@ -216,7 +274,9 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                                     ptDocRef.update(
                                                                     "MSnome", queroPT.getMSnome(),
                                                                     "MScontato", queroPT.getMScontato(),
-                                                                    "MSlevel", queroPT.getMSlevel()
+                                                                    "MSlevel", queroPT.getMSlevel(),
+                                                                    "LevelMinimo", queroPT.getLevelMinimo(),
+                                                                    "LevelMaximo", queroPT.getLevelMaximo()
                                                                     // Adicione aqui os outros campos para as outras vocações, se necessário.
                                                             )
                                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -224,6 +284,7 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                                                 public void onSuccess(Void aVoid) {
                                                                     // Sucesso ao atualizar os dados da PT
                                                                     Toast.makeText(context, "Você entrou na PT!", Toast.LENGTH_SHORT).show();
+                                                                    notifyItemChanged(position);
 
                                                                 }
                                                             })

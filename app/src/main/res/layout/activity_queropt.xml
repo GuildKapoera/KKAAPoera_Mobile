@@ -56,7 +56,8 @@
                 android:layout_height="64dp"
                 android:layout_marginRight="10dp"
                 android:onClick="abrirQueroPTCriarPT"
-                android:src="@drawable/baseline_group_add_24" />
+                android:src="@drawable/baseline_group_add_24"
+                android:foreground="@drawable/queropt_click_effect_criapt"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -82,8 +83,9 @@
                 android:layout_height="64dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:onClick="gerenciarMeusAnuncios"
-                android:src="@drawable/baseline_folder_shared_24" />
+                android:onClick="abrirQueroPTMinhasPTs"
+                android:src="@drawable/baseline_folder_shared_24"
+                android:foreground="@drawable/queropt_click_effect_verminhaspts"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -110,7 +112,8 @@
                 android:layout_height="64dp"
                 android:layout_marginLeft="18dp"
                 android:onClick="abrirQueroPTGeral"
-                android:src="@drawable/baseline_person_search_24" />
+                android:src="@drawable/baseline_person_search_24"
+                android:foreground="@drawable/queropt_click_effect_vertodas"/>
 
             <TextView
                 android:layout_width="wrap_content"
