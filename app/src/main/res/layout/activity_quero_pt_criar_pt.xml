@@ -9,28 +9,6 @@
     android:padding="20dp"
     tools:context=".Activity.QueroPTCriarPTActivity">
 
-    <FrameLayout
-        android:id="@+id/frameLayoutAvatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="126dp">
-
-        <ImageView
-            android:id="@+id/imageViewAvatar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/default_avatar"
-            android:gravity="center" />
-
-        <TextView
-            android:id="@+id/textViewCharacterName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold|italic" />
-    </FrameLayout>
 
     <!-- Informações Iniciais -->
     <TextView
@@ -40,6 +18,7 @@
         android:text="Nome do Personagem:"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:layout_marginTop="240dp"
         android:textColor="#FFFFFF"/>
 
     <TextView
@@ -74,12 +53,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="15dp"
         android:gravity="center">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Horário: "
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"/>
     <EditText

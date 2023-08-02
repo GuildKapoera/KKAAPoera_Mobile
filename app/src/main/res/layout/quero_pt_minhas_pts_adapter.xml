@@ -290,7 +290,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Status"
+                android:text="Tels"
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
@@ -367,6 +367,12 @@
             android:layout_weight="0.6"
             android:gravity="center">
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baseline_phone_forwarded_24"
+                android:id="@+id/imageViewEKContact"/>
+
             <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
         </LinearLayout>
     </LinearLayout>
@@ -437,6 +443,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
             android:gravity="center">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baseline_phone_forwarded_24"
+                android:id="@+id/imageViewEDContact"/>
 
             <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
         </LinearLayout>
@@ -509,6 +521,12 @@
             android:layout_weight="0.6"
             android:gravity="center">
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baseline_phone_forwarded_24"
+                android:id="@+id/imageViewMSContact"/>
+
             <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
         </LinearLayout>
     </LinearLayout>
@@ -580,6 +598,12 @@
             android:layout_weight="0.6"
             android:gravity="center">
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baseline_phone_forwarded_24"
+                android:id="@+id/imageViewRPContact"/>
+
             <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
         </LinearLayout>
     </LinearLayout>
@@ -600,7 +624,9 @@
             android:src="@drawable/baseline_delete_forever_24"
             android:layout_marginTop="8dp"
             android:contentDescription="Excluir Anúncio"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:clickable="true"
+            android:focusable="true"/>
 
     </LinearLayout>
 </LinearLayout>

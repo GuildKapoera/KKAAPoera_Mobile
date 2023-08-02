@@ -125,13 +125,13 @@ public class QueroPTCriarPTActivity extends AppCompatActivity {
             groupData.put("RPcontato", currentUserContato);
             groupData.put("EKnome", "");
             groupData.put("EKlevel", 0);
-            groupData.put("EKcontato", "9999999999");
+            groupData.put("EKcontato", "");
             groupData.put("MSnome", "");
             groupData.put("MSlevel", 0);
-            groupData.put("MScontato", "9999999999");
+            groupData.put("MScontato", "");
             groupData.put("EDnome", "");
             groupData.put("EDlevel", 0);
-            groupData.put("EDcontato", "9999999999");
+            groupData.put("EDcontato", "");
 
         } else if (currentUserVocacao.equals("Master Sorcerer")) {
             groupData.put("MSnome", currentUserNomePersonagem);
@@ -139,13 +139,13 @@ public class QueroPTCriarPTActivity extends AppCompatActivity {
             groupData.put("MScontato", currentUserContato);
             groupData.put("EDnome", "");
             groupData.put("EDlevel", 0);
-            groupData.put("EDcontato", "9999999999");
+            groupData.put("EDcontato", "");
             groupData.put("EKnome", "");
             groupData.put("EKlevel", 0);
-            groupData.put("EKcontato", "9999999999");
+            groupData.put("EKcontato", "");
             groupData.put("RPnome", "");
             groupData.put("RPlevel", 0);
-            groupData.put("RPcontato", "9999999999");
+            groupData.put("RPcontato", "");
 
         } else if (currentUserVocacao.equals("Elite Knight")) {
             groupData.put("EKnome", currentUserNomePersonagem);
@@ -153,13 +153,13 @@ public class QueroPTCriarPTActivity extends AppCompatActivity {
             groupData.put("EKcontato", currentUserContato);
             groupData.put("RPnome", "");
             groupData.put("RPlevel", 0);
-            groupData.put("RPcontato", "9999999999");
+            groupData.put("RPcontato", "");
             groupData.put("EDnome", "");
             groupData.put("EDlevel", 0);
-            groupData.put("EDcontato", "9999999999");
+            groupData.put("EDcontato", "");
             groupData.put("MSnome", "");
             groupData.put("MSlevel", 0);
-            groupData.put("MScontato", "9999999999");
+            groupData.put("MScontato", "");
 
         } else if (currentUserVocacao.equals("Elder Druid")) {
             groupData.put("EDnome", currentUserNomePersonagem);
@@ -167,13 +167,13 @@ public class QueroPTCriarPTActivity extends AppCompatActivity {
             groupData.put("EDcontato", currentUserContato);
             groupData.put("EKnome", "");
             groupData.put("EKlevel", 0);
-            groupData.put("EKcontato", "9999999999");
+            groupData.put("EKcontato", "");
             groupData.put("MSnome", "");
             groupData.put("MSlevel", 0);
-            groupData.put("MScontato", "9999999999");
+            groupData.put("MScontato", "");
             groupData.put("RPnome", "");
             groupData.put("RPlevel", 0);
-            groupData.put("RPcontato", "9999999999");
+            groupData.put("RPcontato", "");
 
         }
 

@@ -367,6 +367,13 @@
             android:layout_weight="0.6"
             android:gravity="center">
 
+            <ImageView
+                android:id="@+id/checkEKicon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baseline_check_24"
+                android:visibility="gone"/>
+
             <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
         </LinearLayout>
     </LinearLayout>
@@ -437,6 +444,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
             android:gravity="center">
+
+            <ImageView
+                android:id="@+id/checkEDicon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baseline_check_24"
+                android:visibility="gone"/>
 
             <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
         </LinearLayout>
@@ -509,6 +523,13 @@
             android:layout_weight="0.6"
             android:gravity="center">
 
+            <ImageView
+                android:id="@+id/checkMSicon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baseline_check_24"
+                android:visibility="gone"/>
+
             <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
         </LinearLayout>
     </LinearLayout>
@@ -579,6 +600,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
             android:gravity="center">
+
+            <ImageView
+                android:id="@+id/checkRPicon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/baseline_check_24"
+                android:visibility="gone"/>
 
             <!-- Aqui você pode adicionar outros elementos visuais para a coluna 3 -->
         </LinearLayout>
