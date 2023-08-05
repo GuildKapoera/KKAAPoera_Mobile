@@ -1,6 +1,7 @@
 package com.guild.kaapoera.Activity;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,7 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
         this.context = context;
         this.queroPTList = queroPTList;
         mAuth = FirebaseAuth.getInstance();
+
     }
 
     @NonNull
@@ -65,6 +67,342 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
         holder.txtRPlevel.setText(String.valueOf(queroPT.getRPlevel()));
         holder.txtMSnome.setText(String.valueOf(queroPT.getMSnome()));
         holder.txtMSlevel.setText(String.valueOf(queroPT.getMSlevel()));
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            String uidDoUsuario = user.getUid();
+            DocumentReference userDocRef = FirebaseFirestore.getInstance().collection("Usuarios").document(uidDoUsuario);
+
+            userDocRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document != null && document.exists()) {
+                            String nomePersonagem = document.getString("nomePersonagem");
+
+                            // Verificar se o usuário é o responsável pela PT
+                            boolean usuarioEhResponsavel = queroPT.getResponsavel().equals(nomePersonagem);
+
+                            // Verificar se o usuário já está na PT
+                            boolean usuarioJaEstaNaPT = queroPT.usuarioEstaNaPT(nomePersonagem);
+
+                            // Configurar a visibilidade dos botões com base nas verificações acima
+                            if (usuarioEhResponsavel) {
+                                holder.btnEntrarNaPT.setVisibility(View.GONE);
+                                holder.btnSairDaPT.setVisibility(View.GONE);
+                            } else if (usuarioJaEstaNaPT) {
+                                holder.btnEntrarNaPT.setVisibility(View.GONE);
+                                holder.btnSairDaPT.setVisibility(View.VISIBLE);
+                            } else {
+                                holder.btnEntrarNaPT.setVisibility(View.VISIBLE);
+                                holder.btnSairDaPT.setVisibility(View.GONE);
+                            }
+                        }
+                    }
+                }
+            });
+        } else {
+            // Usuário não está logado, defina a visibilidade padrão dos botões
+            holder.btnEntrarNaPT.setVisibility(View.VISIBLE);
+            holder.btnSairDaPT.setVisibility(View.GONE);
+        }
+
+        holder.btnSairDaPT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Verificar se o usuário está logado
+                FirebaseUser user = mAuth.getCurrentUser();
+                if (user != null) {
+                    // O usuário está logado, podemos prosseguir com a obtenção do UID
+                    String uidDoUsuario = user.getUid();
+                    // Obter a referência do documento do usuário no Firestore
+                    DocumentReference userDocRef = FirebaseFirestore.getInstance().collection("Usuarios").document(uidDoUsuario);
+
+                    // Realizar a leitura do documento do usuário
+                    userDocRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot document = task.getResult();
+                                if (document != null && document.exists()) {
+                                    // O documento do usuário foi encontrado, agora podemos obter as informações necessárias
+                                    String nomePersonagem = document.getString("nomePersonagem");
+                                    String vocacao = document.getString("vocacao");
+                                    int level = document.getLong("level").intValue(); // Supondo que o campo level é armazenado como Long no Firestore.
+
+                                    // Verificar a vocação do usuário e as condições para sair da PT
+                                    if (vocacao != null) {
+                                        switch (vocacao) {
+                                            case "Elite Knight":
+                                                // Verificar se o usuário está na PT
+                                                if (queroPT.usuarioEstaNaPT(nomePersonagem)) {
+                                                    // Atualizar os campos da PT com as informações do usuário
+                                                    queroPT.setEKnome("");
+                                                    queroPT.setEKcontato("");
+                                                    queroPT.setEKlevel(0);
+
+                                                    // Atualizar campos de níveis máximo e mínimo
+                                                    int menorLevelRestante = Integer.MAX_VALUE;
+                                                    int maiorLevelRestante = 0;
+
+                                                    if (queroPT.getRPlevel() > 0) {
+                                                        menorLevelRestante = Math.min(menorLevelRestante, queroPT.getRPlevel());
+                                                        maiorLevelRestante = Math.max(maiorLevelRestante, queroPT.getRPlevel());
+                                                    } else { }
+
+                                                    if (queroPT.getMSlevel() > 0) {
+                                                        menorLevelRestante = Math.min(menorLevelRestante, queroPT.getMSlevel());
+                                                        maiorLevelRestante = Math.max(maiorLevelRestante, queroPT.getMSlevel());
+                                                    } else { }
+
+                                                    if (queroPT.getEDlevel() > 0) {
+                                                        menorLevelRestante = Math.min(menorLevelRestante, queroPT.getEDlevel());
+                                                        maiorLevelRestante = Math.max(maiorLevelRestante, queroPT.getEDlevel());
+                                                    } else { }
+
+                                                    // Calcular os novos valores para levelMinimo e levelMaximo
+                                                    int novoLevelMinimo = (maiorLevelRestante * 2) / 3;
+                                                    int novoLevelMaximo = (menorLevelRestante * 3) / 2;
+
+                                                    // Atualizar os campos de LevelMinimo e LevelMaximo no objeto queroPT
+                                                    queroPT.setLevelMinimo(novoLevelMinimo);
+                                                    queroPT.setLevelMaximo(novoLevelMaximo);
+
+                                                    // Atualizar a PT no Firestore
+                                                    DocumentReference ptDocRef = FirebaseFirestore.getInstance().collection("QueroPT").document(queroPT.getPTid());
+                                                    ptDocRef.update(
+                                                            "EKnome", queroPT.getEKnome(),
+                                                            "EKcontato", queroPT.getEKcontato(),
+                                                            "EKlevel", queroPT.getEKlevel(),
+                                                            "LevelMinimo", queroPT.getLevelMinimo(),
+                                                            "LevelMaximo", queroPT.getLevelMaximo()
+                                                    ).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            // Sucesso ao sair da PT
+                                                            Toast.makeText(context, "Você saiu da PT!", Toast.LENGTH_SHORT).show();
+                                                            notifyItemChanged(position);
+                                                        }
+                                                    }).addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            // Erro ao sair da PT
+                                                            Toast.makeText(context, "Erro ao sair da PT. Tente novamente.", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+                                                } else {
+                                                    // O usuário não está na PT, exibir mensagem apropriada
+                                                    Toast.makeText(context, "Você não está na PT.", Toast.LENGTH_SHORT).show();
+                                                }
+                                                break;
+
+                                            case "Royal Paladin":
+                                                // Verificar se o usuário está na PT
+                                                if (queroPT.usuarioEstaNaPT(nomePersonagem)) {
+                                                    // Atualizar os campos da PT com as informações do usuário
+                                                    queroPT.setRPnome("");
+                                                    queroPT.setRPcontato("");
+                                                    queroPT.setRPlevel(0);
+
+                                                    // Atualizar campos de níveis máximo e mínimo
+                                                    int menorLevelRestante = Integer.MAX_VALUE;
+                                                    int maiorLevelRestante = 0;
+
+                                                    // Verificar os níveis dos participantes restantes
+                                                    if (queroPT.getEKlevel() > 0) {
+                                                        menorLevelRestante = Math.min(menorLevelRestante, queroPT.getEKlevel());
+                                                        maiorLevelRestante = Math.max(maiorLevelRestante, queroPT.getEKlevel());
+                                                    } else { }
+
+                                                    if (queroPT.getMSlevel() > 0) {
+                                                        menorLevelRestante = Math.min(menorLevelRestante, queroPT.getMSlevel());
+                                                        maiorLevelRestante = Math.max(maiorLevelRestante, queroPT.getMSlevel());
+                                                    } else { }
+
+                                                    if (queroPT.getEDlevel() > 0) {
+                                                        menorLevelRestante = Math.min(menorLevelRestante, queroPT.getEDlevel());
+                                                        maiorLevelRestante = Math.max(maiorLevelRestante, queroPT.getEDlevel());
+                                                    } else { }
+
+                                                    // Calcular os novos valores para levelMinimo e levelMaximo
+                                                    int novoLevelMinimo = (maiorLevelRestante * 2) / 3;
+                                                    int novoLevelMaximo = (menorLevelRestante * 3) / 2;
+
+                                                    // Atualizar os campos de LevelMinimo e LevelMaximo no objeto queroPT
+                                                    queroPT.setLevelMinimo(novoLevelMinimo);
+                                                    queroPT.setLevelMaximo(novoLevelMaximo);
+
+                                                    // Atualizar a PT no Firestore
+                                                    DocumentReference ptDocRef = FirebaseFirestore.getInstance().collection("QueroPT").document(queroPT.getPTid());
+                                                    ptDocRef.update(
+                                                            "RPnome", queroPT.getRPnome(),
+                                                            "RPcontato", queroPT.getRPcontato(),
+                                                            "RPlevel", queroPT.getRPlevel(),
+                                                            "LevelMinimo", queroPT.getLevelMinimo(),
+                                                            "LevelMaximo", queroPT.getLevelMaximo()
+                                                    ).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            // Sucesso ao sair da PT
+                                                            Toast.makeText(context, "Você saiu da PT!", Toast.LENGTH_SHORT).show();
+                                                            notifyItemChanged(position);
+                                                        }
+                                                    }).addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            // Erro ao sair da PT
+                                                            Toast.makeText(context, "Erro ao sair da PT. Tente novamente.", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+                                                } else {
+                                                    // O usuário não está na PT, exibir mensagem apropriada
+                                                    Toast.makeText(context, "Você não está na PT.", Toast.LENGTH_SHORT).show();
+                                                }
+                                                break;
+
+                                            case "Elder Druid":
+                                                // Verificar se o usuário está na PT
+                                                if (queroPT.usuarioEstaNaPT(nomePersonagem)) {
+                                                    // Atualizar os campos da PT com as informações do usuário
+                                                    queroPT.setEDnome("");
+                                                    queroPT.setEDcontato("");
+                                                    queroPT.setEDlevel(0);
+
+                                                    // Atualizar campos de níveis máximo e mínimo
+                                                    int menorLevelRestante = Integer.MAX_VALUE;
+                                                    int maiorLevelRestante = 0;
+
+                                                    // Verificar os níveis dos participantes restantes
+                                                    if (queroPT.getEKlevel() > 0) {
+                                                        menorLevelRestante = Math.min(menorLevelRestante, queroPT.getEKlevel());
+                                                        maiorLevelRestante = Math.max(maiorLevelRestante, queroPT.getEKlevel());
+                                                    } else { }
+
+                                                    if (queroPT.getMSlevel() > 0) {
+                                                        menorLevelRestante = Math.min(menorLevelRestante, queroPT.getMSlevel());
+                                                        maiorLevelRestante = Math.max(maiorLevelRestante, queroPT.getMSlevel());
+                                                    } else { }
+
+                                                    if (queroPT.getEDlevel() > 0) {
+                                                        menorLevelRestante = Math.min(menorLevelRestante, queroPT.getRPlevel());
+                                                        maiorLevelRestante = Math.max(maiorLevelRestante, queroPT.getRPlevel());
+                                                    } else { }
+
+                                                    // Calcular os novos valores para levelMinimo e levelMaximo
+                                                    int novoLevelMinimo = (maiorLevelRestante * 2) / 3;
+                                                    int novoLevelMaximo = (menorLevelRestante * 3) / 2;
+
+                                                    // Atualizar os campos de LevelMinimo e LevelMaximo no objeto queroPT
+                                                    queroPT.setLevelMinimo(novoLevelMinimo);
+                                                    queroPT.setLevelMaximo(novoLevelMaximo);
+
+                                                    // Atualizar a PT no Firestore
+                                                    DocumentReference ptDocRef = FirebaseFirestore.getInstance().collection("QueroPT").document(queroPT.getPTid());
+                                                    ptDocRef.update(
+                                                            "EDnome", queroPT.getEDnome(),
+                                                            "EDcontato", queroPT.getEDcontato(),
+                                                            "EDlevel", queroPT.getEDlevel(),
+                                                            "LevelMinimo", queroPT.getLevelMinimo(),
+                                                            "LevelMaximo", queroPT.getLevelMaximo()
+                                                    ).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            // Sucesso ao sair da PT
+                                                            Toast.makeText(context, "Você saiu da PT!", Toast.LENGTH_SHORT).show();
+                                                            notifyItemChanged(position);
+                                                        }
+                                                    }).addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            // Erro ao sair da PT
+                                                            Toast.makeText(context, "Erro ao sair da PT. Tente novamente.", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+                                                } else {
+                                                    // O usuário não está na PT, exibir mensagem apropriada
+                                                    Toast.makeText(context, "Você não está na PT.", Toast.LENGTH_SHORT).show();
+                                                }
+                                                break;
+
+                                            case "Master Sorcerer":
+                                                // Verificar se o usuário está na PT
+                                                if (queroPT.usuarioEstaNaPT(nomePersonagem)) {
+                                                    // Atualizar os campos da PT com as informações do usuário
+                                                    queroPT.setMSnome("");
+                                                    queroPT.setMScontato("");
+                                                    queroPT.setMSlevel(0);
+
+                                                    // Atualizar campos de níveis máximo e mínimo
+                                                    int menorLevelRestante = Integer.MAX_VALUE;
+                                                    int maiorLevelRestante = 0;
+
+                                                    // Verificar os níveis dos participantes restantes
+                                                    if (queroPT.getEKlevel() > 0) {
+                                                        menorLevelRestante = Math.min(menorLevelRestante, queroPT.getEKlevel());
+                                                        maiorLevelRestante = Math.max(maiorLevelRestante, queroPT.getEKlevel());
+                                                    } else { }
+
+                                                    if (queroPT.getMSlevel() > 0) {
+                                                        menorLevelRestante = Math.min(menorLevelRestante, queroPT.getRPlevel());
+                                                        maiorLevelRestante = Math.max(maiorLevelRestante, queroPT.getRPlevel());
+                                                    } else { }
+
+                                                    if (queroPT.getEDlevel() > 0) {
+                                                        menorLevelRestante = Math.min(menorLevelRestante, queroPT.getEDlevel());
+                                                        maiorLevelRestante = Math.max(maiorLevelRestante, queroPT.getEDlevel());
+                                                    } else { }
+
+                                                    // Calcular os novos valores para levelMinimo e levelMaximo
+                                                    int novoLevelMinimo = (maiorLevelRestante * 2) / 3;
+                                                    int novoLevelMaximo = (menorLevelRestante * 3) / 2;
+
+                                                    // Atualizar os campos de LevelMinimo e LevelMaximo no objeto queroPT
+                                                    queroPT.setLevelMinimo(novoLevelMinimo);
+                                                    queroPT.setLevelMaximo(novoLevelMaximo);
+
+                                                    // Atualizar a PT no Firestore
+                                                    DocumentReference ptDocRef = FirebaseFirestore.getInstance().collection("QueroPT").document(queroPT.getPTid());
+                                                    ptDocRef.update(
+                                                            "MSnome", queroPT.getMSnome(),
+                                                            "MScontato", queroPT.getMScontato(),
+                                                            "MSlevel", queroPT.getMSlevel(),
+                                                            "LevelMinimo", queroPT.getLevelMinimo(),
+                                                            "LevelMaximo", queroPT.getLevelMaximo()
+                                                    ).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            // Sucesso ao sair da PT
+                                                            Toast.makeText(context, "Você saiu da PT!", Toast.LENGTH_SHORT).show();
+                                                            notifyItemChanged(position);
+                                                        }
+                                                    }).addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            // Erro ao sair da PT
+                                                            Toast.makeText(context, "Erro ao sair da PT. Tente novamente.", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+                                                } else {
+                                                    // O usuário não está na PT, exibir mensagem apropriada
+                                                    Toast.makeText(context, "Você não está na PT.", Toast.LENGTH_SHORT).show();
+                                                }
+                                                break;
+
+                                            default:
+                                                // A vocação do usuário não corresponde a nenhuma das opções válidas
+                                                // Exibir mensagem de erro
+                                                Toast.makeText(context, "Vocação não suportada.", Toast.LENGTH_SHORT).show();
+                                                break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+        });
 
         /// Configurar o clique no botão "Entrar na PT"
         holder.btnEntrarNaPT.setOnClickListener(new View.OnClickListener() {
@@ -340,6 +678,8 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
         TextView txtLevelMaximo;
         TextView txtLevelMinimo;
         Button btnEntrarNaPT;
+        Button btnSairDaPT;
+
         TextView txtEKnome;
         TextView txtEKlevel;
         TextView txtRPnome;
@@ -357,6 +697,7 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
             txtLevelMaximo = itemView.findViewById(R.id.txtLevelMaximo);
             txtLevelMinimo = itemView.findViewById(R.id.txtLevelMinimo);
             btnEntrarNaPT = itemView.findViewById(R.id.btnEntrarNaPT);
+            btnSairDaPT = itemView.findViewById(R.id.btnSairDaPT);
             txtEKnome = itemView.findViewById(R.id.txtEKNome);
             txtEKlevel = itemView.findViewById(R.id.txtEKLevel);
             txtEDnome = itemView.findViewById(R.id.txtEDNome);
@@ -368,4 +709,5 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
 
         }
     }
+
 }

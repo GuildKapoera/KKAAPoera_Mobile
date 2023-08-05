@@ -78,7 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Telefone de contato"
+        android:hint="Telefone de contato com DDD"
         android:inputType="phone"
         android:minHeight="48dp"
         android:textColor="#FFFFFF"

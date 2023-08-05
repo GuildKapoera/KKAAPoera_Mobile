@@ -65,4 +65,10 @@ public class QueroPTGeral {
     public String getPTid() { return PTid; }
     public void setPTid(String PTid) {this.PTid = PTid;}
 
+    public boolean usuarioEstaNaPT(String nomePersonagem) {
+        if (getEKnome().equals(nomePersonagem) || getRPnome().equals(nomePersonagem) || getEDnome().equals(nomePersonagem) || getMSnome().equals(nomePersonagem)) {
+            return true;
+        }
+        return false;
+    }
 }
