@@ -30,6 +30,7 @@ public class CharacterDetailsActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private EditText editTextUserName;
     private EditText editTextUserPhone;
+    private EditText editTextCodigoPais;
     private Button buttonVincular;
 
     private String name;
@@ -39,6 +40,7 @@ public class CharacterDetailsActivity extends AppCompatActivity {
     private String guildName;
     private String comment;
     private String sex;
+    private String rank;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +55,11 @@ public class CharacterDetailsActivity extends AppCompatActivity {
         world = getIntent().getStringExtra("world");
         guildName = getIntent().getStringExtra("guildName");
         comment = getIntent().getStringExtra("comment");
+        rank = getIntent().getStringExtra("rank");
 
         // Inicializar as variáveis das caixas de texto e do botão
         editTextUserName = findViewById(R.id.editTextUserName);
+        editTextCodigoPais = findViewById(R.id.editTextCodigoPais);
         editTextUserPhone = findViewById(R.id.editTextUserPhone);
         buttonVincular = findViewById(R.id.buttonVincular);
 
@@ -119,10 +123,11 @@ public class CharacterDetailsActivity extends AppCompatActivity {
 
     private void enviarInformacoesParaFirestore() {
         String userName = editTextUserName.getText().toString().trim();
+        String codPais = editTextCodigoPais.getText().toString().trim();
         String userPhone = editTextUserPhone.getText().toString().trim();
 
-        // Verifica se o nome de usuário e o telefone não estão vazios antes de enviar para o Firestore
-        if (!userName.isEmpty() && !userPhone.isEmpty()) {
+        // Verifica se o nome de usuário, cod e o telefone não estão vazios antes de enviar para o Firestore
+        if (!userName.isEmpty() && !userPhone.isEmpty() && !codPais.isEmpty()) {
             // Crie um objeto HashMap para armazenar as informações do usuário
             Map<String, Object> usuario = new HashMap<>();
             usuario.put("nomePersonagem", name);
@@ -132,7 +137,10 @@ public class CharacterDetailsActivity extends AppCompatActivity {
             usuario.put("world", world);
             usuario.put("guildName", guildName);
             usuario.put("nomeUsuario", userName);
+            usuario.put("codPais", codPais);
             usuario.put("telefone", userPhone);
+            usuario.put("rank", rank);
+            usuario.put("strike", 0);
 
             // Obtenha a referência do Firestore para a coleção "Usuarios"
             FirebaseFirestore db = FirebaseFirestore.getInstance();

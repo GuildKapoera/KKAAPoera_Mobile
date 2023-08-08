@@ -20,6 +20,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.guild.kaapoera.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -70,17 +72,25 @@ public class CriarAnuncioActivity extends AppCompatActivity {
         String preco = editTextPreco.getText().toString().trim();
         String tipoAnuncio = ((RadioButton) findViewById(radioGroupTipoAnuncio.getCheckedRadioButtonId())).getText().toString();
 
+        //Obtendo Data atual e formatnaod para dd/MM/aaaa
+        Date dataAtual = new Date();
+        SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyyy");
+        String data = dataFormatada.format(dataAtual);
+
         // Obtenha o UID do usuário atual
         String uidUsuario = mAuth.getCurrentUser().getUid();
 
         // Crie um mapa com os dados do anúncio
         Map<String, Object> anuncioMap = new HashMap<>();
+        anuncioMap.put("data", data);
         anuncioMap.put("titulo", titulo);
         anuncioMap.put("descricao", descricao);
         anuncioMap.put("imagemUrl", imagemUrl);
         anuncioMap.put("preco", preco);
         anuncioMap.put("tipoAnuncio", tipoAnuncio);
         anuncioMap.put("nomePersonagem", ""); // Vamos preencher este campo posteriormente
+        anuncioMap.put("codPais", ""); //Vai depois, junto com o nome
+        anuncioMap.put("telefone", ""); //Vai depois, junto com o nome
 
         // Crie uma referência para a coleção "Anuncios" no Firestore
         db.collection("Anuncios").add(anuncioMap)
@@ -109,12 +119,16 @@ public class CriarAnuncioActivity extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 // Verifique se o documento existe antes de obter o nome do personagem
                 if (documentSnapshot.exists()) {
-                    // Obtenha o nome do personagem do documento do usuário
+                    // Obtenha o nome, codpais e telefone do personagem do documento do usuário
                     String nomePersonagem = documentSnapshot.getString("nomePersonagem");
+                    String codPais = documentSnapshot.getString("codPais");
+                    String telefone = documentSnapshot.getString("telefone");
 
                     // Atualize o campo "nomePersonagem" do anúncio com o nome do personagem do usuário
                     db.collection("Anuncios").document(idAnuncio)
-                            .update("nomePersonagem", nomePersonagem)
+                            .update("nomePersonagem", nomePersonagem,
+                            "codPais", codPais,
+                            "telefone", telefone)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {

@@ -1,7 +1,6 @@
 package com.guild.kaapoera.Activity;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +23,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.guild.kaapoera.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapter.ViewHolder> {
@@ -38,6 +39,14 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
         this.queroPTList = queroPTList;
         mAuth = FirebaseAuth.getInstance();
 
+    }
+
+    private void configureImageView(TextView nameTextView, ImageView checkImageView) {
+        if (nameTextView.getText().toString().isEmpty()) {
+            checkImageView.setVisibility(View.GONE);
+        } else {
+            checkImageView.setVisibility(View.VISIBLE);
+        }
     }
 
     @NonNull
@@ -67,6 +76,12 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
         holder.txtRPlevel.setText(String.valueOf(queroPT.getRPlevel()));
         holder.txtMSnome.setText(String.valueOf(queroPT.getMSnome()));
         holder.txtMSlevel.setText(String.valueOf(queroPT.getMSlevel()));
+
+        //Checks de vaga no Status
+        configureImageView(holder.txtEKnome, holder.checkEKicon);
+        configureImageView(holder.txtEDnome, holder.checkEDicon);
+        configureImageView(holder.txtRPnome, holder.checkRPicon);
+        configureImageView(holder.txtMSnome, holder.checkMSicon);
 
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {
@@ -141,6 +156,7 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                                     queroPT.setEKnome("");
                                                     queroPT.setEKcontato("");
                                                     queroPT.setEKlevel(0);
+                                                    queroPT.setEKcod("");
 
                                                     // Atualizar campos de níveis máximo e mínimo
                                                     int menorLevelRestante = Integer.MAX_VALUE;
@@ -173,6 +189,7 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                                     DocumentReference ptDocRef = FirebaseFirestore.getInstance().collection("QueroPT").document(queroPT.getPTid());
                                                     ptDocRef.update(
                                                             "EKnome", queroPT.getEKnome(),
+                                                            "EKcod",queroPT.getEKcod(),
                                                             "EKcontato", queroPT.getEKcontato(),
                                                             "EKlevel", queroPT.getEKlevel(),
                                                             "LevelMinimo", queroPT.getLevelMinimo(),
@@ -202,6 +219,7 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                                 if (queroPT.usuarioEstaNaPT(nomePersonagem)) {
                                                     // Atualizar os campos da PT com as informações do usuário
                                                     queroPT.setRPnome("");
+                                                    queroPT.setRPcod("");
                                                     queroPT.setRPcontato("");
                                                     queroPT.setRPlevel(0);
 
@@ -237,6 +255,7 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                                     DocumentReference ptDocRef = FirebaseFirestore.getInstance().collection("QueroPT").document(queroPT.getPTid());
                                                     ptDocRef.update(
                                                             "RPnome", queroPT.getRPnome(),
+                                                            "RPcod", queroPT.getRPcod(),
                                                             "RPcontato", queroPT.getRPcontato(),
                                                             "RPlevel", queroPT.getRPlevel(),
                                                             "LevelMinimo", queroPT.getLevelMinimo(),
@@ -266,6 +285,7 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                                 if (queroPT.usuarioEstaNaPT(nomePersonagem)) {
                                                     // Atualizar os campos da PT com as informações do usuário
                                                     queroPT.setEDnome("");
+                                                    queroPT.setEDcod("");
                                                     queroPT.setEDcontato("");
                                                     queroPT.setEDlevel(0);
 
@@ -284,7 +304,7 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                                         maiorLevelRestante = Math.max(maiorLevelRestante, queroPT.getMSlevel());
                                                     } else { }
 
-                                                    if (queroPT.getEDlevel() > 0) {
+                                                    if (queroPT.getRPlevel() > 0) {
                                                         menorLevelRestante = Math.min(menorLevelRestante, queroPT.getRPlevel());
                                                         maiorLevelRestante = Math.max(maiorLevelRestante, queroPT.getRPlevel());
                                                     } else { }
@@ -301,6 +321,7 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                                     DocumentReference ptDocRef = FirebaseFirestore.getInstance().collection("QueroPT").document(queroPT.getPTid());
                                                     ptDocRef.update(
                                                             "EDnome", queroPT.getEDnome(),
+                                                            "EDcod", queroPT.getEDcod(),
                                                             "EDcontato", queroPT.getEDcontato(),
                                                             "EDlevel", queroPT.getEDlevel(),
                                                             "LevelMinimo", queroPT.getLevelMinimo(),
@@ -330,6 +351,7 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                                 if (queroPT.usuarioEstaNaPT(nomePersonagem)) {
                                                     // Atualizar os campos da PT com as informações do usuário
                                                     queroPT.setMSnome("");
+                                                    queroPT.setMScod("");
                                                     queroPT.setMScontato("");
                                                     queroPT.setMSlevel(0);
 
@@ -365,6 +387,7 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                                     DocumentReference ptDocRef = FirebaseFirestore.getInstance().collection("QueroPT").document(queroPT.getPTid());
                                                     ptDocRef.update(
                                                             "MSnome", queroPT.getMSnome(),
+                                                            "MScod", queroPT.getMScod(),
                                                             "MScontato", queroPT.getMScontato(),
                                                             "MSlevel", queroPT.getMSlevel(),
                                                             "LevelMinimo", queroPT.getLevelMinimo(),
@@ -427,6 +450,7 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
                                     // O documento do usuário foi encontrado, agora podemos obter as informações necessárias
                                     String nomePersonagem = document.getString("nomePersonagem");
                                     String vocacao = document.getString("vocacao");
+                                    String codPais = document.getString("codPais");
                                     String telefone = document.getString("telefone");
                                     int level = document.getLong("level").intValue(); // Supondo que o campo level é armazenado como Long no Firestore.
 
@@ -450,12 +474,22 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
 
                                                     // Atualizar os campos da PT com as informações do usuário
                                                     queroPT.setEKnome(nomePersonagem);
+                                                    queroPT.setEKcod(codPais);
                                                     queroPT.setEKcontato(telefone);
                                                     queroPT.setEKlevel(level);
+
+                                                    //Obtendo Data atual e formatnaod para dd/MM/aaaa
+                                                    Date dataAtual = new Date();
+                                                    SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyyy");
+                                                    String data = dataFormatada.format(dataAtual);
+                                                    queroPT.setData(data);
+
                                                     // Agora você pode prosseguir com a atualização no Firestore
                                                     DocumentReference ptDocRef = FirebaseFirestore.getInstance().collection("QueroPT").document(queroPT.getPTid());
                                                     ptDocRef.update(
+                                                                    "data", queroPT.getData(),
                                                                     "EKnome", queroPT.getEKnome(),
+                                                                    "EKcod", queroPT.getEKcod(),
                                                                     "EKcontato", queroPT.getEKcontato(),
                                                                     "EKlevel", queroPT.getEKlevel(),
                                                                     "LevelMinimo", queroPT.getLevelMinimo(),
@@ -501,13 +535,23 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
 
                                                     // Atualizar os campos da PT com as informações do usuário
                                                     queroPT.setRPnome(nomePersonagem);
+                                                    queroPT.setRPcod(codPais);
                                                     queroPT.setRPcontato(telefone);
                                                     queroPT.setRPlevel(level);
+
+                                                    //Obtendo Data atual e formatnaod para dd/MM/aaaa
+                                                    Date dataAtual = new Date();
+                                                    SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyyy");
+                                                    String data = dataFormatada.format(dataAtual);
+                                                    queroPT.setData(data);
+
                                                     // Agora você pode prosseguir com a atualização no Firestore
                                                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                                                     DocumentReference ptDocRef = db.collection("QueroPT").document(queroPT.getPTid());
                                                     ptDocRef.update(
+                                                                    "data", queroPT.getData(),
                                                                     "RPnome", queroPT.getRPnome(),
+                                                                    "RPcod", queroPT.getRPcod(),
                                                                     "RPcontato", queroPT.getRPcontato(),
                                                                     "RPlevel", queroPT.getRPlevel(),
                                                                     "LevelMinimo", queroPT.getLevelMinimo(),
@@ -554,12 +598,22 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
 
                                                     // Atualizar os campos da PT com as informações do usuário
                                                     queroPT.setEDnome(nomePersonagem);
+                                                    queroPT.setEDcod(codPais);
                                                     queroPT.setEDcontato(telefone);
                                                     queroPT.setEDlevel(level);
+
+                                                    //Obtendo Data atual e formatnaod para dd/MM/aaaa
+                                                    Date dataAtual = new Date();
+                                                    SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyyy");
+                                                    String data = dataFormatada.format(dataAtual);
+                                                    queroPT.setData(data);
+
                                                     // Agora você pode prosseguir com a atualização no Firestore
                                                     DocumentReference ptDocRef = FirebaseFirestore.getInstance().collection("QueroPT").document(queroPT.getPTid());
                                                     ptDocRef.update(
+                                                                    "data", queroPT.getData(),
                                                                     "EDnome", queroPT.getEDnome(),
+                                                                    "EDcod", queroPT.getEDcod(),
                                                                     "EDcontato", queroPT.getEDcontato(),
                                                                     "EDlevel", queroPT.getEDlevel(),
                                                                     "LevelMinimo", queroPT.getLevelMinimo(),
@@ -606,12 +660,22 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
 
                                                     // Atualizar os campos da PT com as informações do usuário
                                                     queroPT.setMSnome(nomePersonagem);
+                                                    queroPT.setMScod(codPais);
                                                     queroPT.setMScontato(telefone);
                                                     queroPT.setMSlevel(level);
+
+                                                    //Obtendo Data atual e formatnaod para dd/MM/aaaa
+                                                    Date dataAtual = new Date();
+                                                    SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyyy");
+                                                    String data = dataFormatada.format(dataAtual);
+                                                    queroPT.setData(data);
+
                                                     // Agora você pode prosseguir com a atualização no Firestore
                                                     DocumentReference ptDocRef = FirebaseFirestore.getInstance().collection("QueroPT").document(queroPT.getPTid());
                                                     ptDocRef.update(
+                                                                    "data", queroPT.getData(),
                                                                     "MSnome", queroPT.getMSnome(),
+                                                                    "MScod", queroPT.getMScod(),
                                                                     "MScontato", queroPT.getMScontato(),
                                                                     "MSlevel", queroPT.getMSlevel(),
                                                                     "LevelMinimo", queroPT.getLevelMinimo(),
@@ -688,6 +752,10 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
         TextView txtEDlevel;
         TextView txtMSnome;
         TextView txtMSlevel;
+        ImageView checkEKicon;
+        ImageView checkEDicon;
+        ImageView checkRPicon;
+        ImageView checkMSicon;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -706,6 +774,10 @@ public class QueroPTGeralAdapter extends RecyclerView.Adapter<QueroPTGeralAdapte
             txtRPlevel = itemView.findViewById(R.id.txtRPLevel);
             txtMSnome = itemView.findViewById(R.id.txtMSNome);
             txtMSlevel = itemView.findViewById(R.id.txtMSLevel);
+            checkRPicon = itemView.findViewById(R.id.checkRPicon);
+            checkEDicon = itemView.findViewById(R.id.checkEDicon);
+            checkEKicon = itemView.findViewById(R.id.checkEKicon);
+            checkMSicon = itemView.findViewById(R.id.checkMSicon);
 
         }
     }

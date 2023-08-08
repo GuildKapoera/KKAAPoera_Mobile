@@ -18,6 +18,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.guild.kaapoera.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,6 +29,7 @@ public class QueroPTCriarPTActivity extends AppCompatActivity {
     private String currentUserUID;
     private int currentUserLevel;
     private String currentUserVocacao;
+    private String currentCodPais;
     private String currentUserContato;
     private String currentUserNomePersonagem;
 
@@ -53,6 +56,7 @@ public class QueroPTCriarPTActivity extends AppCompatActivity {
                         // Documento encontrado, obter os dados do usuário
                         currentUserLevel = document.getLong("level").intValue();
                         currentUserVocacao = document.getString("vocacao");
+                        currentCodPais = document.getString("codPais");
                         currentUserContato = document.getString("telefone");
                         currentUserNomePersonagem = document.getString("nomePersonagem");
 
@@ -110,8 +114,14 @@ public class QueroPTCriarPTActivity extends AppCompatActivity {
         EditText editTextHora = findViewById(R.id.editTextHora);
         String hora = editTextHora.getText().toString();
 
+        //Obtendo Data atual e formatnaod para dd/MM/aaaa
+        Date dataAtual = new Date();
+        SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyyy");
+        String data = dataFormatada.format(dataAtual);
+
         // Criar o grupo com as informações iniciais
         Map<String, Object> groupData = new HashMap<>();
+        groupData.put("data", data);
         groupData.put("Responsavel", currentUserNomePersonagem); // Substituir pelo nome do personagem do usuário
         groupData.put("Horario", hora);
         groupData.put("Contato", currentUserContato); // Substituir pelo telefone do usuário
@@ -122,57 +132,73 @@ public class QueroPTCriarPTActivity extends AppCompatActivity {
         if (currentUserVocacao.equals("Royal Paladin")) {
             groupData.put("RPnome", currentUserNomePersonagem);
             groupData.put("RPlevel", currentUserLevel);
+            groupData.put("RPcod", currentCodPais);
             groupData.put("RPcontato", currentUserContato);
             groupData.put("EKnome", "");
             groupData.put("EKlevel", 0);
+            groupData.put("EKcod", "");
             groupData.put("EKcontato", "");
             groupData.put("MSnome", "");
             groupData.put("MSlevel", 0);
+            groupData.put("MScod", "");
             groupData.put("MScontato", "");
             groupData.put("EDnome", "");
             groupData.put("EDlevel", 0);
+            groupData.put("EDcod", "");
             groupData.put("EDcontato", "");
 
         } else if (currentUserVocacao.equals("Master Sorcerer")) {
             groupData.put("MSnome", currentUserNomePersonagem);
             groupData.put("MSlevel", currentUserLevel);
+            groupData.put("MScod", currentCodPais);
             groupData.put("MScontato", currentUserContato);
             groupData.put("EDnome", "");
             groupData.put("EDlevel", 0);
+            groupData.put("EDcod", "");
             groupData.put("EDcontato", "");
             groupData.put("EKnome", "");
             groupData.put("EKlevel", 0);
+            groupData.put("EKcod", "");
             groupData.put("EKcontato", "");
             groupData.put("RPnome", "");
             groupData.put("RPlevel", 0);
+            groupData.put("RPcod", "");
             groupData.put("RPcontato", "");
 
         } else if (currentUserVocacao.equals("Elite Knight")) {
             groupData.put("EKnome", currentUserNomePersonagem);
             groupData.put("EKlevel", currentUserLevel);
+            groupData.put("EKcod", currentCodPais);
             groupData.put("EKcontato", currentUserContato);
             groupData.put("RPnome", "");
             groupData.put("RPlevel", 0);
+            groupData.put("RPcod", "");
             groupData.put("RPcontato", "");
             groupData.put("EDnome", "");
             groupData.put("EDlevel", 0);
+            groupData.put("EDcod", "");
             groupData.put("EDcontato", "");
             groupData.put("MSnome", "");
             groupData.put("MSlevel", 0);
+            groupData.put("MScod", "");
             groupData.put("MScontato", "");
 
         } else if (currentUserVocacao.equals("Elder Druid")) {
             groupData.put("EDnome", currentUserNomePersonagem);
             groupData.put("EDlevel", currentUserLevel);
+            groupData.put("EDcod", currentCodPais);
             groupData.put("EDcontato", currentUserContato);
             groupData.put("EKnome", "");
             groupData.put("EKlevel", 0);
+            groupData.put("EKcod", "");
             groupData.put("EKcontato", "");
             groupData.put("MSnome", "");
             groupData.put("MSlevel", 0);
+            groupData.put("MScod", "");
             groupData.put("MScontato", "");
             groupData.put("RPnome", "");
             groupData.put("RPlevel", 0);
+            groupData.put("RPcod", "");
             groupData.put("RPcontato", "");
 
         }

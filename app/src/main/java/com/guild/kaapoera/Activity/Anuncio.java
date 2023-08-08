@@ -1,6 +1,8 @@
 package com.guild.kaapoera.Activity;
 
 public class Anuncio {
+    private String codPais;
+    private String telefone;
     private String descricao;
     private String imagemUrl;
     private String nomePersonagem;
@@ -68,4 +70,9 @@ public class Anuncio {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
+
+    public String getCodPais(){return codPais;}
+    public void setCodPais(String codPais){this.codPais = codPais;}
+    public String getTelefone(){return telefone;}
+    public void setTelefone(String telefone){this.telefone = telefone;}
 }

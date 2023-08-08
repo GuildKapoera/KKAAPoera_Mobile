@@ -66,8 +66,9 @@ public class QueroPTMinhasPtsAdapter extends RecyclerView.Adapter<QueroPTMinhasP
             @Override
             public void onClick(View v) {
                 String contatoRP = queroPT.getRPcontato();
+                String RPcod = queroPT.getRPcod();
                 if (contatoRP != null && !contatoRP.isEmpty()) {
-                    String whatsappUrl = "https://api.whatsapp.com/send?phone=+55" + contatoRP;
+                    String whatsappUrl = "https://api.whatsapp.com/send?phone=" + RPcod + contatoRP;
                     Intent whatsappIntent = new Intent(Intent.ACTION_VIEW);
                     whatsappIntent.setData(Uri.parse(whatsappUrl));
                     context.startActivity(whatsappIntent);
@@ -83,8 +84,9 @@ public class QueroPTMinhasPtsAdapter extends RecyclerView.Adapter<QueroPTMinhasP
             @Override
             public void onClick(View v) {
                 String contatoEK = queroPT.getEKcontato();
+                String EKcod = queroPT.getEKcod();
                 if (contatoEK != null && !contatoEK.isEmpty()) {
-                    String whatsappUrl = "https://api.whatsapp.com/send?phone=+55" + contatoEK;
+                    String whatsappUrl = "https://api.whatsapp.com/send?phone=" + EKcod + contatoEK;
                     Intent whatsappIntent = new Intent(Intent.ACTION_VIEW);
                     whatsappIntent.setData(Uri.parse(whatsappUrl));
                     context.startActivity(whatsappIntent);
@@ -99,8 +101,9 @@ public class QueroPTMinhasPtsAdapter extends RecyclerView.Adapter<QueroPTMinhasP
             @Override
             public void onClick(View v) {
                 String contatoED = queroPT.getEDcontato();
+                String EDcod = queroPT.getEDcod();
                 if (contatoED != null && !contatoED.isEmpty()) {
-                    String whatsappUrl = "https://api.whatsapp.com/send?phone=+55" + contatoED;
+                    String whatsappUrl = "https://api.whatsapp.com/send?phone=" + EDcod + contatoED;
                     Intent whatsappIntent = new Intent(Intent.ACTION_VIEW);
                     whatsappIntent.setData(Uri.parse(whatsappUrl));
                     context.startActivity(whatsappIntent);
@@ -115,8 +118,9 @@ public class QueroPTMinhasPtsAdapter extends RecyclerView.Adapter<QueroPTMinhasP
             @Override
             public void onClick(View v) {
                 String contatoMS = queroPT.getMScontato();
+                String MScod = queroPT.getMScod();
                 if (contatoMS != null && !contatoMS.isEmpty()) {
-                    String whatsappUrl = "https://api.whatsapp.com/send?phone=+55" + contatoMS;
+                    String whatsappUrl = "https://api.whatsapp.com/send?phone=" + MScod + contatoMS;
                     Intent whatsappIntent = new Intent(Intent.ACTION_VIEW);
                     whatsappIntent.setData(Uri.parse(whatsappUrl));
                     context.startActivity(whatsappIntent);

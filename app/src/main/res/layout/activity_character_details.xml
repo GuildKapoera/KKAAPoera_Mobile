@@ -73,16 +73,36 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#A9FFFFFF" />
 
-    <EditText
-        android:id="@+id/editTextUserPhone"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+        android:id="@+id/editTextCodigoPais"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="16dp"
-        android:hint="Telefone de contato com DDD"
+        android:hint="Cód Pais (Ex: +55)"
         android:inputType="phone"
         android:minHeight="48dp"
         android:textColor="#FFFFFF"
         android:textColorHint="#A9FFFFFF" />
+
+
+        <EditText
+        android:id="@+id/editTextUserPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Tel de contato com DDD"
+        android:inputType="phone"
+        android:minHeight="48dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#A9FFFFFF" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/buttonVincular"

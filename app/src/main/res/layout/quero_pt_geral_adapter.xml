@@ -369,8 +369,8 @@
 
             <ImageView
                 android:id="@+id/checkEKicon"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="14sp"
+                android:layout_height="14sp"
                 android:src="@drawable/baseline_check_24"
                 android:visibility="gone"/>
 
@@ -447,8 +447,8 @@
 
             <ImageView
                 android:id="@+id/checkEDicon"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="14sp"
+                android:layout_height="14sp"
                 android:src="@drawable/baseline_check_24"
                 android:visibility="gone"/>
 
@@ -525,8 +525,8 @@
 
             <ImageView
                 android:id="@+id/checkMSicon"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="14sp"
+                android:layout_height="14sp"
                 android:src="@drawable/baseline_check_24"
                 android:visibility="gone"/>
 
@@ -603,8 +603,8 @@
 
             <ImageView
                 android:id="@+id/checkRPicon"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="14sp"
+                android:layout_height="14sp"
                 android:src="@drawable/baseline_check_24"
                 android:visibility="gone"/>
 

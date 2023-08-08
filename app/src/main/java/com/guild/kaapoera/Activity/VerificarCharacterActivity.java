@@ -95,6 +95,8 @@ public class VerificarCharacterActivity extends AppCompatActivity {
                             String world = characterObject.getString("world");
                             JSONObject guildObject = characterObject.optJSONObject("guild");
                             String guildName = guildObject != null ? guildObject.optString("name") : "";
+                            String guildRank = guildObject != null ? guildObject.optString("rank") : "";
+
 
                             String comment = characterObject.has("comment") ? characterObject.getString("comment") : "";
 
@@ -117,6 +119,7 @@ public class VerificarCharacterActivity extends AppCompatActivity {
                                         intent.putExtra("world", world);
                                         intent.putExtra("guildName", guildName);
                                         intent.putExtra("comment", comment);
+                                        intent.putExtra("rank", guildRank);
                                         startActivity(intent);
                                     }
                                 } else {
