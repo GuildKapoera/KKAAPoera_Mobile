@@ -140,7 +140,7 @@ public class CharacterDetailsActivity extends AppCompatActivity {
             usuario.put("codPais", codPais);
             usuario.put("telefone", userPhone);
             usuario.put("rank", rank);
-            usuario.put("strike", 0);
+            usuario.put("strike", "");
 
             // Obtenha a referência do Firestore para a coleção "Usuarios"
             FirebaseFirestore db = FirebaseFirestore.getInstance();

@@ -25,6 +25,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.guild.kaapoera.R;
 import com.guild.kaapoera.Util.Config_Bd;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class BemVindoActivity extends AppCompatActivity {
 
     private FirebaseAuth auth;
@@ -59,10 +62,11 @@ public class BemVindoActivity extends AppCompatActivity {
                             String name = documentSnapshot.getString("nomePersonagem");
                             String vocation = documentSnapshot.getString("vocacao");
                             String sex = documentSnapshot.getString("sex");
+                            String strike = documentSnapshot.getString("strike");
 
-                            if (name != null && vocation != null && sex != null) {
+                            if (name != null && vocation != null && sex != null && strike != null) {
                                 // Atualizar a tela com as informações do personagem
-                                atualizarTela(name, vocation, sex);
+                                atualizarTela(name, vocation, sex, strike);
                             } else {
                                 // Caso as informações estejam faltando, exiba uma mensagem de erro e redirecione para a tela de login
                                 Toast.makeText(BemVindoActivity.this, "Erro ao exibir informações. Tente novamente.", Toast.LENGTH_SHORT).show();
@@ -87,95 +91,147 @@ public class BemVindoActivity extends AppCompatActivity {
                 });
     }
 
-    private void atualizarTela(String name, String vocation, String sex) {
-        // Atualizar a tela com as informações do personagem
-        // ...
-
-        // Exemplo de atualização da tela
+    private void atualizarTela(String name, String vocation, String sex, String strike) {
         ImageView imageViewAvatar = findViewById(R.id.imageViewAvatar);
         setCharacterAvatar(imageViewAvatar, vocation, sex);
 
         TextView textViewCharacterName = findViewById(R.id.textViewCharacterName);
         setCharacterName(textViewCharacterName, name);
-    }
 
-    private void setCharacterAvatar(ImageView imageView, String vocation, String sex) {
-        String avatarName = getAvatarName(vocation, sex);
+        ImageView imageViewRotacaoQuinzenal = findViewById(R.id.imageViewRotacaoQuinzenal);
+        if (!strike.isEmpty()) {
+            int day = Integer.parseInt(strike.substring(0, 2));
+            int month = Integer.parseInt(strike.substring(3, 5));
+            int year = Integer.parseInt(strike.substring(6));
 
-        int resourceId = getResources().getIdentifier(avatarName, "drawable", getPackageName());
-        if (resourceId != 0) {
-            imageView.setImageResource(resourceId);
-        } else {
-            // Caso a imagem não seja encontrada, definir um avatar padrão
-            imageView.setImageResource(R.drawable.default_avatar);
-        }
-    }
+            Calendar strikeCalendar = Calendar.getInstance();
+            strikeCalendar.set(year, month - 1, day);
 
-    private String getAvatarName(String vocation, String sex) {
-        String avatarName;
+            Calendar limitCalendar = Calendar.getInstance();
+            limitCalendar.setTime(strikeCalendar.getTime());
+            limitCalendar.add(Calendar.DAY_OF_MONTH, 20);
 
-        if (vocation.equals("Royal Paladin")) {
-            if (sex.equals("male")) {
-                avatarName = "rp_male";
+            boolean isBeforeLimit = new Date().before(limitCalendar.getTime());
+
+            if (isBeforeLimit) {
+                imageViewRotacaoQuinzenal.setImageResource(R.drawable.baseline_event_repeat_24_strikado);
+                imageViewRotacaoQuinzenal.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String mensagem = name + " vacilão, fica de fora da próxima rotação";
+                        Toast.makeText(BemVindoActivity.this, mensagem, Toast.LENGTH_SHORT).show();
+                    }
+                });
             } else {
-                avatarName = "rp_female";
-            }
-        } else if (vocation.equals("Elite Knight")) {
-            if (sex.equals("male")) {
-                avatarName = "ek_male";
-            } else {
-                avatarName = "ek_female";
-            }
-        } else if (vocation.equals("Master Sorcerer")) {
-            if (sex.equals("male")) {
-                avatarName = "ms_male";
-            } else {
-                avatarName = "ms_female";
-            }
-        } else if (vocation.equals("Elder Druid")) {
-            if (sex.equals("male")) {
-                avatarName = "ed_male";
-            } else {
-                avatarName = "ed_female";
+                imageViewRotacaoQuinzenal.setImageResource(R.drawable.baseline_event_repeat_24);
+                imageViewRotacaoQuinzenal.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        abrirRotacaoQuinzenal(view);
+                    }
+                });
             }
         } else {
-            // Vocação desconhecida, definir um avatar padrão
-            avatarName = "default_avatar";
-        }
-
-        return avatarName;
-    }
-
-    private void setCharacterName(TextView textView, String name) {
-        SpannableString spannableName = new SpannableString(name.toUpperCase());
-        spannableName.setSpan(new ForegroundColorSpan(Color.BLACK), 0, spannableName.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableName.setSpan(new StyleSpan(android.graphics.Typeface.ITALIC), 0, spannableName.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        textView.setText(spannableName);
-    }
-
-    // Método para deslogar o usuário
-    public void deslogar(View view) {
-        try {
-            auth.signOut();
-            startActivity(new Intent(BemVindoActivity.this, LoginActivity.class));
-            finish();
-        } catch (Exception e) {
-            e.printStackTrace();
+            imageViewRotacaoQuinzenal.setImageResource(R.drawable.baseline_event_repeat_24);
+            imageViewRotacaoQuinzenal.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    abrirRotacaoQuinzenal(view);
+                }
+            });
         }
     }
-    public void verPerfildeUsuario(View view) {
-        Intent intent = new Intent(this, PerfildeUsuarioActivity.class);
-        startActivity(intent);
-        finish();
+
+            private void setCharacterAvatar (ImageView imageView, String vocation, String sex){
+                String avatarName = getAvatarName(vocation, sex);
+
+                int resourceId = getResources().getIdentifier(avatarName, "drawable", getPackageName());
+                if (resourceId != 0) {
+                    imageView.setImageResource(resourceId);
+                } else {
+                    // Caso a imagem não seja encontrada, definir um avatar padrão
+                    imageView.setImageResource(R.drawable.default_avatar);
+                }
+            }
+
+            private String getAvatarName (String vocation, String sex){
+                String avatarName;
+
+                if (vocation.equals("Royal Paladin")) {
+                    if (sex.equals("male")) {
+                        avatarName = "rp_male";
+                    } else {
+                        avatarName = "rp_female";
+                    }
+                } else if (vocation.equals("Elite Knight")) {
+                    if (sex.equals("male")) {
+                        avatarName = "ek_male";
+                    } else {
+                        avatarName = "ek_female";
+                    }
+                } else if (vocation.equals("Master Sorcerer")) {
+                    if (sex.equals("male")) {
+                        avatarName = "ms_male";
+                    } else {
+                        avatarName = "ms_female";
+                    }
+                } else if (vocation.equals("Elder Druid")) {
+                    if (sex.equals("male")) {
+                        avatarName = "ed_male";
+                    } else {
+                        avatarName = "ed_female";
+                    }
+                } else {
+                    // Vocação desconhecida, definir um avatar padrão
+                    avatarName = "default_avatar";
+                }
+
+                return avatarName;
+            }
+
+            private void setCharacterName (TextView textView, String name){
+                SpannableString spannableName = new SpannableString(name.toUpperCase());
+                spannableName.setSpan(new ForegroundColorSpan(Color.BLACK), 0, spannableName.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                spannableName.setSpan(new StyleSpan(android.graphics.Typeface.ITALIC), 0, spannableName.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                textView.setText(spannableName);
+            }
+
+            // Método para deslogar o usuário
+            public void deslogar (View view){
+                try {
+                    auth.signOut();
+                    startActivity(new Intent(BemVindoActivity.this, LoginActivity.class));
+                    finish();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            public void verPerfildeUsuario (View view){
+                Intent intent = new Intent(this, PerfildeUsuarioActivity.class);
+                startActivity(intent);
+                finish();
+            }
+            public void abrirCompraEVenda (View view){
+                Intent intent = new Intent(this, CompraEVendaActivity.class);
+                startActivity(intent);
+                finish();
+            }
+            public void abrirQueroPT (View view){
+                Intent intent = new Intent(this, QueroPTActivity.class);
+                startActivity(intent);
+                finish();
+            }
+            public void abrirRotacaoQuinzenal (View view){
+                Intent intent = new Intent(this, RotacaoQuinzenal.class);
+                startActivity(intent);
+                finish();
+            }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (userId != null) {
+            obterInformacoesDoFirestore(userId);
+        }
     }
-    public void abrirCompraEVenda(View view) {
-        Intent intent = new Intent(this, CompraEVendaActivity.class);
-        startActivity(intent);
-        finish();
-    }
-    public void abrirQueroPT(View view) {
-        Intent intent = new Intent(this, QueroPTActivity.class);
-        startActivity(intent);
-        finish();
-    }
+
 }
