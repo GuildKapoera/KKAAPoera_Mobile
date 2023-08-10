@@ -1,6 +1,7 @@
 package com.guild.kaapoera.Activity;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -88,6 +89,13 @@ public class ListaMeusAnunciosActivity extends AppCompatActivity implements Anun
                     }
                     // Notifique o adaptador que os dados foram atualizados
                     anuncioAdapter.notifyDataSetChanged();
+
+                    // Verifique se a lista de anúncios está vazia após a atualização
+                    if (meusAnuncios.isEmpty()) {
+                        Toast.makeText(ListaMeusAnunciosActivity.this, "Nenhum anúncio criado por você foi encontrado.", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(ListaMeusAnunciosActivity.this, "Erro ao carregar anúncios.", Toast.LENGTH_SHORT).show();
                 }
             }
         });

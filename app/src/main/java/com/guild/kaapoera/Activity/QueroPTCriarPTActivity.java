@@ -80,7 +80,7 @@ public class QueroPTCriarPTActivity extends AppCompatActivity {
             }
         });
 
-        Button btnVoltar = findViewById(R.id.btnVoltar);
+        Button btnVoltar = findViewById(R.id.btnVoltarTelarotacao);
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

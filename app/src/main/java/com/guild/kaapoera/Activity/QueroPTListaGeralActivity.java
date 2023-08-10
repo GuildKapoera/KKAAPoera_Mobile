@@ -73,7 +73,7 @@ public class QueroPTListaGeralActivity extends AppCompatActivity {
                             // Notificar o adapter que os dados foram atualizados
                             adapter.notifyDataSetChanged();
                         } else {
-                            Toast.makeText(QueroPTListaGeralActivity.this, "Nenhum dado encontrado.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(QueroPTListaGeralActivity.this, "Nenhuma PT encontrada.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 })

@@ -12,6 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KAApoera"
         tools:targetApi="31">
+        <activity android:name=".Activity.RotacaoQuinzenalListaWDActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.RotacaoQuinzenalWD"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.RotacaoQuinzenalListaWDAdapter"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.RotacaoQuinzenalCriar"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity android:name=".Activity.RotacaoQuinzenal"
             android:exported="false"
             android:screenOrientation="portrait"/>
@@ -56,35 +68,35 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".Activity.CompraEVendaActivity"
             android:exported="false"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activity.AtualizarDadosActivity"
             android:exported="false"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activity.PerfildeUsuarioActivity"
             android:exported="false"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activity.EsquecerSenhaActivity"
             android:exported="false"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activity.CharacterDetailsActivity"
             android:exported="false"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activity.BemVindoActivity"
             android:exported="false"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activity.VerificarCharacterActivity"
             android:exported="false"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activity.CadastroActivity"
             android:exported="false"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activity.LoginActivity"
             android:exported="true"

@@ -307,7 +307,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/event_repeat/baseline_event_repeat_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/event_busy/baseline_event_busy_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -317,8 +317,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="640000" />
-                            <entry key="outputName" value="baseline_event_repeat_24_strikado" />
+                            <entry key="outputName" value="baseline_event_busy_24_clicado" />
                             <entry key="sourceFile" value="C:\Users\wanig\AndroidStudioProjects\KAApoera2" />
                           </map>
                         </option>

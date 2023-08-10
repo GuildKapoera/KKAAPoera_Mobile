@@ -144,7 +144,7 @@ public class QueroPTListaMinhasPTsActivity extends AppCompatActivity implements 
                     // Verifique se a lista está vazia e exiba o Toast caso esteja
                     if (queroPTList.isEmpty()) {
                         Toast.makeText(QueroPTListaMinhasPTsActivity.this,
-                                "Nenhuma PT criada por você foi encontrada", Toast.LENGTH_SHORT).show();
+                                "Nenhuma PT criada por você foi encontrada.", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Log.e("QueroPTListaMinhasPTsActivity", "Erro ao obter dados do Firestore: " + task.getException());
