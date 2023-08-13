@@ -176,11 +176,25 @@ public class RotacaoQuinzenal extends AppCompatActivity {
     public void abrirListarWD(View view){
         Intent intent = new Intent(this, RotacaoQuinzenalListaWDActivity.class);
         startActivity(intent);
+    }
 
+    public void abrirListarFeru(View view){
+        Intent intent = new Intent(this, RotacaoQuinzenalListaFERUActivity.class);
+        startActivity(intent);
+    }
+
+    public void abrirListarLK(View view){
+        Intent intent = new Intent(this, RotacaoQuinzenalListaLKActivity.class);
+        startActivity(intent);
     }
 
     public void abrirCriarRotacoes(View view){
         Intent intent = new Intent(this, RotacaoQuinzenalCriar.class);
+        startActivity(intent);
+        finish();
+    }
+    public void voltarPaginaPrincipal(View view){
+        Intent intent = new Intent(this, BemVindoActivity.class);
         startActivity(intent);
         finish();
     }

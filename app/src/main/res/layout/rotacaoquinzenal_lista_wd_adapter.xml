@@ -20,13 +20,14 @@
             android:layout_gravity="center"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:text="Rotação Word Devourer"
+            android:text="Rotação World Devourer"
             android:textColor="@color/kap_gold">
         </TextView>
 
         <TextView
             android:id="@+id/txtDataEHora"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

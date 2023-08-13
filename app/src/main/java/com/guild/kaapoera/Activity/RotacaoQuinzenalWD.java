@@ -1,356 +1,395 @@
 package com.guild.kaapoera.Activity;
 
 public class RotacaoQuinzenalWD {
-    private String Data;
-    private String Responsavel;
-    private String Horario;
-    private String WD_EKprincipalNome;
-    private int WD_EKprincipalLVL;
-    private String WD_EKsecundarioNome;
-    private int WD_EKsecundarioLVL;
-    private String WD_EKterciarioNome;
-    private int WD_EKterciarioLVL;
-    private String WD_EDprincipalNome;
-    private int WD_EDprincipalLVL;
-    private String WD_EDsecundarioNome;
-    private int WD_EDsecundarioLVL;
-    private String WD_EDterciarioNome;
-    private int WD_EDterciarioLVL;
-    private String WD_Shooter1nome;
-    private int WD_Shooter1lvl;
-    private String WD_Shooter2nome;
-    private int WD_Shooter2lvl;
-    private String WD_Shooter3nome;
-    private int WD_Shooter3lvl;
-    private String WD_Shooter4nome;
-    private int WD_Shooter4lvl;
-    private String WD_Shooter5nome;
-    private int WD_Shooter5lvl;
-    private String WD_Shooter6nome;
-    private int WD_Shooter6lvl;
-    private String WD_Shooter7nome;
-    private int WD_Shooter7lvl;
-    private String WD_Shooter8nome;
-    private int WD_Shooter8lvl;
-    private String WD_Shooter9nome;
-    private int WD_Shooter9lvl;
+    private String rotacaoID;
+    private String data;
+    private String responsavel;
+    private String horario;
+    private String boss;
+    private String wd_EK_1_Nome;
+    private int wd_EK_1_Level;
+    private String wd_EK_2_Nome;
+    private int wd_EK_2_Level;
+    private String wd_EK_3_Nome;
+    private int wd_EK_3_Level;
+    private String wd_ED_1_Nome;
+    private int wd_ED_1_Level;
+    private String wd_ED_2_Nome;
+    private int wd_ED_2_Level;
+    private String wd_ED_3_Nome;
+    private int wd_ED_3_Level;
+    private String wd_Shooter_1_Nome;
+    private int wd_Shooter_1_Level;
+    private String wd_Shooter_2_Nome;
+    private int wd_Shooter_2_Level;
+    private String wd_Shooter_3_Nome;
+    private int wd_Shooter_3_Level;
+    private String wd_Shooter_4_Nome;
+    private int wd_Shooter_4_Level;
+    private String wd_Shooter_5_Nome;
+    private int wd_Shooter_5_Level;
+    private String wd_Shooter_6_Nome;
+    private int wd_Shooter_6_Level;
+    private String wd_Shooter_7_Nome;
+    private int wd_Shooter_7_Level;
+    private String wd_Shooter_8_Nome;
+    private int wd_Shooter_8_Level;
+    private String wd_Shooter_9_Nome;
+    private int wd_Shooter_9_Level;
+
+
 
     public RotacaoQuinzenalWD() {
     }
 
-    public RotacaoQuinzenalWD(String Data, String Responsavel, String Horario,
-                              String WD_EKprincipalNome, int WD_EKprincipalLVL,
-                              String WD_EKsecundarioNome, int WD_EKsecundarioLVL,
-                              String WD_EKterciarioNome, int WD_EKterciarioLVL,
-                              String WD_EDprincipalNome, int WD_EDprincipalLVL,
-                              String WD_EDsecundarioNome, int WD_EDsecundarioLVL,
-                              String WD_EDterciarioNome, int WD_EDterciarioLVL,
-                              String WD_Shooter1nome, int WD_Shooter1lvl,
-                              String WD_Shooter2nome, int WD_Shooter2lvl,
-                              String WD_Shooter3nome, int WD_Shooter3lvl,
-                              String WD_Shooter4nome, int WD_Shooter4lvl,
-                              String WD_Shooter5nome, int WD_Shooter5lvl,
-                              String WD_Shooter6nome, int WD_Shooter6lvl,
-                              String WD_Shooter7nome, int WD_Shooter7lvl,
-                              String WD_Shooter8nome, int WD_Shooter8lvl,
-                              String WD_Shooter9nome, int WD_Shooter9lvl) {
-        this.Data = Data;
-        this.Responsavel = Responsavel;
-        this.Horario = Horario;
-        this.WD_EKprincipalNome = WD_EKprincipalNome;
-        this.WD_EKprincipalLVL = WD_EKprincipalLVL;
-        this.WD_EKsecundarioNome = WD_EKsecundarioNome;
-        this.WD_EKsecundarioLVL = WD_EKsecundarioLVL;
-        this.WD_EKterciarioNome = WD_EKterciarioNome;
-        this.WD_EKterciarioLVL = WD_EKterciarioLVL;
-        this.WD_EDprincipalNome = WD_EDprincipalNome;
-        this.WD_EDprincipalLVL = WD_EDprincipalLVL;
-        this.WD_EDsecundarioNome = WD_EDsecundarioNome;
-        this.WD_EDsecundarioLVL = WD_EDsecundarioLVL;
-        this.WD_EDterciarioNome = WD_EDterciarioNome;
-        this.WD_EDterciarioLVL = WD_EDterciarioLVL;
-        this.WD_Shooter1nome = WD_Shooter1nome;
-        this.WD_Shooter1lvl = WD_Shooter1lvl;
-        this.WD_Shooter2nome = WD_Shooter2nome;
-        this.WD_Shooter2lvl = WD_Shooter2lvl;
-        this.WD_Shooter3nome = WD_Shooter3nome;
-        this.WD_Shooter3lvl = WD_Shooter3lvl;
-        this.WD_Shooter4nome = WD_Shooter4nome;
-        this.WD_Shooter4lvl = WD_Shooter4lvl;
-        this.WD_Shooter5nome = WD_Shooter5nome;
-        this.WD_Shooter5lvl = WD_Shooter5lvl;
-        this.WD_Shooter6nome = WD_Shooter6nome;
-        this.WD_Shooter6lvl = WD_Shooter6lvl;
-        this.WD_Shooter7nome = WD_Shooter7nome;
-        this.WD_Shooter7lvl = WD_Shooter7lvl;
-        this.WD_Shooter8nome = WD_Shooter8nome;
-        this.WD_Shooter8lvl = WD_Shooter8lvl;
-        this.WD_Shooter9nome = WD_Shooter9nome;
-        this.WD_Shooter9lvl = WD_Shooter9lvl;
+    public RotacaoQuinzenalWD(String data, String responsavel, String horario, String boss,
+                              String wd_EK_1_Nome,  int wd_EK_1_Level,
+                              String wd_EK_2_Nome,  int wd_EK_2_Level,
+                              String wd_EK_3_Nome,  int wd_EK_3_Level,
+                              String wd_ED_1_Nome,  int wd_ED_1_Level,
+                              String wd_ED_2_Nome,  int wd_ED_2_Level,
+                              String wd_ED_3_Nome,  int wd_ED_3_Level,
+                              String wd_Shooter_1_Nome,  int wd_Shooter_1_Level,
+                              String wd_Shooter_2_Nome,  int wd_Shooter_2_Level,
+                              String wd_Shooter_3_Nome,  int wd_Shooter_3_Level,
+                              String wd_Shooter_4_Nome,  int wd_Shooter_4_Level,
+                              String wd_Shooter_5_Nome,  int wd_Shooter_5_Level,
+                              String wd_Shooter_6_Nome,  int wd_Shooter_6_Level,
+                              String wd_Shooter_7_Nome,  int wd_Shooter_7_Level,
+                              String wd_Shooter_8_Nome,  int wd_Shooter_8_Level,
+                              String wd_Shooter_9_Nome,  int wd_Shooter_9_Level)
+    {
+        this.data = data;
+        this.responsavel = responsavel;
+        this.horario = horario;
+        this.boss = boss;
+        this.wd_EK_1_Nome = wd_EK_1_Nome;
+        this.wd_EK_1_Level = wd_EK_1_Level;
+        this.wd_EK_2_Nome = wd_EK_2_Nome;
+        this.wd_EK_2_Level = wd_EK_2_Level;
+        this.wd_EK_3_Nome = wd_EK_3_Nome;
+        this.wd_EK_3_Level = wd_EK_3_Level;
+        this.wd_ED_1_Nome = wd_ED_1_Nome;
+        this.wd_ED_1_Level = wd_ED_1_Level;
+        this.wd_ED_2_Nome = wd_ED_2_Nome;
+        this.wd_ED_2_Level = wd_ED_2_Level;
+        this.wd_ED_3_Nome = wd_ED_3_Nome;
+        this.wd_ED_3_Level = wd_ED_3_Level;
+        this.wd_Shooter_1_Nome = wd_Shooter_1_Nome;
+        this.wd_Shooter_1_Level = wd_Shooter_1_Level;
+        this.wd_Shooter_2_Nome = wd_Shooter_2_Nome;
+        this.wd_Shooter_2_Level = wd_Shooter_2_Level;
+        this.wd_Shooter_3_Nome = wd_Shooter_3_Nome;
+        this.wd_Shooter_3_Level = wd_Shooter_3_Level;
+        this.wd_Shooter_4_Nome = wd_Shooter_4_Nome;
+        this.wd_Shooter_4_Level = wd_Shooter_4_Level;
+        this.wd_Shooter_5_Nome = wd_Shooter_5_Nome;
+        this.wd_Shooter_5_Level = wd_Shooter_5_Level;
+        this.wd_Shooter_6_Nome = wd_Shooter_6_Nome;
+        this.wd_Shooter_6_Level = wd_Shooter_6_Level;
+        this.wd_Shooter_7_Nome = wd_Shooter_7_Nome;
+        this.wd_Shooter_7_Level = wd_Shooter_7_Level;
+        this.wd_Shooter_8_Nome = wd_Shooter_8_Nome;
+        this.wd_Shooter_8_Level = wd_Shooter_8_Level;
+        this.wd_Shooter_9_Nome = wd_Shooter_9_Nome;
+        this.wd_Shooter_9_Level = wd_Shooter_9_Level;
 
+
+    }
+    //Getters and Setters
+
+
+    public String getBoss() {
+        return boss;
+    }
+
+    public void setBoss(String boss) {
+        this.boss = boss;
     }
 
     public String getData() {
-        return Data;
+        return data;
     }
 
     public void setData(String data) {
-        Data = data;
+        this.data = data;
     }
 
     public String getResponsavel() {
-        return Responsavel;
+        return responsavel;
     }
 
     public void setResponsavel(String responsavel) {
-        Responsavel = responsavel;
+        this.responsavel = responsavel;
     }
 
     public String getHorario() {
-        return Horario;
+        return horario;
     }
 
     public void setHorario(String horario) {
-        Horario = horario;
+        this.horario = horario;
     }
 
-    public String getWD_EKprincipalNome() {
-        return WD_EKprincipalNome;
+    public String getWd_EK_1_Nome() {
+        return wd_EK_1_Nome;
     }
 
-    public void setWD_EKprincipalNome(String WD_EKprincipalNome) {
-        this.WD_EKprincipalNome = WD_EKprincipalNome;
+    public void setWd_EK_1_Nome(String wd_EK_1_Nome) {
+        this.wd_EK_1_Nome = wd_EK_1_Nome;
     }
 
-    public int getWD_EKprincipalLVL() {
-        return WD_EKprincipalLVL;
+    public int getWd_EK_1_Level() {
+        return wd_EK_1_Level;
     }
 
-    public void setWD_EKprincipalLVL(int WD_EKprincipalLVL) {
-        this.WD_EKprincipalLVL = WD_EKprincipalLVL;
+    public void setWd_EK_1_Level(int wd_EK_1_Level) {
+        this.wd_EK_1_Level = wd_EK_1_Level;
     }
 
-    public String getWD_EKsecundarioNome() {
-        return WD_EKsecundarioNome;
+    public String getWd_EK_2_Nome() {
+        return wd_EK_2_Nome;
     }
 
-    public void setWD_EKsecundarioNome(String WD_EKsecundarioNome) {
-        this.WD_EKsecundarioNome = WD_EKsecundarioNome;
+    public void setWd_EK_2_Nome(String wd_EK_2_Nome) {
+        this.wd_EK_2_Nome = wd_EK_2_Nome;
     }
 
-    public int getWD_EKsecundarioLVL() {
-        return WD_EKsecundarioLVL;
+    public int getWd_EK_2_Level() {
+        return wd_EK_2_Level;
     }
 
-    public void setWD_EKsecundarioLVL(int WD_EKsecundarioLVL) {
-        this.WD_EKsecundarioLVL = WD_EKsecundarioLVL;
+    public void setWd_EK_2_Level(int wd_EK_2_Level) {
+        this.wd_EK_2_Level = wd_EK_2_Level;
     }
 
-    public String getWD_EKterciarioNome() {
-        return WD_EKterciarioNome;
+    public String getWd_EK_3_Nome() {
+        return wd_EK_3_Nome;
     }
 
-    public void setWD_EKterciarioNome(String WD_EKterciarioNome) {
-        this.WD_EKterciarioNome = WD_EKterciarioNome;
+    public void setWd_EK_3_Nome(String wd_EK_3_Nome) {
+        this.wd_EK_3_Nome = wd_EK_3_Nome;
     }
 
-    public int getWD_EKterciarioLVL() {
-        return WD_EKterciarioLVL;
+    public int getWd_EK_3_Level() {
+        return wd_EK_3_Level;
     }
 
-    public void setWD_EKterciarioLVL(int WD_EKterciarioLVL) {
-        this.WD_EKterciarioLVL = WD_EKterciarioLVL;
+    public void setWd_EK_3_Level(int wd_EK_3_Level) {
+        this.wd_EK_3_Level = wd_EK_3_Level;
     }
 
-    public String getWD_EDprincipalNome() {
-        return WD_EDprincipalNome;
+    public String getWd_ED_1_Nome() {
+        return wd_ED_1_Nome;
     }
 
-    public void setWD_EDprincipalNome(String WD_EDprincipalNome) {
-        this.WD_EDprincipalNome = WD_EDprincipalNome;
+    public void setWd_ED_1_Nome(String wd_ED_1_Nome) {
+        this.wd_ED_1_Nome = wd_ED_1_Nome;
     }
 
-    public int getWD_EDprincipalLVL() {
-        return WD_EDprincipalLVL;
+    public int getWd_ED_1_Level() {
+        return wd_ED_1_Level;
     }
 
-    public void setWD_EDprincipalLVL(int WD_EDprincipalLVL) {
-        this.WD_EDprincipalLVL = WD_EDprincipalLVL;
+    public void setWd_ED_1_Level(int wd_ED_1_Level) {
+        this.wd_ED_1_Level = wd_ED_1_Level;
     }
 
-    public String getWD_EDsecundarioNome() {
-        return WD_EDsecundarioNome;
+    public String getWd_ED_2_Nome() {
+        return wd_ED_2_Nome;
     }
 
-    public void setWD_EDsecundarioNome(String WD_EDsecundarioNome) {
-        this.WD_EDsecundarioNome = WD_EDsecundarioNome;
+    public void setWd_ED_2_Nome(String wd_ED_2_Nome) {
+        this.wd_ED_2_Nome = wd_ED_2_Nome;
     }
 
-    public int getWD_EDsecundarioLVL() {
-        return WD_EDsecundarioLVL;
+    public int getWd_ED_2_Level() {
+        return wd_ED_2_Level;
     }
 
-    public void setWD_EDsecundarioLVL(int WD_EDsecundarioLVL) {
-        this.WD_EDsecundarioLVL = WD_EDsecundarioLVL;
+    public void setWd_ED_2_Level(int wd_ED_2_Level) {
+        this.wd_ED_2_Level = wd_ED_2_Level;
     }
 
-    public String getWD_EDterciarioNome() {
-        return WD_EDterciarioNome;
+    public String getWd_ED_3_Nome() {
+        return wd_ED_3_Nome;
     }
 
-    public void setWD_EDterciarioNome(String WD_EDterciarioNome) {
-        this.WD_EDterciarioNome = WD_EDterciarioNome;
+    public void setWd_ED_3_Nome(String wd_ED_3_Nome) {
+        this.wd_ED_3_Nome = wd_ED_3_Nome;
     }
 
-    public int getWD_EDterciarioLVL() {
-        return WD_EDterciarioLVL;
+    public int getWd_ED_3_Level() {
+        return wd_ED_3_Level;
     }
 
-    public void setWD_EDterciarioLVL(int WD_EDterciarioLVL) {
-        this.WD_EDterciarioLVL = WD_EDterciarioLVL;
+    public void setWd_ED_3_Level(int wd_ED_3_Level) {
+        this.wd_ED_3_Level = wd_ED_3_Level;
     }
 
-    public String getWD_Shooter1nome() {
-        return WD_Shooter1nome;
+    public String getWd_Shooter_1_Nome() {
+        return wd_Shooter_1_Nome;
     }
 
-    public void setWD_Shooter1nome(String WD_Shooter1nome) {
-        this.WD_Shooter1nome = WD_Shooter1nome;
+    public void setWd_Shooter_1_Nome(String wd_Shooter_1_Nome) {
+        this.wd_Shooter_1_Nome = wd_Shooter_1_Nome;
     }
 
-    public int getWD_Shooter1lvl() {
-        return WD_Shooter1lvl;
+    public int getWd_Shooter_1_Level() {
+        return wd_Shooter_1_Level;
     }
 
-    public void setWD_Shooter1lvl(int WD_Shooter1lvl) {
-        this.WD_Shooter1lvl = WD_Shooter1lvl;
+    public void setWd_Shooter_1_Level(int wd_Shooter_1_Level) {
+        this.wd_Shooter_1_Level = wd_Shooter_1_Level;
     }
 
-    public String getWD_Shooter2nome() {
-        return WD_Shooter2nome;
+    public String getWd_Shooter_2_Nome() {
+        return wd_Shooter_2_Nome;
     }
 
-    public void setWD_Shooter2nome(String WD_Shooter2nome) {
-        this.WD_Shooter2nome = WD_Shooter2nome;
+    public void setWd_Shooter_2_Nome(String wd_Shooter_2_Nome) {
+        this.wd_Shooter_2_Nome = wd_Shooter_2_Nome;
     }
 
-    public int getWD_Shooter2lvl() {
-        return WD_Shooter2lvl;
+    public int getWd_Shooter_2_Level() {
+        return wd_Shooter_2_Level;
     }
 
-    public void setWD_Shooter2lvl(int WD_Shooter2lvl) {
-        this.WD_Shooter2lvl = WD_Shooter2lvl;
+    public void setWd_Shooter_2_Level(int wd_Shooter_2_Level) {
+        this.wd_Shooter_2_Level = wd_Shooter_2_Level;
     }
 
-    public String getWD_Shooter3nome() {
-        return WD_Shooter3nome;
+    public String getWd_Shooter_3_Nome() {
+        return wd_Shooter_3_Nome;
     }
 
-    public void setWD_Shooter3nome(String WD_Shooter3nome) {
-        this.WD_Shooter3nome = WD_Shooter3nome;
+    public void setWd_Shooter_3_Nome(String wd_Shooter_3_Nome) {
+        this.wd_Shooter_3_Nome = wd_Shooter_3_Nome;
     }
 
-    public int getWD_Shooter3lvl() {
-        return WD_Shooter3lvl;
+    public int getWd_Shooter_3_Level() {
+        return wd_Shooter_3_Level;
     }
 
-    public void setWD_Shooter3lvl(int WD_Shooter3lvl) {
-        this.WD_Shooter3lvl = WD_Shooter3lvl;
+    public void setWd_Shooter_3_Level(int wd_Shooter_3_Level) {
+        this.wd_Shooter_3_Level = wd_Shooter_3_Level;
     }
 
-    public String getWD_Shooter4nome() {
-        return WD_Shooter4nome;
+    public String getWd_Shooter_4_Nome() {
+        return wd_Shooter_4_Nome;
     }
 
-    public void setWD_Shooter4nome(String WD_Shooter4nome) {
-        this.WD_Shooter4nome = WD_Shooter4nome;
+    public void setWd_Shooter_4_Nome(String wd_Shooter_4_Nome) {
+        this.wd_Shooter_4_Nome = wd_Shooter_4_Nome;
     }
 
-    public int getWD_Shooter4lvl() {
-        return WD_Shooter4lvl;
+    public int getWd_Shooter_4_Level() {
+        return wd_Shooter_4_Level;
     }
 
-    public void setWD_Shooter4lvl(int WD_Shooter4lvl) {
-        this.WD_Shooter4lvl = WD_Shooter4lvl;
+    public void setWd_Shooter_4_Level(int wd_Shooter_4_Level) {
+        this.wd_Shooter_4_Level = wd_Shooter_4_Level;
     }
 
-    public String getWD_Shooter5nome() {
-        return WD_Shooter5nome;
+    public String getWd_Shooter_5_Nome() {
+        return wd_Shooter_5_Nome;
     }
 
-    public void setWD_Shooter5nome(String WD_Shooter5nome) {
-        this.WD_Shooter5nome = WD_Shooter5nome;
+    public void setWd_Shooter_5_Nome(String wd_Shooter_5_Nome) {
+        this.wd_Shooter_5_Nome = wd_Shooter_5_Nome;
     }
 
-    public int getWD_Shooter5lvl() {
-        return WD_Shooter5lvl;
+    public int getWd_Shooter_5_Level() {
+        return wd_Shooter_5_Level;
     }
 
-    public void setWD_Shooter5lvl(int WD_Shooter5lvl) {
-        this.WD_Shooter5lvl = WD_Shooter5lvl;
+    public void setWd_Shooter_5_Level(int wd_Shooter_5_Level) {
+        this.wd_Shooter_5_Level = wd_Shooter_5_Level;
     }
 
-    public String getWD_Shooter6nome() {
-        return WD_Shooter6nome;
+    public String getWd_Shooter_6_Nome() {
+        return wd_Shooter_6_Nome;
     }
 
-    public void setWD_Shooter6nome(String WD_Shooter6nome) {
-        this.WD_Shooter6nome = WD_Shooter6nome;
+    public void setWd_Shooter_6_Nome(String wd_Shooter_6_Nome) {
+        this.wd_Shooter_6_Nome = wd_Shooter_6_Nome;
     }
 
-    public int getWD_Shooter6lvl() {
-        return WD_Shooter6lvl;
+    public int getWd_Shooter_6_Level() {
+        return wd_Shooter_6_Level;
     }
 
-    public void setWD_Shooter6lvl(int WD_Shooter6lvl) {
-        this.WD_Shooter6lvl = WD_Shooter6lvl;
+    public void setWd_Shooter_6_Level(int wd_Shooter_6_Level) {
+        this.wd_Shooter_6_Level = wd_Shooter_6_Level;
     }
 
-    public String getWD_Shooter7nome() {
-        return WD_Shooter7nome;
+    public String getWd_Shooter_7_Nome() {
+        return wd_Shooter_7_Nome;
     }
 
-    public void setWD_Shooter7nome(String WD_Shooter7nome) {
-        this.WD_Shooter7nome = WD_Shooter7nome;
+    public void setWd_Shooter_7_Nome(String wd_Shooter_7_Nome) {
+        this.wd_Shooter_7_Nome = wd_Shooter_7_Nome;
     }
 
-    public int getWD_Shooter7lvl() {
-        return WD_Shooter7lvl;
+    public int getWd_Shooter_7_Level() {
+        return wd_Shooter_7_Level;
     }
 
-    public void setWD_Shooter7lvl(int WD_Shooter7lvl) {
-        this.WD_Shooter7lvl = WD_Shooter7lvl;
+    public void setWd_Shooter_7_Level(int wd_Shooter_7_Level) {
+        this.wd_Shooter_7_Level = wd_Shooter_7_Level;
     }
 
-    public String getWD_Shooter8nome() {
-        return WD_Shooter8nome;
+    public String getWd_Shooter_8_Nome() {
+        return wd_Shooter_8_Nome;
     }
 
-    public void setWD_Shooter8nome(String WD_Shooter8nome) {
-        this.WD_Shooter8nome = WD_Shooter8nome;
+    public void setWd_Shooter_8_Nome(String wd_Shooter_8_Nome) {
+        this.wd_Shooter_8_Nome = wd_Shooter_8_Nome;
     }
 
-    public int getWD_Shooter8lvl() {
-        return WD_Shooter8lvl;
+    public int getWd_Shooter_8_Level() {
+        return wd_Shooter_8_Level;
     }
 
-    public void setWD_Shooter8lvl(int WD_Shooter8lvl) {
-        this.WD_Shooter8lvl = WD_Shooter8lvl;
+    public void setWd_Shooter_8_Level(int wd_Shooter_8_Level) {
+        this.wd_Shooter_8_Level = wd_Shooter_8_Level;
     }
 
-    public String getWD_Shooter9nome() {
-        return WD_Shooter9nome;
+    public String getWd_Shooter_9_Nome() {
+        return wd_Shooter_9_Nome;
     }
 
-    public void setWD_Shooter9nome(String WD_Shooter9nome) {
-        this.WD_Shooter9nome = WD_Shooter9nome;
+    public void setWd_Shooter_9_Nome(String wd_Shooter_9_Nome) {
+        this.wd_Shooter_9_Nome = wd_Shooter_9_Nome;
     }
 
-    public int getWD_Shooter9lvl() {
-        return WD_Shooter9lvl;
+    public int getWd_Shooter_9_Level() {
+        return wd_Shooter_9_Level;
     }
 
-    public void setWD_Shooter9lvl(int WD_Shooter9lvl) {
-        this.WD_Shooter9lvl = WD_Shooter9lvl;
+    public void setWd_Shooter_9_Level(int wd_Shooter_9_Level) {
+        this.wd_Shooter_9_Level = wd_Shooter_9_Level;
+    }
+
+    public String getRotacaoID() {
+        return rotacaoID;
+    }
+
+    public void setRotacaoID(String rotacaoID) {
+        this.rotacaoID = rotacaoID;
+    }
+
+    public boolean usuarioEstaNaRotacaoWD(String nomePersonagem){
+        if(getWd_EK_1_Nome().equals(nomePersonagem) || getWd_EK_2_Nome().equals(nomePersonagem) ||
+                getWd_EK_3_Nome().equals(nomePersonagem) || getWd_ED_1_Nome().equals(nomePersonagem) ||
+                getWd_ED_2_Nome().equals(nomePersonagem) || getWd_ED_3_Nome().equals(nomePersonagem) ||
+                getWd_Shooter_1_Nome().equals(nomePersonagem) || getWd_Shooter_2_Nome().equals(nomePersonagem) ||
+                getWd_Shooter_3_Nome().equals(nomePersonagem) || getWd_Shooter_4_Nome().equals(nomePersonagem) ||
+                getWd_Shooter_5_Nome().equals(nomePersonagem) || getWd_Shooter_6_Nome().equals(nomePersonagem) ||
+                getWd_Shooter_7_Nome().equals(nomePersonagem) || getWd_Shooter_8_Nome().equals(nomePersonagem) ||
+                getWd_Shooter_9_Nome().equals(nomePersonagem)){
+            return true;
+        }
+        return false;
     }
 }

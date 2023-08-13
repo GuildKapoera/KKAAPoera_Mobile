@@ -17,6 +17,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.guild.kaapoera.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class RotacaoQuinzenalListaWDActivity extends AppCompatActivity {
@@ -53,8 +55,18 @@ public class RotacaoQuinzenalListaWDActivity extends AppCompatActivity {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         // Crie um objeto RotacaoQuinzenalWD a partir dos dados do Firestore
                         RotacaoQuinzenalWD item = document.toObject(RotacaoQuinzenalWD.class);
-                        itemList.add(item);
+                        if (item.getBoss().equals("wd")) {
+                            item.setRotacaoID(document.getId());
+                            itemList.add(item);
+                        }
                     }
+                    // Ordenar a lista com base na data de evento
+                    Collections.sort(itemList, new Comparator<RotacaoQuinzenalWD>() {
+                        @Override
+                        public int compare(RotacaoQuinzenalWD item1, RotacaoQuinzenalWD item2) {
+                            return item1.getData().compareTo(item2.getData());
+                        }
+                    });
                     // Notifique o adaptador que os dados foram atualizados
                     adapter.notifyDataSetChanged();
 

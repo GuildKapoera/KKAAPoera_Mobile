@@ -57,7 +57,7 @@
                 android:layout_marginRight="10dp"
                 android:onClick="abrirListarFeru"
                 android:src="@drawable/feru"
-                android:foreground="@drawable/queropt_click_effect_criapt"/>
+                android:foreground="@drawable/feru_click_effect"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
                 android:layout_marginRight="10dp"
                 android:onClick="abrirListarWD"
                 android:src="@drawable/wd"
-                android:foreground="@drawable/queropt_click_effect_verminhaspts"/>
+                android:foreground="@drawable/wd_click_effect"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -113,7 +113,7 @@
                 android:layout_marginLeft="10dp"
                 android:onClick="abrirListarLK"
                 android:src="@drawable/lk"
-                android:foreground="@drawable/queropt_click_effect_vertodas"/>
+                android:foreground="@drawable/lk_click_effect"/>
 
             <TextView
                 android:layout_width="wrap_content"
