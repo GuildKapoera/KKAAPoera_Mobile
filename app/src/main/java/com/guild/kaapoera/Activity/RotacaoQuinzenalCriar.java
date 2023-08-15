@@ -117,36 +117,37 @@ public class RotacaoQuinzenalCriar extends AppCompatActivity {
 
         // Criar Vagas vazias wd
         groupData.put("boss", "wd");
-        groupData.put("wd_EK_1_Nome", "");
-        groupData.put("wd_EK_1_Level", 0);
-        groupData.put("wd_EK_2_Nome", "");
-        groupData.put("wd_EK_2_Level", 0);
-        groupData.put("wd_EK_3_Nome", "");
-        groupData.put("wd_EK_3_Level", 0);
-        groupData.put("wd_ED_1_Nome", "");
-        groupData.put("wd_ED_1_Level", 0);
-        groupData.put("wd_ED_2_Nome", "");
-        groupData.put("wd_ED_2_Level", 0);
-        groupData.put("wd_ED_3_Nome", "");
-        groupData.put("wd_ED_3_Level", 0);
-        groupData.put("wd_Shooter_1_Nome", "");
-        groupData.put("wd_Shooter_1_Level", 0);
-        groupData.put("wd_Shooter_2_Nome", "");
-        groupData.put("wd_Shooter_2_Level", 0);
-        groupData.put("wd_Shooter_3_Nome", "");
-        groupData.put("wd_Shooter_3_Level", 0);
-        groupData.put("wd_Shooter_4_Nome", "");
-        groupData.put("wd_Shooter_4_Level", 0);
-        groupData.put("wd_Shooter_5_Nome", "");
-        groupData.put("wd_Shooter_5_Level", 0);
-        groupData.put("wd_Shooter_6_Nome", "");
-        groupData.put("wd_Shooter_6_Level", 0);
-        groupData.put("wd_Shooter_7_Nome", "");
-        groupData.put("wd_Shooter_7_Level", 0);
-        groupData.put("wd_Shooter_8_Nome", "");
-        groupData.put("wd_Shooter_8_Level", 0);
-        groupData.put("wd_Shooter_9_Nome", "");
-        groupData.put("wd_Shooter_9_Level", 0);
+        groupData.put("p1_Nome", "");
+        groupData.put("p1_Level", 0);
+        groupData.put("p2_Nome", "");
+        groupData.put("p2_Level", 0);
+        groupData.put("p3_Nome", "");
+        groupData.put("p3_Level", 0);
+        groupData.put("p4_Nome", "");
+        groupData.put("p4_Level", 0);
+        groupData.put("p5_Nome", "");
+        groupData.put("p5_Level", 0);
+        groupData.put("p6_Nome", "");
+        groupData.put("p6_Level", 0);
+        groupData.put("p7_Nome", "");
+        groupData.put("p7_Level", 0);
+        groupData.put("p8_Nome", "");
+        groupData.put("p8_Level", 0);
+        groupData.put("p9_Nome", "");
+        groupData.put("p9_Level", 0);
+        groupData.put("p10_Nome", "");
+        groupData.put("p10_Level", 0);
+        groupData.put("p11_Nome", "");
+        groupData.put("p11_Level", 0);
+        groupData.put("p12_Nome", "");
+        groupData.put("p12_Level", 0);
+        groupData.put("p13_Nome", "");
+        groupData.put("p13_Level", 0);
+        groupData.put("p14_Nome", "");
+        groupData.put("p14_Level", 0);
+        groupData.put("p15_Nome", "");
+        groupData.put("p15_Level", 0);
+
 
         // Adicionar o documento no Firestore
         db.collection("RotacaoQuinzenal").document()
@@ -155,7 +156,7 @@ public class RotacaoQuinzenalCriar extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(RotacaoQuinzenalCriar.this, "Rotação criada com sucesso!", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(RotacaoQuinzenalCriar.this, "Rotação criada com sucesso!", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(RotacaoQuinzenalCriar.this, "Erro ao criar Rotação. Tente novamente.", Toast.LENGTH_SHORT).show();
                         }
@@ -177,36 +178,36 @@ public class RotacaoQuinzenalCriar extends AppCompatActivity {
 
         // Criar Vagas vazias Feru
         groupData.put("boss", "feru");
-        groupData.put("feru_EK_1_Nome", "");
-        groupData.put("feru_EK_1_Level", 0);
-        groupData.put("feru_EK_2_Nome", "");
-        groupData.put("feru_EK_2_Level", 0);
-        groupData.put("feru_EK_3_Nome", "");
-        groupData.put("feru_EK_3_Level", 0);
-        groupData.put("feru_ED_1_Nome", "");
-        groupData.put("feru_ED_1_Level", 0);
-        groupData.put("feru_ED_2_Nome", "");
-        groupData.put("feru_ED_2_Level", 0);
-        groupData.put("feru_ED_3_Nome", "");
-        groupData.put("feru_ED_3_Level", 0);
-        groupData.put("feru_Shooter_1_Nome", "");
-        groupData.put("feru_Shooter_1_Level", 0);
-        groupData.put("feru_Shooter_2_Nome", "");
-        groupData.put("feru_Shooter_2_Level", 0);
-        groupData.put("feru_Shooter_3_Nome", "");
-        groupData.put("feru_Shooter_3_Level", 0);
-        groupData.put("feru_Shooter_4_Nome", "");
-        groupData.put("feru_Shooter_4_Level", 0);
-        groupData.put("feru_Shooter_5_Nome", "");
-        groupData.put("feru_Shooter_5_Level", 0);
-        groupData.put("feru_Shooter_6_Nome", "");
-        groupData.put("feru_Shooter_6_Level", 0);
-        groupData.put("feru_Shooter_7_Nome", "");
-        groupData.put("feru_Shooter_7_Level", 0);
-        groupData.put("feru_Shooter_8_Nome", "");
-        groupData.put("feru_Shooter_8_Level", 0);
-        groupData.put("feru_Shooter_9_Nome", "");
-        groupData.put("feru_Shooter_9_Level", 0);
+        groupData.put("p1_Nome", "");
+        groupData.put("p1_Level", 0);
+        groupData.put("p2_Nome", "");
+        groupData.put("p2_Level", 0);
+        groupData.put("p3_Nome", "");
+        groupData.put("p3_Level", 0);
+        groupData.put("p4_Nome", "");
+        groupData.put("p4_Level", 0);
+        groupData.put("p5_Nome", "");
+        groupData.put("p5_Level", 0);
+        groupData.put("p6_Nome", "");
+        groupData.put("p6_Level", 0);
+        groupData.put("p7_Nome", "");
+        groupData.put("p7_Level", 0);
+        groupData.put("p8_Nome", "");
+        groupData.put("p8_Level", 0);
+        groupData.put("p9_Nome", "");
+        groupData.put("p9_Level", 0);
+        groupData.put("p10_Nome", "");
+        groupData.put("p10_Level", 0);
+        groupData.put("p11_Nome", "");
+        groupData.put("p11_Level", 0);
+        groupData.put("p12_Nome", "");
+        groupData.put("p12_Level", 0);
+        groupData.put("p13_Nome", "");
+        groupData.put("p13_Level", 0);
+        groupData.put("p14_Nome", "");
+        groupData.put("p14_Level", 0);
+        groupData.put("p15_Nome", "");
+        groupData.put("p15_Level", 0);
 
         // Adicionar o documento no Firestore
         db.collection("RotacaoQuinzenal").document()
@@ -215,7 +216,7 @@ public class RotacaoQuinzenalCriar extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(RotacaoQuinzenalCriar.this, "Rotação criada com sucesso!", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(RotacaoQuinzenalCriar.this, "Rotação criada com sucesso!", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(RotacaoQuinzenalCriar.this, "Erro ao criar Rotação. Tente novamente.", Toast.LENGTH_SHORT).show();
                         }
@@ -237,36 +238,36 @@ public class RotacaoQuinzenalCriar extends AppCompatActivity {
 
         // Criar Vagas vazias lk
         groupData.put("boss", "lk");
-        groupData.put("lk_EK_1_Nome", "");
-        groupData.put("lk_EK_1_Level", 0);
-        groupData.put("lk_EK_2_Nome", "");
-        groupData.put("lk_EK_2_Level", 0);
-        groupData.put("lk_EK_3_Nome", "");
-        groupData.put("lk_EK_3_Level", 0);
-        groupData.put("lk_ED_1_Nome", "");
-        groupData.put("lk_ED_1_Level", 0);
-        groupData.put("lk_RP_1_Nome", "");
-        groupData.put("lk_RP_1_Level", 0);
-        groupData.put("lk_RP_2_Nome", "");
-        groupData.put("lk_RP_2_Level", 0);
-        groupData.put("lk_RP_3_Nome", "");
-        groupData.put("lk_RP_3_Level", 0);
-        groupData.put("lk_Shooter_1_Nome", "");
-        groupData.put("lk_Shooter_1_Level", 0);
-        groupData.put("lk_Shooter_2_Nome", "");
-        groupData.put("lk_Shooter_2_Level", 0);
-        groupData.put("lk_Shooter_3_Nome", "");
-        groupData.put("lk_Shooter_3_Level", 0);
-        groupData.put("lk_Shooter_4_Nome", "");
-        groupData.put("lk_Shooter_4_Level", 0);
-        groupData.put("lk_Shooter_5_Nome", "");
-        groupData.put("lk_Shooter_5_Level", 0);
-        groupData.put("lk_Shooter_6_Nome", "");
-        groupData.put("lk_Shooter_6_Level", 0);
-        groupData.put("lk_Shooter_7_Nome", "");
-        groupData.put("lk_Shooter_7_Level", 0);
-        groupData.put("lk_Shooter_8_Nome", "");
-        groupData.put("lk_Shooter_8_Level", 0);
+        groupData.put("p1_Nome", "");
+        groupData.put("p1_Level", 0);
+        groupData.put("p2_Nome", "");
+        groupData.put("p2_Level", 0);
+        groupData.put("p3_Nome", "");
+        groupData.put("p3_Level", 0);
+        groupData.put("p4_Nome", "");
+        groupData.put("p4_Level", 0);
+        groupData.put("p5_Nome", "");
+        groupData.put("p5_Level", 0);
+        groupData.put("p6_Nome", "");
+        groupData.put("p6_Level", 0);
+        groupData.put("p7_Nome", "");
+        groupData.put("p7_Level", 0);
+        groupData.put("p8_Nome", "");
+        groupData.put("p8_Level", 0);
+        groupData.put("p9_Nome", "");
+        groupData.put("p9_Level", 0);
+        groupData.put("p10_Nome", "");
+        groupData.put("p10_Level", 0);
+        groupData.put("p11_Nome", "");
+        groupData.put("p11_Level", 0);
+        groupData.put("p12_Nome", "");
+        groupData.put("p12_Level", 0);
+        groupData.put("p13_Nome", "");
+        groupData.put("p13_Level", 0);
+        groupData.put("p14_Nome", "");
+        groupData.put("p14_Level", 0);
+        groupData.put("p15_Nome", "");
+        groupData.put("p15_Level", 0);
 
         // Adicionar o documento no Firestore
         db.collection("RotacaoQuinzenal").document()
@@ -276,6 +277,8 @@ public class RotacaoQuinzenalCriar extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(RotacaoQuinzenalCriar.this, "Rotação criada com sucesso!", Toast.LENGTH_SHORT).show();
+                            editTextData.setText("");
+                            editTextHora.setText("");
                         } else {
                             Toast.makeText(RotacaoQuinzenalCriar.this, "Erro ao criar Rotação. Tente novamente.", Toast.LENGTH_SHORT).show();
                         }

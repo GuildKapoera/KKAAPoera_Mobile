@@ -211,6 +211,7 @@ public class QueroPTCriarPTActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(QueroPTCriarPTActivity.this, "PT criada com sucesso!", Toast.LENGTH_SHORT).show();
+                            editTextHora.setText("");
                         } else {
                             Toast.makeText(QueroPTCriarPTActivity.this, "Erro ao criar PT. Tente novamente.", Toast.LENGTH_SHORT).show();
                         }

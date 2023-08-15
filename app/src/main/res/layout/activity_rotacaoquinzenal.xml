@@ -208,7 +208,7 @@
                 android:layout_marginLeft="10dp"
                 android:onClick="abrirListaStrikes"
                 android:src="@drawable/baseline_event_busy_24"
-                android:foreground="@drawable/queropt_click_effect_vertodas"/>
+                android:foreground="@drawable/rotacaoquinzenal_listastrike_clickeffect"/>
 
             <TextView
                 android:layout_width="wrap_content"

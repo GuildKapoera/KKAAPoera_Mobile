@@ -1,0 +1,514 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="4dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:background="@drawable/bordas_arredondadas"
+    android:padding="16dp">
+
+    <!-- Rotação Gerenciar -->
+    <LinearLayout
+        android:id="@+id/layoutGerenciar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/BossTitle"
+        android:text="Rotação Quinzenal"
+        android:textStyle="bold"
+        android:textSize="24dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/kap_gold" />
+
+    <TextView
+        android:id="@+id/Data"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/white" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <GridLayout
+            android:id="@+id/GridP1"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="1">
+
+            <TextView
+                android:id="@+id/P1"
+                android:textSize="19dp"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1.5"
+                android:text="Valor da Firestore: "
+                android:padding="8dp"/>
+
+            <Button
+                android:id="@+id/StrikeP1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/kap_gold"
+                android:layout_columnWeight="0.5"
+                android:text="Strike 💩"
+                android:textColor="@color/black"
+                android:padding="8dp"/>
+
+        </GridLayout>
+        <GridLayout
+            android:id="@+id/GridP2"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="1">
+
+            <TextView
+                android:id="@+id/P2"
+                android:textSize="19dp"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1.5"
+                android:text="Valor da Firestore: "
+                android:padding="8dp"/>
+
+            <Button
+                android:id="@+id/StrikeP2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/kap_gold"
+                android:layout_columnWeight="0.5"
+                android:text="Strike 💩"
+                android:textColor="@color/black"
+                android:padding="8dp"/>
+
+        </GridLayout>
+        <GridLayout
+            android:id="@+id/GridP3"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="1">
+
+            <TextView
+                android:id="@+id/P3"
+                android:textSize="19dp"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1.5"
+                android:text="Valor da Firestore: "
+                android:padding="8dp"/>
+
+            <Button
+                android:id="@+id/StrikeP3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/kap_gold"
+                android:layout_columnWeight="0.5"
+                android:text="Strike 💩"
+                android:textColor="@color/black"
+                android:padding="8dp"/>
+
+        </GridLayout>
+        <GridLayout
+            android:id="@+id/GridP4"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="1">
+
+            <TextView
+                android:id="@+id/P4"
+                android:textSize="19dp"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1.5"
+                android:text="Valor da Firestore: "
+                android:padding="8dp"/>
+
+            <Button
+                android:id="@+id/StrikeP4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/kap_gold"
+                android:layout_columnWeight="0.5"
+                android:text="Strike 💩"
+                android:textColor="@color/black"
+                android:padding="8dp"/>
+
+        </GridLayout>
+        <GridLayout
+            android:id="@+id/GridP5"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="1">
+
+            <TextView
+                android:id="@+id/P5"
+                android:textSize="19dp"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1.5"
+                android:text="Valor da Firestore: "
+                android:padding="8dp"/>
+
+            <Button
+                android:id="@+id/StrikeP5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/kap_gold"
+                android:layout_columnWeight="0.5"
+                android:text="Strike 💩"
+                android:textColor="@color/black"
+                android:padding="8dp"/>
+
+        </GridLayout>
+        <GridLayout
+            android:id="@+id/GridP6"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="1">
+
+            <TextView
+                android:id="@+id/P6"
+                android:textSize="19dp"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1.5"
+                android:text="Valor da Firestore: "
+                android:padding="8dp"/>
+
+            <Button
+                android:id="@+id/StrikeP6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/kap_gold"
+                android:layout_columnWeight="0.5"
+                android:text="Strike 💩"
+                android:textColor="@color/black"
+                android:padding="8dp"/>
+
+        </GridLayout>
+        <GridLayout
+            android:id="@+id/GridP7"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="1">
+
+            <TextView
+                android:id="@+id/P7"
+                android:textSize="19dp"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1.5"
+                android:text="Valor da Firestore: "
+                android:padding="8dp"/>
+
+            <Button
+                android:id="@+id/StrikeP7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/kap_gold"
+                android:layout_columnWeight="0.5"
+                android:text="Strike 💩"
+                android:textColor="@color/black"
+                android:padding="8dp"/>
+
+        </GridLayout>
+        <GridLayout
+            android:id="@+id/GridP8"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="1">
+
+            <TextView
+                android:id="@+id/P8"
+                android:textSize="19dp"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1.5"
+                android:text="Valor da Firestore: "
+                android:padding="8dp"/>
+
+            <Button
+                android:id="@+id/StrikeP8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/kap_gold"
+                android:layout_columnWeight="0.5"
+                android:text="Strike 💩"
+                android:textColor="@color/black"
+                android:padding="8dp"/>
+
+        </GridLayout>
+        <GridLayout
+            android:id="@+id/GridP9"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="1">
+
+            <TextView
+                android:id="@+id/P9"
+                android:textSize="19dp"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1.5"
+                android:text="Valor da Firestore: "
+                android:padding="8dp"/>
+
+            <Button
+                android:id="@+id/StrikeP9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/kap_gold"
+                android:layout_columnWeight="0.5"
+                android:text="Strike 💩"
+                android:textColor="@color/black"
+                android:padding="8dp"/>
+
+        </GridLayout>
+        <GridLayout
+            android:id="@+id/GridP10"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="1">
+
+            <TextView
+                android:id="@+id/P10"
+                android:textSize="19dp"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1.5"
+                android:text="Valor da Firestore: "
+                android:padding="8dp"/>
+
+            <Button
+                android:id="@+id/StrikeP10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/kap_gold"
+                android:layout_columnWeight="0.5"
+                android:text="Strike 💩"
+                android:textColor="@color/black"
+                android:padding="8dp"/>
+
+        </GridLayout>
+        <GridLayout
+            android:id="@+id/GridP11"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="1">
+
+            <TextView
+                android:id="@+id/P11"
+                android:textSize="19dp"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1.5"
+                android:text="Valor da Firestore: "
+                android:padding="8dp"/>
+
+            <Button
+                android:id="@+id/StrikeP11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/kap_gold"
+                android:layout_columnWeight="0.5"
+                android:text="Strike 💩"
+                android:textColor="@color/black"
+                android:padding="8dp"/>
+
+        </GridLayout>
+        <GridLayout
+            android:id="@+id/GridP12"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="1">
+
+            <TextView
+                android:id="@+id/P12"
+                android:textSize="19dp"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1.5"
+                android:text="Valor da Firestore: "
+                android:padding="8dp"
+                />
+
+            <Button
+                android:id="@+id/StrikeP12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/kap_gold"
+                android:layout_columnWeight="0.5"
+                android:text="Strike 💩"
+                android:textColor="@color/black"
+                android:padding="8dp"/>
+
+        </GridLayout>
+        <GridLayout
+            android:id="@+id/GridP13"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="1">
+
+            <TextView
+                android:id="@+id/P13"
+                android:textSize="19dp"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1.5"
+                android:text="Valor da Firestore: "
+                android:padding="8dp"/>
+
+            <Button
+                android:id="@+id/StrikeP13"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/kap_gold"
+                android:layout_columnWeight="0.5"
+                android:text="Strike 💩"
+                android:textColor="@color/black"
+                android:padding="8dp"/>
+
+        </GridLayout>
+        <GridLayout
+            android:id="@+id/GridP14"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="1">
+
+            <TextView
+                android:id="@+id/P14"
+                android:textSize="19dp"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1.5"
+                android:text="Valor da Firestore: "
+                android:padding="8dp"/>
+
+            <Button
+                android:id="@+id/StrikeP14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/kap_gold"
+                android:layout_columnWeight="0.5"
+                android:text="Strike 💩"
+                android:textColor="@color/black"
+                android:padding="8dp"/>
+
+        </GridLayout>
+        <GridLayout
+            android:id="@+id/GridP15"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="1">
+
+            <TextView
+                android:id="@+id/P15"
+                android:textSize="19dp"
+                android:maxLines="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1.5"
+                android:text="Valor da Firestore: "
+                android:padding="8dp"/>
+
+            <Button
+                android:id="@+id/StrikeP15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/kap_gold"
+                android:layout_columnWeight="0.5"
+                android:text="Strike 💩"
+                android:textColor="@color/black"
+                android:padding="8dp"/>
+
+        </GridLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

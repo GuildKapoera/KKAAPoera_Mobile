@@ -52,40 +52,40 @@ public class RotacaoQuinzenalListaLKAdapter extends RecyclerView.Adapter<Rotacao
         String dataEHora = "Dia " + item.getData() + " às " + item.getHorario() + "hs";
 
         holder.txtDataEHora.setText(dataEHora);
-        holder.LK_EKprincipalNome.setText(item.getLk_EK_1_Nome());
-        holder.LK_EKprincipalLVL.setText(String.valueOf(item.getLk_EK_1_Level()));
-        holder.LK_EKsecundarioNome.setText(item.getLk_EK_2_Nome());
-        holder.LK_EKsecundarioLVL.setText(String.valueOf(item.getLk_EK_2_Level()));
-        holder.LK_EKterciarioNome.setText(item.getLk_EK_3_Nome());
-        holder.LK_EKterciarioLVL.setText(String.valueOf(item.getLk_EK_3_Level()));
+        holder.LK_EKprincipalNome.setText(item.getP1_Nome());
+        holder.LK_EKprincipalLVL.setText(String.valueOf(item.getP1_Level()));
+        holder.LK_EKsecundarioNome.setText(item.getP2_Nome());
+        holder.LK_EKsecundarioLVL.setText(String.valueOf(item.getP2_Level()));
+        holder.LK_EKterciarioNome.setText(item.getP3_Nome());
+        holder.LK_EKterciarioLVL.setText(String.valueOf(item.getP3_Level()));
 
-        holder.LK_EDprincipalNome.setText(item.getLk_ED_1_Nome());
-        holder.LK_EDprincipalLVL.setText(String.valueOf(item.getLk_ED_1_Level()));
+        holder.LK_EDprincipalNome.setText(item.getP4_Nome());
+        holder.LK_EDprincipalLVL.setText(String.valueOf(item.getP4_Level()));
 
 
-        holder.LK_Shooter1nome.setText(item.getLk_RP_1_Nome());
-        holder.LK_Shooter1lvl.setText(String.valueOf(item.getLk_RP_1_Level()));
-        holder.LK_Shooter2nome.setText(item.getLk_RP_2_Nome());
-        holder.LK_Shooter2lvl.setText(String.valueOf(item.getLk_RP_2_Level()));
-        holder.LK_Shooter3nome.setText(item.getLk_RP_3_Nome());
-        holder.LK_Shooter3lvl.setText(String.valueOf(item.getLk_RP_3_Level()));
+        holder.LK_Shooter1nome.setText(item.getP5_Nome());
+        holder.LK_Shooter1lvl.setText(String.valueOf(item.getP5_Level()));
+        holder.LK_Shooter2nome.setText(item.getP6_Nome());
+        holder.LK_Shooter2lvl.setText(String.valueOf(item.getP6_Level()));
+        holder.LK_Shooter3nome.setText(item.getP7_Nome());
+        holder.LK_Shooter3lvl.setText(String.valueOf(item.getP7_Level()));
 
-        holder.LK_Shooter4nome.setText(item.getLk_Shooter_1_Nome());
-        holder.LK_Shooter4lvl.setText(String.valueOf(item.getLk_Shooter_1_Level()));
-        holder.LK_Shooter5nome.setText(item.getLk_Shooter_2_Nome());
-        holder.LK_Shooter5lvl.setText(String.valueOf(item.getLk_Shooter_2_Level()));
-        holder.LK_Shooter6nome.setText(item.getLk_Shooter_3_Nome());
-        holder.LK_Shooter6lvl.setText(String.valueOf(item.getLk_Shooter_3_Level()));
-        holder.LK_Shooter7nome.setText(item.getLk_Shooter_4_Nome());
-        holder.LK_Shooter7lvl.setText(String.valueOf(item.getLk_Shooter_4_Level()));
-        holder.LK_Shooter8nome.setText(item.getLk_Shooter_5_Nome());
-        holder.LK_Shooter8lvl.setText(String.valueOf(item.getLk_Shooter_5_Level()));
-        holder.LK_Shooter9nome.setText(item.getLk_Shooter_6_Nome());
-        holder.LK_Shooter9lvl.setText(String.valueOf(item.getLk_Shooter_6_Level()));
-        holder.LK_Shooter10nome.setText((item.getLk_Shooter_7_Nome()));
-        holder.LK_Shooter10lvl.setText((String.valueOf(item.getLk_Shooter_7_Level())));
-        holder.LK_Shooter11nome.setText(item.getLk_Shooter_8_Nome());
-        holder.LK_Shooter11lvl.setText((String.valueOf(item.getLk_Shooter_8_Level())));
+        holder.LK_Shooter4nome.setText(item.getP8_Nome());
+        holder.LK_Shooter4lvl.setText(String.valueOf(item.getP8_Level()));
+        holder.LK_Shooter5nome.setText(item.getP9_Nome());
+        holder.LK_Shooter5lvl.setText(String.valueOf(item.getP9_Level()));
+        holder.LK_Shooter6nome.setText(item.getP10_Nome());
+        holder.LK_Shooter6lvl.setText(String.valueOf(item.getP10_Level()));
+        holder.LK_Shooter7nome.setText(item.getP11_Nome());
+        holder.LK_Shooter7lvl.setText(String.valueOf(item.getP11_Level()));
+        holder.LK_Shooter8nome.setText(item.getP12_Nome());
+        holder.LK_Shooter8lvl.setText(String.valueOf(item.getP12_Level()));
+        holder.LK_Shooter9nome.setText(item.getP13_Nome());
+        holder.LK_Shooter9lvl.setText(String.valueOf(item.getP13_Level()));
+        holder.LK_Shooter10nome.setText((item.getP14_Nome()));
+        holder.LK_Shooter10lvl.setText((String.valueOf(item.getP14_Level())));
+        holder.LK_Shooter11nome.setText(item.getP15_Nome());
+        holder.LK_Shooter11lvl.setText((String.valueOf(item.getP15_Level())));
 
 
 
@@ -181,7 +181,7 @@ public class RotacaoQuinzenalListaLKAdapter extends RecyclerView.Adapter<Rotacao
                                                 DocumentSnapshot rotacaoDocument = rotacaoTask.getResult();
                                                 if (rotacaoDocument != null && rotacaoDocument.exists()) {
                                                     // Verificar e atualizar a posição correspondente com o nome do usuário
-                                                    String[] posicoes = {"lk_EK_1_Nome", "lk_EK_2_Nome", "lk_EK_3_Nome", "lk_ED_1_Nome", "lk_RP_1_Nome", "lk_RP_2_Nome", "lk_RP_3_Nome", "lk_Shooter_1_Nome", "lk_Shooter_2_Nome", "lk_Shooter_3_Nome", "lk_Shooter_4_Nome", "lk_Shooter_5_Nome", "lk_Shooter_6_Nome", "lk_Shooter_7_Nome", "lk_Shooter_8_Nome"};
+                                                    String[] posicoes = {"p1_Nome", "p2_Nome", "p3_Nome", "p4_Nome", "p5_Nome", "p6_Nome", "p7_Nome", "p8_Nome", "p9_Nome", "p10_Nome", "p11_Nome", "p12_Nome", "p13_Nome", "p14_Nome", "p15_Nome"};
                                                     for (String posicao : posicoes) {
                                                         Log.d("DEBUG", "A posições é: " + posicao);
                                                         String nomeAtirador = rotacaoDocument.getString(posicao);
@@ -195,51 +195,51 @@ public class RotacaoQuinzenalListaLKAdapter extends RecyclerView.Adapter<Rotacao
                                                                 public void onComplete(@NonNull Task<Void> updateTask) {
                                                                     if (updateTask.isSuccessful()) {
                                                                         // Atualize o item na lista com as informações atualizadas
-                                                                        if ((posicao.equals("lk_EK_1_Nome"))) {
-                                                                            item.setLk_EK_1_Nome("");
-                                                                            item.setLk_EK_1_Level(0);} else { }
-                                                                        if ((posicao.equals("lk_EK_2_Nome"))) {
-                                                                            item.setLk_EK_2_Nome("");
-                                                                            item.setLk_EK_2_Level(0);} else { }
-                                                                        if ((posicao.equals("lk_EK_3_Nome"))) {
-                                                                            item.setLk_EK_3_Nome("");
-                                                                            item.setLk_EK_3_Level(0);} else { }
-                                                                        if ((posicao.equals("lk_ED_1_Nome"))) {
-                                                                            item.setLk_ED_1_Nome("");
-                                                                            item.setLk_ED_1_Level(0);} else { }
-                                                                        if ((posicao.equals("lk_RP_1_Nome"))) {
-                                                                            item.setLk_RP_1_Nome("");
-                                                                            item.setLk_RP_1_Level(0);} else { }
-                                                                        if ((posicao.equals("lk_RP_2_Nome"))) {
-                                                                            item.setLk_RP_2_Nome("");
-                                                                            item.setLk_RP_2_Level(0);} else { }
-                                                                        if ((posicao.equals("lk_RP_3_Nome"))) {
-                                                                            item.setLk_RP_3_Nome("");
-                                                                            item.setLk_RP_3_Level(0);} else { }
-                                                                        if ((posicao.equals("lk_Shooter_1_Nome"))) {
-                                                                            item.setLk_Shooter_1_Nome("");
-                                                                            item.setLk_Shooter_1_Level(0);} else { }
-                                                                        if ((posicao.equals("lk_Shooter_2_Nome"))) {
-                                                                            item.setLk_Shooter_2_Nome("");
-                                                                            item.setLk_Shooter_2_Level(0);} else { }
-                                                                        if ((posicao.equals("lk_Shooter_3_Nome"))) {
-                                                                            item.setLk_Shooter_3_Nome("");
-                                                                            item.setLk_Shooter_3_Level(0);} else { }
-                                                                        if ((posicao.equals("lk_Shooter_4_Nome"))) {
-                                                                            item.setLk_Shooter_4_Nome("");
-                                                                            item.setLk_Shooter_4_Level(0);} else { }
-                                                                        if ((posicao.equals("lk_Shooter_5_Nome"))) {
-                                                                            item.setLk_Shooter_5_Nome("");
-                                                                            item.setLk_Shooter_5_Level(0);} else { }
-                                                                        if ((posicao.equals("lk_Shooter_6_Nome"))) {
-                                                                            item.setLk_Shooter_6_Nome("");
-                                                                            item.setLk_Shooter_6_Level(0);} else { }
-                                                                        if ((posicao.equals("lk_Shooter_7_Nome"))) {
-                                                                            item.setLk_Shooter_7_Nome("");
-                                                                            item.setLk_Shooter_7_Level(0);} else { }
-                                                                        if ((posicao.equals("lk_Shooter_8_Nome"))) {
-                                                                            item.setLk_Shooter_8_Nome("");
-                                                                            item.setLk_Shooter_8_Level(0);} else { }
+                                                                        if ((posicao.equals("p1_Nome"))) {
+                                                                            item.setP1_Nome("");
+                                                                            item.setP1_Level(0);} else { }
+                                                                        if ((posicao.equals("p2_Nome"))) {
+                                                                            item.setP2_Nome("");
+                                                                            item.setP2_Level(0);} else { }
+                                                                        if ((posicao.equals("p3_Nome"))) {
+                                                                            item.setP3_Nome("");
+                                                                            item.setP3_Level(0);} else { }
+                                                                        if ((posicao.equals("p4_Nome"))) {
+                                                                            item.setP4_Nome("");
+                                                                            item.setP4_Level(0);} else { }
+                                                                        if ((posicao.equals("p5_Nome"))) {
+                                                                            item.setP5_Nome("");
+                                                                            item.setP5_Level(0);} else { }
+                                                                        if ((posicao.equals("p6_Nome"))) {
+                                                                            item.setP6_Nome("");
+                                                                            item.setP6_Level(0);} else { }
+                                                                        if ((posicao.equals("p7_Nome"))) {
+                                                                            item.setP7_Nome("");
+                                                                            item.setP7_Level(0);} else { }
+                                                                        if ((posicao.equals("p8_Nome"))) {
+                                                                            item.setP8_Nome("");
+                                                                            item.setP8_Level(0);} else { }
+                                                                        if ((posicao.equals("p9_Nome"))) {
+                                                                            item.setP9_Nome("");
+                                                                            item.setP9_Level(0);} else { }
+                                                                        if ((posicao.equals("p10_Nome"))) {
+                                                                            item.setP10_Nome("");
+                                                                            item.setP10_Level(0);} else { }
+                                                                        if ((posicao.equals("p11_Nome"))) {
+                                                                            item.setP11_Nome("");
+                                                                            item.setP11_Level(0);} else { }
+                                                                        if ((posicao.equals("p12_Nome"))) {
+                                                                            item.setP12_Nome("");
+                                                                            item.setP12_Level(0);} else { }
+                                                                        if ((posicao.equals("p13_Nome"))) {
+                                                                            item.setP13_Nome("");
+                                                                            item.setP13_Level(0);} else { }
+                                                                        if ((posicao.equals("p14_Nome"))) {
+                                                                            item.setP14_Nome("");
+                                                                            item.setP14_Level(0);} else { }
+                                                                        if ((posicao.equals("p15_Nome"))) {
+                                                                            item.setP15_Nome("");
+                                                                            item.setP15_Level(0);} else { }
 
                                                                         // Atualização bem-sucedida
                                                                         Toast.makeText(context, "Você saiu da Rotação do LK.", Toast.LENGTH_SHORT).show();
@@ -380,47 +380,47 @@ public class RotacaoQuinzenalListaLKAdapter extends RecyclerView.Adapter<Rotacao
                             if (vocacaoUsuario != null) {
                                 switch (vocacaoUsuario) {
                                     case "Elder Druid":
-                                        String Healer1 = rotacao.getLk_ED_1_Nome();
+                                        String Healer1 = rotacao.getP4_Nome();
                                         if (Healer1.isEmpty()) {
                                             posicoesDisponiveis.add("Healer1");
                                         }
-                                        String EDShooter4 = rotacao.getLk_Shooter_1_Nome();
+                                        String EDShooter4 = rotacao.getP8_Nome();
                                         if (EDShooter4.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter4");
                                         }
-                                        String EDShooter5 = rotacao.getLk_Shooter_2_Nome();
+                                        String EDShooter5 = rotacao.getP9_Nome();
                                         if (EDShooter5.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter5");
                                         }
-                                        String EDShooter6 = rotacao.getLk_Shooter_3_Nome();
+                                        String EDShooter6 = rotacao.getP10_Nome();
                                         if (EDShooter6.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter6");
                                         }
-                                        String EDShooter7 = rotacao.getLk_Shooter_4_Nome();
+                                        String EDShooter7 = rotacao.getP11_Nome();
                                         if (EDShooter7.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter7");
                                         }
-                                        String EDShooter8 = rotacao.getLk_Shooter_5_Nome();
+                                        String EDShooter8 = rotacao.getP12_Nome();
                                         if (EDShooter8.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter8");
                                         }
-                                        String EDShooter9 = rotacao.getLk_Shooter_6_Nome();
+                                        String EDShooter9 = rotacao.getP13_Nome();
                                         if (EDShooter9.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter9");
                                         }
-                                        String EDShooter10 = rotacao.getLk_Shooter_7_Nome();
+                                        String EDShooter10 = rotacao.getP14_Nome();
                                         if (EDShooter10.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter10");
                                         }
-                                        String EDShooter11 = rotacao.getLk_Shooter_8_Nome();
+                                        String EDShooter11 = rotacao.getP15_Nome();
                                         if (EDShooter11.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter11");
                                         }
                                         break;
                                     case "Elite Knight":
-                                        String Blocker1 = rotacao.getLk_EK_1_Nome();
-                                        String Blocker2 = rotacao.getLk_EK_2_Nome();
-                                        String Blocker3 = rotacao.getLk_EK_3_Nome();
+                                        String Blocker1 = rotacao.getP1_Nome();
+                                        String Blocker2 = rotacao.getP2_Nome();
+                                        String Blocker3 = rotacao.getP3_Nome();
 
                                         // Verificando a condição do nível para listar posições
                                         if (levelUsuario >= 500) {
@@ -443,12 +443,12 @@ public class RotacaoQuinzenalListaLKAdapter extends RecyclerView.Adapter<Rotacao
                                         }
                                         break;
                                     case "Royal Paladin":
-                                        String Shooter1 = rotacao.getLk_RP_1_Nome();
-                                        String Shooter2 = rotacao.getLk_RP_2_Nome();
-                                        String Shooter3 = rotacao.getLk_RP_3_Nome();
-                                        String Shooter9 = rotacao.getLk_Shooter_6_Nome();
-                                        String Shooter10 = rotacao.getLk_Shooter_7_Nome();
-                                        String Shooter11 = rotacao.getLk_Shooter_8_Nome();
+                                        String Shooter1 = rotacao.getP5_Nome();
+                                        String Shooter2 = rotacao.getP6_Nome();
+                                        String Shooter3 = rotacao.getP7_Nome();
+                                        String Shooter9 = rotacao.getP13_Nome();
+                                        String Shooter10 = rotacao.getP14_Nome();
+                                        String Shooter11 = rotacao.getP15_Nome();
 
                                         // Verificando a condição do nível para listar posições
                                         if (levelUsuario >= 400) {
@@ -483,35 +483,35 @@ public class RotacaoQuinzenalListaLKAdapter extends RecyclerView.Adapter<Rotacao
                                         }
                                         break;
                                     case "Master Sorcerer":
-                                        String MSShooter1 = rotacao.getLk_Shooter_1_Nome();
+                                        String MSShooter1 = rotacao.getP8_Nome();
                                         if (MSShooter1.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter4");
                                         }
-                                        String MSShooter2 = rotacao.getLk_Shooter_2_Nome();
+                                        String MSShooter2 = rotacao.getP9_Nome();
                                         if (MSShooter2.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter5");
                                         }
-                                        String MSShooter3 = rotacao.getLk_Shooter_3_Nome();
+                                        String MSShooter3 = rotacao.getP10_Nome();
                                         if (MSShooter3.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter6");
                                         }
-                                        String MSShooter4 = rotacao.getLk_Shooter_4_Nome();
+                                        String MSShooter4 = rotacao.getP11_Nome();
                                         if (MSShooter4.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter7");
                                         }
-                                        String MSShooter5 = rotacao.getLk_Shooter_5_Nome();
+                                        String MSShooter5 = rotacao.getP12_Nome();
                                         if (MSShooter5.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter8");
                                         }
-                                        String MSShooter6 = rotacao.getLk_Shooter_6_Nome();
+                                        String MSShooter6 = rotacao.getP13_Nome();
                                         if (MSShooter6.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter9");
                                         }
-                                        String MSShooter7 = rotacao.getLk_Shooter_7_Nome();
+                                        String MSShooter7 = rotacao.getP14_Nome();
                                         if (MSShooter7.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter10");
                                         }
-                                        String MSShooter8 = rotacao.getLk_Shooter_8_Nome();
+                                        String MSShooter8 = rotacao.getP15_Nome();
                                         if (MSShooter8.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter11");
                                         }
@@ -553,64 +553,64 @@ public class RotacaoQuinzenalListaLKAdapter extends RecyclerView.Adapter<Rotacao
                         // Atualize os campos correspondentes com base na posição selecionada
                         switch (posicaoSelecionada) {
                             case "Blocker1":
-                                rotacao.setLk_EK_1_Nome(nomePersonagem);
-                                rotacao.setLk_EK_1_Level(levelPersonagem);
+                                rotacao.setP1_Nome(nomePersonagem);
+                                rotacao.setP1_Level(levelPersonagem);
                                 break;
                             case "Blocker2":
-                                rotacao.setLk_EK_2_Nome(nomePersonagem);
-                                rotacao.setLk_EK_2_Level(levelPersonagem);
+                                rotacao.setP2_Nome(nomePersonagem);
+                                rotacao.setP2_Level(levelPersonagem);
                                 break;
                             case "Blocker3":
-                                rotacao.setLk_EK_3_Nome(nomePersonagem);
-                                rotacao.setLk_EK_3_Level(levelPersonagem);
+                                rotacao.setP3_Nome(nomePersonagem);
+                                rotacao.setP3_Level(levelPersonagem);
                                 break;
                             case "Healer1":
-                                rotacao.setLk_ED_1_Nome(nomePersonagem);
-                                rotacao.setLk_ED_1_Level(levelPersonagem);
+                                rotacao.setP4_Nome(nomePersonagem);
+                                rotacao.setP4_Level(levelPersonagem);
                                 break;
                             case "Shooter1":
-                                rotacao.setLk_RP_1_Nome(nomePersonagem);
-                                rotacao.setLk_RP_1_Level(levelPersonagem);
+                                rotacao.setP5_Nome(nomePersonagem);
+                                rotacao.setP5_Level(levelPersonagem);
                                 break;
                             case "Shooter2":
-                                rotacao.setLk_RP_2_Nome(nomePersonagem);
-                                rotacao.setLk_RP_2_Level(levelPersonagem);
+                                rotacao.setP6_Nome(nomePersonagem);
+                                rotacao.setP6_Level(levelPersonagem);
                                 break;
                             case "Shooter3":
-                                rotacao.setLk_RP_3_Nome(nomePersonagem);
-                                rotacao.setLk_RP_3_Level(levelPersonagem);
+                                rotacao.setP7_Nome(nomePersonagem);
+                                rotacao.setP7_Level(levelPersonagem);
                                 break;
                             case "Shooter4":
-                                rotacao.setLk_Shooter_1_Nome(nomePersonagem);
-                                rotacao.setLk_Shooter_1_Level(levelPersonagem);
+                                rotacao.setP8_Nome(nomePersonagem);
+                                rotacao.setP8_Level(levelPersonagem);
                                 break;
                             case "Shooter5":
-                                rotacao.setLk_Shooter_2_Nome(nomePersonagem);
-                                rotacao.setLk_Shooter_2_Level(levelPersonagem);
+                                rotacao.setP9_Nome(nomePersonagem);
+                                rotacao.setP9_Level(levelPersonagem);
                                 break;
                             case "Shooter6":
-                                rotacao.setLk_Shooter_3_Nome(nomePersonagem);
-                                rotacao.setLk_Shooter_3_Level(levelPersonagem);
+                                rotacao.setP10_Nome(nomePersonagem);
+                                rotacao.setP10_Level(levelPersonagem);
                                 break;
                             case "Shooter7":
-                                rotacao.setLk_Shooter_4_Nome(nomePersonagem);
-                                rotacao.setLk_Shooter_4_Level(levelPersonagem);
+                                rotacao.setP11_Nome(nomePersonagem);
+                                rotacao.setP11_Level(levelPersonagem);
                                 break;
                             case "Shooter8":
-                                rotacao.setLk_Shooter_5_Nome(nomePersonagem);
-                                rotacao.setLk_Shooter_5_Level(levelPersonagem);
+                                rotacao.setP12_Nome(nomePersonagem);
+                                rotacao.setP12_Level(levelPersonagem);
                                 break;
                             case "Shooter9":
-                                rotacao.setLk_Shooter_6_Nome(nomePersonagem);
-                                rotacao.setLk_Shooter_6_Level(levelPersonagem);
+                                rotacao.setP13_Nome(nomePersonagem);
+                                rotacao.setP13_Level(levelPersonagem);
                                 break;
                             case "Shooter10":
-                                rotacao.setLk_Shooter_7_Nome(nomePersonagem);
-                                rotacao.setLk_Shooter_7_Level(levelPersonagem);
+                                rotacao.setP14_Nome(nomePersonagem);
+                                rotacao.setP14_Level(levelPersonagem);
                                 break;
                             case "Shooter11":
-                                rotacao.setLk_Shooter_8_Nome(nomePersonagem);
-                                rotacao.setLk_Shooter_8_Level(levelPersonagem);
+                                rotacao.setP15_Nome(nomePersonagem);
+                                rotacao.setP15_Level(levelPersonagem);
                                 break;
                         }
                         notifyDataSetChanged();

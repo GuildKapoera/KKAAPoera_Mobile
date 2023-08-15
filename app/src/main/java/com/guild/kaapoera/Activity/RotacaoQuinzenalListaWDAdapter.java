@@ -52,38 +52,38 @@ public class RotacaoQuinzenalListaWDAdapter extends RecyclerView.Adapter<Rotacao
         String dataEHora = "Dia " + item.getData() + " às " + item.getHorario() + "hs";
 
         holder.txtDataEHora.setText(dataEHora);
-        holder.WD_EKprincipalNome.setText(item.getWd_EK_1_Nome());
-        holder.WD_EKprincipalLVL.setText(String.valueOf(item.getWd_EK_1_Level()));
-        holder.WD_EKsecundarioNome.setText(item.getWd_EK_2_Nome());
-        holder.WD_EKsecundarioLVL.setText(String.valueOf(item.getWd_EK_2_Level()));
-        holder.WD_EKterciarioNome.setText(item.getWd_EK_3_Nome());
-        holder.WD_EKterciarioLVL.setText(String.valueOf(item.getWd_EK_3_Level()));
+        holder.WD_EKprincipalNome.setText(item.getP1_Nome());
+        holder.WD_EKprincipalLVL.setText(String.valueOf(item.getP1_Level()));
+        holder.WD_EKsecundarioNome.setText(item.getP2_Nome());
+        holder.WD_EKsecundarioLVL.setText(String.valueOf(item.getP2_Level()));
+        holder.WD_EKterciarioNome.setText(item.getP3_Nome());
+        holder.WD_EKterciarioLVL.setText(String.valueOf(item.getP3_Level()));
 
-        holder.WD_EDprincipalNome.setText(item.getWd_ED_1_Nome());
-        holder.WD_EDprincipalLVL.setText(String.valueOf(item.getWd_ED_1_Level()));
-        holder.WD_EDsecundarioNome.setText(item.getWd_ED_2_Nome());
-        holder.WD_EDsecundarioLVL.setText(String.valueOf(item.getWd_ED_2_Level()));
-        holder.WD_EDterciarioNome.setText(item.getWd_ED_3_Nome());
-        holder.WD_EDterciarioLVL.setText(String.valueOf(item.getWd_ED_3_Level()));
+        holder.WD_EDprincipalNome.setText(item.getP4_Nome());
+        holder.WD_EDprincipalLVL.setText(String.valueOf(item.getP4_Level()));
+        holder.WD_EDsecundarioNome.setText(item.getP5_Nome());
+        holder.WD_EDsecundarioLVL.setText(String.valueOf(item.getP5_Level()));
+        holder.WD_EDterciarioNome.setText(item.getP5_Nome());
+        holder.WD_EDterciarioLVL.setText(String.valueOf(item.getP6_Level()));
 
-        holder.WD_Shooter1nome.setText(item.getWd_Shooter_1_Nome());
-        holder.WD_Shooter1lvl.setText(String.valueOf(item.getWd_Shooter_1_Level()));
-        holder.WD_Shooter2nome.setText(item.getWd_Shooter_2_Nome());
-        holder.WD_Shooter2lvl.setText(String.valueOf(item.getWd_Shooter_2_Level()));
-        holder.WD_Shooter3nome.setText(item.getWd_Shooter_3_Nome());
-        holder.WD_Shooter3lvl.setText(String.valueOf(item.getWd_Shooter_3_Level()));
-        holder.WD_Shooter4nome.setText(item.getWd_Shooter_4_Nome());
-        holder.WD_Shooter4lvl.setText(String.valueOf(item.getWd_Shooter_4_Level()));
-        holder.WD_Shooter5nome.setText(item.getWd_Shooter_5_Nome());
-        holder.WD_Shooter5lvl.setText(String.valueOf(item.getWd_Shooter_5_Level()));
-        holder.WD_Shooter6nome.setText(item.getWd_Shooter_6_Nome());
-        holder.WD_Shooter6lvl.setText(String.valueOf(item.getWd_Shooter_6_Level()));
-        holder.WD_Shooter7nome.setText(item.getWd_Shooter_7_Nome());
-        holder.WD_Shooter7lvl.setText(String.valueOf(item.getWd_Shooter_7_Level()));
-        holder.WD_Shooter8nome.setText(item.getWd_Shooter_8_Nome());
-        holder.WD_Shooter8lvl.setText(String.valueOf(item.getWd_Shooter_8_Level()));
-        holder.WD_Shooter9nome.setText(item.getWd_Shooter_9_Nome());
-        holder.WD_Shooter9lvl.setText(String.valueOf(item.getWd_Shooter_9_Level()));
+        holder.WD_Shooter1nome.setText(item.getP7_Nome());
+        holder.WD_Shooter1lvl.setText(String.valueOf(item.getP7_Level()));
+        holder.WD_Shooter2nome.setText(item.getP8_Nome());
+        holder.WD_Shooter2lvl.setText(String.valueOf(item.getP8_Level()));
+        holder.WD_Shooter3nome.setText(item.getP9_Nome());
+        holder.WD_Shooter3lvl.setText(String.valueOf(item.getP9_Level()));
+        holder.WD_Shooter4nome.setText(item.getP10_Nome());
+        holder.WD_Shooter4lvl.setText(String.valueOf(item.getP10_Level()));
+        holder.WD_Shooter5nome.setText(item.getP11_Nome());
+        holder.WD_Shooter5lvl.setText(String.valueOf(item.getP11_Level()));
+        holder.WD_Shooter6nome.setText(item.getP12_Nome());
+        holder.WD_Shooter6lvl.setText(String.valueOf(item.getP12_Level()));
+        holder.WD_Shooter7nome.setText(item.getP13_Nome());
+        holder.WD_Shooter7lvl.setText(String.valueOf(item.getP13_Level()));
+        holder.WD_Shooter8nome.setText(item.getP14_Nome());
+        holder.WD_Shooter8lvl.setText(String.valueOf(item.getP14_Level()));
+        holder.WD_Shooter9nome.setText(item.getP15_Nome());
+        holder.WD_Shooter9lvl.setText(String.valueOf(item.getP15_Level()));
 
 
         FirebaseUser user = mAuth.getCurrentUser();
@@ -178,7 +178,7 @@ public class RotacaoQuinzenalListaWDAdapter extends RecyclerView.Adapter<Rotacao
                                                 DocumentSnapshot rotacaoDocument = rotacaoTask.getResult();
                                                 if (rotacaoDocument != null && rotacaoDocument.exists()) {
                                                     // Verificar e atualizar a posição correspondente com o nome do usuário
-                                                    String[] posicoes = {"wd_EK_1_Nome", "wd_EK_2_Nome", "wd_EK_3_Nome", "wd_ED_1_Nome", "wd_ED_2_Nome", "wd_ED_3_Nome", "wd_Shooter_1_Nome", "wd_Shooter_2_Nome", "wd_Shooter_3_Nome", "wd_Shooter_4_Nome", "wd_Shooter_5_Nome", "wd_Shooter_6_Nome", "wd_Shooter_7_Nome", "wd_Shooter_8_Nome", "wd_Shooter_9_Nome"};
+                                                    String[] posicoes = {"p1_Nome", "p2_Nome", "p3_Nome", "p4_Nome", "p5_Nome", "p6_Nome", "p7_Nome", "p8_Nome", "p9_Nome", "p10_Nome", "p11_Nome", "p12_Nome", "p13_Nome", "p14_Nome", "p15_Nome"};
                                                     for (String posicao : posicoes) {
                                                         Log.d("DEBUG", "A posições é: " + posicao);
                                                         String nomeAtirador = rotacaoDocument.getString(posicao);
@@ -192,51 +192,51 @@ public class RotacaoQuinzenalListaWDAdapter extends RecyclerView.Adapter<Rotacao
                                                                 public void onComplete(@NonNull Task<Void> updateTask) {
                                                                     if (updateTask.isSuccessful()) {
                                                                         // Atualize o item na lista com as informações atualizadas
-                                                                        if ((posicao.equals("wd_EK_1_Nome"))) {
-                                                                            item.setWd_EK_1_Nome("");
-                                                                            item.setWd_EK_1_Level(0);} else { }
-                                                                        if ((posicao.equals("wd_EK_2_Nome"))) {
-                                                                            item.setWd_EK_2_Nome("");
-                                                                            item.setWd_EK_2_Level(0);} else { }
-                                                                        if ((posicao.equals("wd_EK_3_Nome"))) {
-                                                                            item.setWd_EK_3_Nome("");
-                                                                            item.setWd_EK_3_Level(0);} else { }
-                                                                        if ((posicao.equals("wd_ED_1_Nome"))) {
-                                                                            item.setWd_ED_1_Nome("");
-                                                                            item.setWd_ED_1_Level(0);} else { }
-                                                                        if ((posicao.equals("wd_ED_2_Nome"))) {
-                                                                            item.setWd_ED_2_Nome("");
-                                                                            item.setWd_ED_2_Level(0);} else { }
-                                                                        if ((posicao.equals("wd_ED_3_Nome"))) {
-                                                                            item.setWd_ED_3_Nome("");
-                                                                            item.setWd_ED_3_Level(0);} else { }
-                                                                        if ((posicao.equals("wd_Shooter_1_Nome"))) {
-                                                                            item.setWd_Shooter_1_Nome("");
-                                                                            item.setWd_Shooter_1_Level(0);} else { }
-                                                                        if ((posicao.equals("wd_Shooter_2_Nome"))) {
-                                                                            item.setWd_Shooter_2_Nome("");
-                                                                            item.setWd_Shooter_2_Level(0);} else { }
-                                                                        if ((posicao.equals("wd_Shooter_3_Nome"))) {
-                                                                            item.setWd_Shooter_3_Nome("");
-                                                                            item.setWd_Shooter_3_Level(0);} else { }
-                                                                        if ((posicao.equals("wd_Shooter_4_Nome"))) {
-                                                                            item.setWd_Shooter_4_Nome("");
-                                                                            item.setWd_Shooter_4_Level(0);} else { }
-                                                                        if ((posicao.equals("wd_Shooter_5_Nome"))) {
-                                                                            item.setWd_Shooter_5_Nome("");
-                                                                            item.setWd_Shooter_5_Level(0);} else { }
-                                                                        if ((posicao.equals("wd_Shooter_6_Nome"))) {
-                                                                            item.setWd_Shooter_6_Nome("");
-                                                                            item.setWd_Shooter_6_Level(0);} else { }
-                                                                        if ((posicao.equals("wd_Shooter_7_Nome"))) {
-                                                                            item.setWd_Shooter_7_Nome("");
-                                                                            item.setWd_Shooter_7_Level(0);} else { }
-                                                                        if ((posicao.equals("wd_Shooter_8_Nome"))) {
-                                                                            item.setWd_Shooter_8_Nome("");
-                                                                            item.setWd_Shooter_8_Level(0);} else { }
-                                                                        if ((posicao.equals("wd_Shooter_9_Nome"))) {
-                                                                            item.setWd_Shooter_9_Nome("");
-                                                                            item.setWd_Shooter_9_Level(0);} else { }
+                                                                        if ((posicao.equals("p1_Nome"))) {
+                                                                            item.setP1_Nome("");
+                                                                            item.setP1_Level(0);} else { }
+                                                                        if ((posicao.equals("p2_Nome"))) {
+                                                                            item.setP2_Nome("");
+                                                                            item.setP2_Level(0);} else { }
+                                                                        if ((posicao.equals("p3_Nome"))) {
+                                                                            item.setP3_Nome("");
+                                                                            item.setP3_Level(0);} else { }
+                                                                        if ((posicao.equals("p4_Nome"))) {
+                                                                            item.setP4_Nome("");
+                                                                            item.setP4_Level(0);} else { }
+                                                                        if ((posicao.equals("p5_Nome"))) {
+                                                                            item.setP5_Nome("");
+                                                                            item.setP5_Level(0);} else { }
+                                                                        if ((posicao.equals("p6_Nome"))) {
+                                                                            item.setP6_Nome("");
+                                                                            item.setP6_Level(0);} else { }
+                                                                        if ((posicao.equals("p7_Nome"))) {
+                                                                            item.setP7_Nome("");
+                                                                            item.setP7_Level(0);} else { }
+                                                                        if ((posicao.equals("p8_Nome"))) {
+                                                                            item.setP8_Nome("");
+                                                                            item.setP8_Level(0);} else { }
+                                                                        if ((posicao.equals("p9_Nome"))) {
+                                                                            item.setP9_Nome("");
+                                                                            item.setP9_Level(0);} else { }
+                                                                        if ((posicao.equals("p10_Nome"))) {
+                                                                            item.setP10_Nome("");
+                                                                            item.setP10_Level(0);} else { }
+                                                                        if ((posicao.equals("p11_Nome"))) {
+                                                                            item.setP11_Nome("");
+                                                                            item.setP11_Level(0);} else { }
+                                                                        if ((posicao.equals("p12_Nome"))) {
+                                                                            item.setP12_Nome("");
+                                                                            item.setP12_Level(0);} else { }
+                                                                        if ((posicao.equals("p13_Nome"))) {
+                                                                            item.setP13_Nome("");
+                                                                            item.setP13_Level(0);} else { }
+                                                                        if ((posicao.equals("p14_Nome"))) {
+                                                                            item.setP14_Nome("");
+                                                                            item.setP14_Level(0);} else { }
+                                                                        if ((posicao.equals("p15_Nome"))) {
+                                                                            item.setP15_Nome("");
+                                                                            item.setP15_Level(0);} else { }
 
                                                                         // Atualização bem-sucedida
                                                                         Toast.makeText(context, "Você saiu da Rotação do WD.", Toast.LENGTH_SHORT).show();
@@ -374,116 +374,116 @@ public class RotacaoQuinzenalListaWDAdapter extends RecyclerView.Adapter<Rotacao
                             if (vocacaoUsuario != null) {
                                 switch (vocacaoUsuario) {
                                     case "Elder Druid":
-                                        String Healer1 = rotacao.getWd_ED_1_Nome();
+                                        String Healer1 = rotacao.getP4_Nome();
                                         if (Healer1.isEmpty()) {
                                             posicoesDisponiveis.add("Healer1");
                                         }
-                                        String Healer2 = rotacao.getWd_ED_2_Nome();
+                                        String Healer2 = rotacao.getP5_Nome();
                                         if (Healer2.isEmpty()) {
                                             posicoesDisponiveis.add("Healer2");
                                         }
-                                        String Healer3 = rotacao.getWd_ED_3_Nome();
+                                        String Healer3 = rotacao.getP5_Nome();
                                         if (Healer3.isEmpty()) {
                                             posicoesDisponiveis.add("Healer3");
                                         }
-                                        String EDShooter1 = rotacao.getWd_Shooter_1_Nome();
+                                        String EDShooter1 = rotacao.getP7_Nome();
                                         if (EDShooter1.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter1");
                                         }
-                                        String EDShooter2 = rotacao.getWd_Shooter_2_Nome();
+                                        String EDShooter2 = rotacao.getP8_Nome();
                                         if (EDShooter2.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter2");
                                         }
-                                        String EDShooter3 = rotacao.getWd_Shooter_3_Nome();
+                                        String EDShooter3 = rotacao.getP9_Nome();
                                         if (EDShooter3.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter3");
                                         }
-                                        String EDShooter4 = rotacao.getWd_Shooter_4_Nome();
+                                        String EDShooter4 = rotacao.getP10_Nome();
                                         if (EDShooter4.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter4");
                                         }
-                                        String EDShooter5 = rotacao.getWd_Shooter_5_Nome();
+                                        String EDShooter5 = rotacao.getP11_Nome();
                                         if (EDShooter5.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter5");
                                         }
-                                        String EDShooter6 = rotacao.getWd_Shooter_6_Nome();
+                                        String EDShooter6 = rotacao.getP12_Nome();
                                         if (EDShooter6.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter6");
                                         }
-                                        String EDShooter7 = rotacao.getWd_Shooter_7_Nome();
+                                        String EDShooter7 = rotacao.getP13_Nome();
                                         if (EDShooter7.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter7");
                                         }
-                                        String EDShooter8 = rotacao.getWd_Shooter_8_Nome();
+                                        String EDShooter8 = rotacao.getP14_Nome();
                                         if (EDShooter8.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter8");
                                         }
-                                        String EDShooter9 = rotacao.getWd_Shooter_9_Nome();
+                                        String EDShooter9 = rotacao.getP15_Nome();
                                         if (EDShooter9.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter9");
                                         }
                                         break;
                                     case "Elite Knight":
-                                        String Blocker1 = rotacao.getWd_EK_1_Nome();
+                                        String Blocker1 = rotacao.getP1_Nome();
                                         if (Blocker1.isEmpty()) {
                                             posicoesDisponiveis.add("Blocker1");
                                         }
-                                        String Blocker2 = rotacao.getWd_EK_2_Nome();
+                                        String Blocker2 = rotacao.getP2_Nome();
                                         if (Blocker2.isEmpty()) {
                                             posicoesDisponiveis.add("Blocker2");
                                         }
-                                        String Blocker3 = rotacao.getWd_EK_3_Nome();
+                                        String Blocker3 = rotacao.getP3_Nome();
                                         if (Blocker3.isEmpty()) {
                                             posicoesDisponiveis.add("Blocker3");
                                         }
-                                        String EKShooter1 = rotacao.getWd_Shooter_1_Nome();
+                                        String EKShooter1 = rotacao.getP7_Nome();
                                         if (EKShooter1.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter1");
                                         }
-                                        String EKShooter2 = rotacao.getWd_Shooter_2_Nome();
+                                        String EKShooter2 = rotacao.getP8_Nome();
                                         if (EKShooter2.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter2");
                                         }
-                                        String EKShooter3 = rotacao.getWd_Shooter_3_Nome();
+                                        String EKShooter3 = rotacao.getP9_Nome();
                                         if (EKShooter3.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter3");
                                         }
                                         break;
                                     case "Royal Paladin":
                                     case "Master Sorcerer":
-                                        String RPShooter1 = rotacao.getWd_Shooter_1_Nome();
+                                        String RPShooter1 = rotacao.getP7_Nome();
                                         if (RPShooter1.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter1");
                                         }
-                                        String RPShooter2 = rotacao.getWd_Shooter_2_Nome();
+                                        String RPShooter2 = rotacao.getP8_Nome();
                                         if (RPShooter2.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter2");
                                         }
-                                        String RPShooter3 = rotacao.getWd_Shooter_3_Nome();
+                                        String RPShooter3 = rotacao.getP9_Nome();
                                         if (RPShooter3.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter3");
                                         }
-                                        String RPShooter4 = rotacao.getWd_Shooter_4_Nome();
+                                        String RPShooter4 = rotacao.getP10_Nome();
                                         if (RPShooter4.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter4");
                                         }
-                                        String RPShooter5 = rotacao.getWd_Shooter_5_Nome();
+                                        String RPShooter5 = rotacao.getP11_Nome();
                                         if (RPShooter5.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter5");
                                         }
-                                        String RPShooter6 = rotacao.getWd_Shooter_6_Nome();
+                                        String RPShooter6 = rotacao.getP12_Nome();
                                         if (RPShooter6.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter6");
                                         }
-                                        String RPShooter7 = rotacao.getWd_Shooter_7_Nome();
+                                        String RPShooter7 = rotacao.getP13_Nome();
                                         if (RPShooter7.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter7");
                                         }
-                                        String RPShooter8 = rotacao.getWd_Shooter_8_Nome();
+                                        String RPShooter8 = rotacao.getP14_Nome();
                                         if (RPShooter8.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter8");
                                         }
-                                        String RPShooter9 = rotacao.getWd_Shooter_9_Nome();
+                                        String RPShooter9 = rotacao.getP15_Nome();
                                         if (RPShooter9.isEmpty()) {
                                             posicoesDisponiveis.add("Shooter9");
                                         }
@@ -525,64 +525,64 @@ public class RotacaoQuinzenalListaWDAdapter extends RecyclerView.Adapter<Rotacao
                         // Atualize os campos correspondentes com base na posição selecionada
                         switch (posicaoSelecionada) {
                             case "Blocker1":
-                                rotacao.setWd_EK_1_Nome(nomePersonagem);
-                                rotacao.setWd_EK_1_Level(levelPersonagem);
+                                rotacao.setP1_Nome(nomePersonagem);
+                                rotacao.setP1_Level(levelPersonagem);
                                 break;
                             case "Blocker2":
-                                rotacao.setWd_EK_2_Nome(nomePersonagem);
-                                rotacao.setWd_EK_2_Level(levelPersonagem);
+                                rotacao.setP2_Nome(nomePersonagem);
+                                rotacao.setP2_Level(levelPersonagem);
                                 break;
                             case "Blocker3":
-                                rotacao.setWd_EK_3_Nome(nomePersonagem);
-                                rotacao.setWd_EK_3_Level(levelPersonagem);
+                                rotacao.setP3_Nome(nomePersonagem);
+                                rotacao.setP3_Level(levelPersonagem);
                                 break;
                             case "Healer1":
-                                rotacao.setWd_ED_1_Nome(nomePersonagem);
-                                rotacao.setWd_ED_1_Level(levelPersonagem);
+                                rotacao.setP4_Nome(nomePersonagem);
+                                rotacao.setP4_Level(levelPersonagem);
                                 break;
                             case "Healer2":
-                                rotacao.setWd_ED_2_Nome(nomePersonagem);
-                                rotacao.setWd_ED_2_Level(levelPersonagem);
+                                rotacao.setP5_Nome(nomePersonagem);
+                                rotacao.setP5_Level(levelPersonagem);
                                 break;
                             case "Healer3":
-                                rotacao.setWd_ED_3_Nome(nomePersonagem);
-                                rotacao.setWd_ED_3_Level(levelPersonagem);
+                                rotacao.setP6_Nome(nomePersonagem);
+                                rotacao.setP6_Level(levelPersonagem);
                                 break;
                             case "Shooter1":
-                                rotacao.setWd_Shooter_1_Nome(nomePersonagem);
-                                rotacao.setWd_Shooter_1_Level(levelPersonagem);
+                                rotacao.setP7_Nome(nomePersonagem);
+                                rotacao.setP7_Level(levelPersonagem);
                                 break;
                             case "Shooter2":
-                                rotacao.setWd_Shooter_2_Nome(nomePersonagem);
-                                rotacao.setWd_Shooter_2_Level(levelPersonagem);
+                                rotacao.setP8_Nome(nomePersonagem);
+                                rotacao.setP8_Level(levelPersonagem);
                                 break;
                             case "Shooter3":
-                                rotacao.setWd_Shooter_3_Nome(nomePersonagem);
-                                rotacao.setWd_Shooter_3_Level(levelPersonagem);
+                                rotacao.setP9_Nome(nomePersonagem);
+                                rotacao.setP9_Level(levelPersonagem);
                                 break;
                             case "Shooter4":
-                                rotacao.setWd_Shooter_4_Nome(nomePersonagem);
-                                rotacao.setWd_Shooter_4_Level(levelPersonagem);
+                                rotacao.setP10_Nome(nomePersonagem);
+                                rotacao.setP10_Level(levelPersonagem);
                                 break;
                             case "Shooter5":
-                                rotacao.setWd_Shooter_5_Nome(nomePersonagem);
-                                rotacao.setWd_Shooter_5_Level(levelPersonagem);
+                                rotacao.setP11_Nome(nomePersonagem);
+                                rotacao.setP11_Level(levelPersonagem);
                                 break;
                             case "Shooter6":
-                                rotacao.setWd_Shooter_6_Nome(nomePersonagem);
-                                rotacao.setWd_Shooter_6_Level(levelPersonagem);
+                                rotacao.setP12_Nome(nomePersonagem);
+                                rotacao.setP12_Level(levelPersonagem);
                                 break;
                             case "Shooter7":
-                                rotacao.setWd_Shooter_7_Nome(nomePersonagem);
-                                rotacao.setWd_Shooter_7_Level(levelPersonagem);
+                                rotacao.setP13_Nome(nomePersonagem);
+                                rotacao.setP13_Level(levelPersonagem);
                                 break;
                             case "Shooter8":
-                                rotacao.setWd_Shooter_8_Nome(nomePersonagem);
-                                rotacao.setWd_Shooter_8_Level(levelPersonagem);
+                                rotacao.setP14_Nome(nomePersonagem);
+                                rotacao.setP14_Level(levelPersonagem);
                                 break;
                             case "Shooter9":
-                                rotacao.setWd_Shooter_9_Nome(nomePersonagem);
-                                rotacao.setWd_Shooter_9_Level(levelPersonagem);
+                                rotacao.setP15_Nome(nomePersonagem);
+                                rotacao.setP15_Level(levelPersonagem);
 
                                 break;
                         }

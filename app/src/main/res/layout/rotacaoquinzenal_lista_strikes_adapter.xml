@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="4dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:background="@drawable/bordas_arredondadas">
+
+    <!-- Primeira Linha -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Coluna Mesclada -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="💩"
+                android:textColor="@color/white"
+                android:textSize="56dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Coluna 2 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/nomePersonagemTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Nome"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/strikeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:text="Data do Strike:"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/validoAteTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Strike até:"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </LinearLayout>
+    <!-- Botões -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/excluirStrike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:contentDescription="Excluir Strike"
+            android:focusable="true"
+            android:onClick="excluirStrike"
+            android:text="🚽"
+            android:textSize="38dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:text="Limpar Strike"/>
+
+    </LinearLayout>
+</LinearLayout>

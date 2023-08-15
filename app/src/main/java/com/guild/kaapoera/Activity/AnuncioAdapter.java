@@ -1,6 +1,8 @@
 package com.guild.kaapoera.Activity;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +54,20 @@ public class AnuncioAdapter extends RecyclerView.Adapter<AnuncioAdapter.AnuncioV
             // Caso a URL da imagem não esteja disponível, usar a imagem placeholder
             holder.imageViewItem.setImageResource(R.drawable.baseline_emergency_24);
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String codPais = anuncio.getCodPais();
+                String telefone = anuncio.getTelefone();
+                String titulo = anuncio.getTitulo();
+                String vendedor = anuncio.getNomePersonagem();
+                String linkWhatsApp = "https://wa.me/" + codPais + telefone + "?text=Olá, " + vendedor + "! Vi seu anuncio de *" + titulo + "* nos anúncios da Guild. Bora negociar?";
+
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(linkWhatsApp));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
