@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_tela_login_reg"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".Activity.BemVindoActivity">
+
+    <FrameLayout
+        android:id="@+id/frameLayoutAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp">
+
+        <ImageView
+            android:id="@+id/imageViewAvatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:onClick="verPerfildeUsuario"
+            android:src="@drawable/default_avatar" />
+
+        <TextView
+            android:id="@+id/textViewCharacterName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold|italic" />
+    </FrameLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:columnCount="2"
+        android:rowCount="1"
+        android:alignmentMode="alignMargins"
+        android:columnOrderPreserved="false"
+        android:rowOrderPreserved="false">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:foreground="@drawable/editor_noticias_click_effect"
+                android:onClick="abrirEditorNoticias"
+                android:src="@drawable/baseline_publish_24" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Criar Notícia"
+            android:textAlignment="center"
+            android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:foreground="@drawable/noticias_click_effect"
+                android:onClick="abrirPaginaNoticias"
+                android:src="@drawable/baseline_newspaper_24" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ler Notícia"
+                android:textAlignment="center"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </GridLayout>
+
+    <Button
+        android:id="@+id/buttonVoltarPaginaPrincipal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/kap_gold"
+        android:textColor="#000000"
+        android:onClick="voltarPaginaPrincipal"
+        android:text="Voltar à Página Principal" />
+
+
+</LinearLayout>

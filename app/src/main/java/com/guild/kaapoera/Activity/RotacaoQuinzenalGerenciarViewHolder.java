@@ -74,6 +74,9 @@ public class RotacaoQuinzenalGerenciarViewHolder extends AppCompatActivity {
                             // Collections.sort(itemList, new MyComparator());
 
                             adapter.notifyDataSetChanged(); // Notifica o adapter sobre a mudança nos dados
+                            if (itemList.isEmpty()) {
+                                Toast.makeText(RotacaoQuinzenalGerenciarViewHolder.this, "Nenhuma Rotação criada por você foi encontrada.", Toast.LENGTH_SHORT).show();
+                            }
                         } else {
                             // Trate erros de consulta
                             Toast.makeText(RotacaoQuinzenalGerenciarViewHolder.this, "Erro ao carregar os dados.", Toast.LENGTH_SHORT).show();

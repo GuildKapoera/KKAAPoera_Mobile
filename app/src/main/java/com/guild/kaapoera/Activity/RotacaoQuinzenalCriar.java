@@ -74,6 +74,10 @@ public class RotacaoQuinzenalCriar extends AppCompatActivity {
                 // Verificar se os campos de Data e Hora estão preenchidos
                 if (data.isEmpty() || hora.isEmpty()) {
                     Toast.makeText(RotacaoQuinzenalCriar.this, "Preencha todos os campos obrigatórios!", Toast.LENGTH_SHORT).show();
+                } else if (!isValidDateFormat(data)) {
+                    Toast.makeText(RotacaoQuinzenalCriar.this, "Formato de data inválido. Use dd/mm.", Toast.LENGTH_SHORT).show();
+                } else if (!isValidTimeFormat(hora)) {
+                    Toast.makeText(RotacaoQuinzenalCriar.this, "Formato de horário inválido. Use hh:mm.", Toast.LENGTH_SHORT).show();
                 } else {
                     // Criar a Rotação no Firestore
                     createRotacaoWD();
@@ -93,6 +97,18 @@ public class RotacaoQuinzenalCriar extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    // Função para validar o formato da data (dd/mm)
+    private boolean isValidDateFormat(String date) {
+        String regex = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])$";
+        return date.matches(regex);
+    }
+
+    // Função para validar o formato do horário (hh:mm)
+    private boolean isValidTimeFormat(String time) {
+        String regex = "^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9])$";
+        return time.matches(regex);
     }
 
     private void updateInitialInfoOnScreen() {
@@ -150,13 +166,16 @@ public class RotacaoQuinzenalCriar extends AppCompatActivity {
 
 
         // Adicionar o documento no Firestore
-        db.collection("RotacaoQuinzenal").document()
-                .set(groupData)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("RotacaoQuinzenal")
+                .add(groupData)  // Usar .add() em vez de .document()
+                .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
+                    public void onComplete(@NonNull Task<DocumentReference> task) {
                         if (task.isSuccessful()) {
-                            //Toast.makeText(RotacaoQuinzenalCriar.this, "Rotação criada com sucesso!", Toast.LENGTH_SHORT).show();
+                            DocumentReference documentReference = task.getResult();
+                            String documentID = documentReference.getId();
+                            // Adicionar o ID do documento ao campo rotacaoID
+                            documentReference.update("rotacaoID", documentID);
                         } else {
                             Toast.makeText(RotacaoQuinzenalCriar.this, "Erro ao criar Rotação. Tente novamente.", Toast.LENGTH_SHORT).show();
                         }
@@ -209,14 +228,17 @@ public class RotacaoQuinzenalCriar extends AppCompatActivity {
         groupData.put("p15_Nome", "");
         groupData.put("p15_Level", 0);
 
-        // Adicionar o documento no Firestore
-        db.collection("RotacaoQuinzenal").document()
-                .set(groupData)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
+        /// Adicionar o documento no Firestore
+        db.collection("RotacaoQuinzenal")
+                .add(groupData)  // Usar .add() em vez de .document()
+                .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
+                    public void onComplete(@NonNull Task<DocumentReference> task) {
                         if (task.isSuccessful()) {
-                            //Toast.makeText(RotacaoQuinzenalCriar.this, "Rotação criada com sucesso!", Toast.LENGTH_SHORT).show();
+                            DocumentReference documentReference = task.getResult();
+                            String documentID = documentReference.getId();
+                            // Adicionar o ID do documento ao campo rotacaoID
+                            documentReference.update("rotacaoID", documentID);
                         } else {
                             Toast.makeText(RotacaoQuinzenalCriar.this, "Erro ao criar Rotação. Tente novamente.", Toast.LENGTH_SHORT).show();
                         }
@@ -270,12 +292,16 @@ public class RotacaoQuinzenalCriar extends AppCompatActivity {
         groupData.put("p15_Level", 0);
 
         // Adicionar o documento no Firestore
-        db.collection("RotacaoQuinzenal").document()
-                .set(groupData)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("RotacaoQuinzenal")
+                .add(groupData)  // Usar .add() em vez de .document()
+                .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
+                    public void onComplete(@NonNull Task<DocumentReference> task) {
                         if (task.isSuccessful()) {
+                            DocumentReference documentReference = task.getResult();
+                            String documentID = documentReference.getId();
+                            // Adicionar o ID do documento ao campo rotacaoID
+                            documentReference.update("rotacaoID", documentID);
                             Toast.makeText(RotacaoQuinzenalCriar.this, "Rotação criada com sucesso!", Toast.LENGTH_SHORT).show();
                             editTextData.setText("");
                             editTextHora.setText("");

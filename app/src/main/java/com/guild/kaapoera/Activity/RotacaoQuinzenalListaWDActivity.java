@@ -72,7 +72,7 @@ public class RotacaoQuinzenalListaWDActivity extends AppCompatActivity {
 
                     // Verifique se a lista de itens está vazia após a atualização
                     if (itemList.isEmpty()) {
-                        Toast.makeText(RotacaoQuinzenalListaWDActivity.this, "Nenhuma Rotação para WD encontrada.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RotacaoQuinzenalListaWDActivity.this, "Nenhuma Rotação para LK encontrada.", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(RotacaoQuinzenalListaWDActivity.this, "Erro ao carregar Rotação.", Toast.LENGTH_SHORT).show();

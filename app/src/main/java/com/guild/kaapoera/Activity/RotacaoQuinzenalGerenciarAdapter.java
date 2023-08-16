@@ -7,12 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -43,7 +46,7 @@ public class RotacaoQuinzenalGerenciarAdapter extends RecyclerView.Adapter<Rotac
 
     @Override
     public void onBindViewHolder(@NonNull RotacaoQuinzenalGerenciarViewHolder holder, int position) {
-        RotacaoQuinzenalGerenciar item = itemList.get(position);
+        final RotacaoQuinzenalGerenciar item = itemList.get(position);
 
         // Inicialize o Firebase
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
@@ -67,77 +70,161 @@ public class RotacaoQuinzenalGerenciarAdapter extends RecyclerView.Adapter<Rotac
                             switch (bossValue) {
                                 case "wd":
                                     bossTitle = "Rotação World Devourer";
-                                    Log.d("DEBUG","Valor do switch case para o caso de wd: " + bossTitle);
+                                    Log.d("DEBUG", "Valor do switch case para o caso de wd: " + bossTitle);
                                     break;
                                 case "lk":
                                     bossTitle = "Rotação Lore Keeper";
-                                    Log.d("DEBUG","Valor do switch case para o caso de lk: " + bossTitle);
+                                    Log.d("DEBUG", "Valor do switch case para o caso de lk: " + bossTitle);
                                     break;
                                 case "feru":
                                     bossTitle = "Rotação Ferumbras";
-                                    Log.d("DEBUG","Valor do switch case para o caso de feru: " + bossTitle);
+                                    Log.d("DEBUG", "Valor do switch case para o caso de feru: " + bossTitle);
                                     break;
                                 default:
                                     bossTitle = "Título Padrão";
                                     break;
                             }
                             holder.BossTitle.setText(bossTitle);
-                            Log.d("DEBUG","Titulo adotado no holder para montar o layout: " + bossTitle);
+                            Log.d("DEBUG", "Titulo adotado no holder para montar o layout: " + bossTitle);
                             holder.Data.setText(item.getData());
 
                             // Config de visibilidade dos campos de Participantes
-                            if (TextUtils.isEmpty(item.getP1_Nome())){
-                                holder.P1.setVisibility(View.GONE); holder.StrikeP1.setVisibility(View.GONE);
-                            } else {holder.P1.setVisibility(View.VISIBLE); holder.StrikeP1.setVisibility(View.VISIBLE); holder.P1.setText(item.getP1_Nome());}
+                            if (TextUtils.isEmpty(item.getP1_Nome())) {
+                                holder.P1.setVisibility(View.GONE);
+                                holder.StrikeP1.setVisibility(View.GONE);
+                            } else {
+                                holder.P1.setVisibility(View.VISIBLE);
+                                holder.StrikeP1.setVisibility(View.VISIBLE);
+                                holder.P1.setText(item.getP1_Nome());
+                            }
                             if (TextUtils.isEmpty(item.getP2_Nome())) {
-                                holder.P2.setVisibility(View.GONE); holder.StrikeP2.setVisibility(View.GONE);
-                            } else {holder.P2.setVisibility(View.VISIBLE); holder.StrikeP2.setVisibility(View.VISIBLE); holder.P2.setText(item.getP2_Nome());}
+                                holder.P2.setVisibility(View.GONE);
+                                holder.StrikeP2.setVisibility(View.GONE);
+                            } else {
+                                holder.P2.setVisibility(View.VISIBLE);
+                                holder.StrikeP2.setVisibility(View.VISIBLE);
+                                holder.P2.setText(item.getP2_Nome());
+                            }
                             if (TextUtils.isEmpty(item.getP3_Nome())) {
-                                holder.P3.setVisibility(View.GONE); holder.StrikeP3.setVisibility(View.GONE);
-                            } else {holder.P3.setVisibility(View.VISIBLE); holder.StrikeP3.setVisibility(View.VISIBLE); holder.P3.setText(item.getP3_Nome());}
+                                holder.P3.setVisibility(View.GONE);
+                                holder.StrikeP3.setVisibility(View.GONE);
+                            } else {
+                                holder.P3.setVisibility(View.VISIBLE);
+                                holder.StrikeP3.setVisibility(View.VISIBLE);
+                                holder.P3.setText(item.getP3_Nome());
+                            }
                             if (TextUtils.isEmpty(item.getP4_Nome())) {
-                                holder.P4.setVisibility(View.GONE); holder.StrikeP4.setVisibility(View.GONE);
-                            } else {holder.P4.setVisibility(View.VISIBLE); holder.StrikeP4.setVisibility(View.VISIBLE); holder.P4.setText(item.getP4_Nome());}
+                                holder.P4.setVisibility(View.GONE);
+                                holder.StrikeP4.setVisibility(View.GONE);
+                            } else {
+                                holder.P4.setVisibility(View.VISIBLE);
+                                holder.StrikeP4.setVisibility(View.VISIBLE);
+                                holder.P4.setText(item.getP4_Nome());
+                            }
                             if (TextUtils.isEmpty(item.getP5_Nome())) {
-                                holder.P5.setVisibility(View.GONE); holder.StrikeP5.setVisibility(View.GONE);
-                            } else {holder.P5.setVisibility(View.VISIBLE); holder.StrikeP5.setVisibility(View.VISIBLE); holder.P5.setText(item.getP5_Nome());}
+                                holder.P5.setVisibility(View.GONE);
+                                holder.StrikeP5.setVisibility(View.GONE);
+                            } else {
+                                holder.P5.setVisibility(View.VISIBLE);
+                                holder.StrikeP5.setVisibility(View.VISIBLE);
+                                holder.P5.setText(item.getP5_Nome());
+                            }
                             if (TextUtils.isEmpty(item.getP6_Nome())) {
-                                holder.P6.setVisibility(View.GONE); holder.StrikeP6.setVisibility(View.GONE);
-                            } else {holder.P6.setVisibility(View.VISIBLE); holder.StrikeP6.setVisibility(View.VISIBLE); holder.P6.setText(item.getP6_Nome());}
+                                holder.P6.setVisibility(View.GONE);
+                                holder.StrikeP6.setVisibility(View.GONE);
+                            } else {
+                                holder.P6.setVisibility(View.VISIBLE);
+                                holder.StrikeP6.setVisibility(View.VISIBLE);
+                                holder.P6.setText(item.getP6_Nome());
+                            }
                             if (TextUtils.isEmpty(item.getP7_Nome())) {
-                                holder.P7.setVisibility(View.GONE); holder.StrikeP7.setVisibility(View.GONE);
-                            } else {holder.P7.setVisibility(View.VISIBLE); holder.StrikeP7.setVisibility(View.VISIBLE); holder.P7.setText(item.getP7_Nome());}
+                                holder.P7.setVisibility(View.GONE);
+                                holder.StrikeP7.setVisibility(View.GONE);
+                            } else {
+                                holder.P7.setVisibility(View.VISIBLE);
+                                holder.StrikeP7.setVisibility(View.VISIBLE);
+                                holder.P7.setText(item.getP7_Nome());
+                            }
                             if (TextUtils.isEmpty(item.getP8_Nome())) {
-                                holder.P8.setVisibility(View.GONE); holder.StrikeP8.setVisibility(View.GONE);
-                            } else {holder.P8.setVisibility(View.VISIBLE); holder.StrikeP8.setVisibility(View.VISIBLE); holder.P8.setText(item.getP8_Nome());}
+                                holder.P8.setVisibility(View.GONE);
+                                holder.StrikeP8.setVisibility(View.GONE);
+                            } else {
+                                holder.P8.setVisibility(View.VISIBLE);
+                                holder.StrikeP8.setVisibility(View.VISIBLE);
+                                holder.P8.setText(item.getP8_Nome());
+                            }
                             if (TextUtils.isEmpty(item.getP9_Nome())) {
-                                holder.P9.setVisibility(View.GONE); holder.StrikeP9.setVisibility(View.GONE);
-                            } else {holder.P9.setVisibility(View.VISIBLE); holder.StrikeP9.setVisibility(View.VISIBLE); holder.P9.setText(item.getP9_Nome());}
+                                holder.P9.setVisibility(View.GONE);
+                                holder.StrikeP9.setVisibility(View.GONE);
+                            } else {
+                                holder.P9.setVisibility(View.VISIBLE);
+                                holder.StrikeP9.setVisibility(View.VISIBLE);
+                                holder.P9.setText(item.getP9_Nome());
+                            }
                             if (TextUtils.isEmpty(item.getP10_Nome())) {
-                                holder.P10.setVisibility(View.GONE); holder.StrikeP10.setVisibility(View.GONE);
-                            } else {holder.P10.setVisibility(View.VISIBLE); holder.StrikeP10.setVisibility(View.VISIBLE); holder.P10.setText(item.getP10_Nome());}
+                                holder.P10.setVisibility(View.GONE);
+                                holder.StrikeP10.setVisibility(View.GONE);
+                            } else {
+                                holder.P10.setVisibility(View.VISIBLE);
+                                holder.StrikeP10.setVisibility(View.VISIBLE);
+                                holder.P10.setText(item.getP10_Nome());
+                            }
                             if (TextUtils.isEmpty(item.getP11_Nome())) {
-                                holder.P11.setVisibility(View.GONE); holder.StrikeP11.setVisibility(View.GONE);
-                            } else {holder.P11.setVisibility(View.VISIBLE); holder.StrikeP11.setVisibility(View.VISIBLE); holder.P11.setText(item.getP11_Nome());}
+                                holder.P11.setVisibility(View.GONE);
+                                holder.StrikeP11.setVisibility(View.GONE);
+                            } else {
+                                holder.P11.setVisibility(View.VISIBLE);
+                                holder.StrikeP11.setVisibility(View.VISIBLE);
+                                holder.P11.setText(item.getP11_Nome());
+                            }
                             if (TextUtils.isEmpty(item.getP12_Nome())) {
-                                holder.P12.setVisibility(View.GONE); holder.StrikeP12.setVisibility(View.GONE);
-                            } else {holder.P12.setVisibility(View.VISIBLE); holder.StrikeP12.setVisibility(View.VISIBLE); holder.P12.setText(item.getP12_Nome());}
+                                holder.P12.setVisibility(View.GONE);
+                                holder.StrikeP12.setVisibility(View.GONE);
+                            } else {
+                                holder.P12.setVisibility(View.VISIBLE);
+                                holder.StrikeP12.setVisibility(View.VISIBLE);
+                                holder.P12.setText(item.getP12_Nome());
+                            }
                             if (TextUtils.isEmpty(item.getP13_Nome())) {
-                                holder.P13.setVisibility(View.GONE); holder.StrikeP13.setVisibility(View.GONE);
-                            } else {holder.P13.setVisibility(View.VISIBLE); holder.StrikeP13.setVisibility(View.VISIBLE); holder.P13.setText(item.getP13_Nome());}
+                                holder.P13.setVisibility(View.GONE);
+                                holder.StrikeP13.setVisibility(View.GONE);
+                            } else {
+                                holder.P13.setVisibility(View.VISIBLE);
+                                holder.StrikeP13.setVisibility(View.VISIBLE);
+                                holder.P13.setText(item.getP13_Nome());
+                            }
                             if (TextUtils.isEmpty(item.getP14_Nome())) {
-                                holder.P14.setVisibility(View.GONE); holder.StrikeP14.setVisibility(View.GONE);
-                            } else {holder.P14.setVisibility(View.VISIBLE); holder.StrikeP14.setVisibility(View.VISIBLE); holder.P14.setText(item.getP14_Nome());}
+                                holder.P14.setVisibility(View.GONE);
+                                holder.StrikeP14.setVisibility(View.GONE);
+                            } else {
+                                holder.P14.setVisibility(View.VISIBLE);
+                                holder.StrikeP14.setVisibility(View.VISIBLE);
+                                holder.P14.setText(item.getP14_Nome());
+                            }
                             if (TextUtils.isEmpty(item.getP15_Nome())) {
-                                holder.P15.setVisibility(View.GONE); holder.StrikeP15.setVisibility(View.GONE);
-                            } else {holder.P15.setVisibility(View.VISIBLE); holder.StrikeP15.setVisibility(View.VISIBLE); holder.P15.setText(item.getP15_Nome());}
+                                holder.P15.setVisibility(View.GONE);
+                                holder.StrikeP15.setVisibility(View.GONE);
+                            } else {
+                                holder.P15.setVisibility(View.VISIBLE);
+                                holder.StrikeP15.setVisibility(View.VISIBLE);
+                                holder.P15.setText(item.getP15_Nome());
+                            }
+
                         }
                     }
                 });
             }
         });
-    }
+        holder.imageViewExcluir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (item != null) {
+                    deleteRotationFromFirestore(item.getRotacaoID());
 
+                }
+            }
+        });
+    }
 
     @Override
     public int getItemCount() {
@@ -177,6 +264,7 @@ public class RotacaoQuinzenalGerenciarAdapter extends RecyclerView.Adapter<Rotac
         Button StrikeP14;
         TextView P15;
         Button StrikeP15;
+        ImageView imageViewExcluir;
 
         public RotacaoQuinzenalGerenciarViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -213,6 +301,7 @@ public class RotacaoQuinzenalGerenciarAdapter extends RecyclerView.Adapter<Rotac
             StrikeP14 = itemView.findViewById(R.id.StrikeP14);
             P15 = itemView.findViewById(R.id.P15);
             StrikeP15 = itemView.findViewById(R.id.StrikeP15);
+            imageViewExcluir = itemView.findViewById(R.id.imageViewExcluir);
 
             // Ouvinte de clique aos botoes de strike
             StrikeP1.setOnClickListener(new View.OnClickListener() {
@@ -303,13 +392,15 @@ public class RotacaoQuinzenalGerenciarAdapter extends RecyclerView.Adapter<Rotac
                     String playerName = P13.getText().toString();
                     updateFirestoreWithStrike(playerName);
                 }
-            });StrikeP14.setOnClickListener(new View.OnClickListener() {
+            });
+            StrikeP14.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     String playerName = P14.getText().toString();
                     updateFirestoreWithStrike(playerName);
                 }
-            });StrikeP15.setOnClickListener(new View.OnClickListener() {
+            });
+            StrikeP15.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     String playerName = P15.getText().toString();
@@ -319,6 +410,25 @@ public class RotacaoQuinzenalGerenciarAdapter extends RecyclerView.Adapter<Rotac
 
         }
     }
+    private void deleteRotationFromFirestore(String rotationID) {
+        // Lógica para excluir o documento de rotação do Firestore usando o 'rotationID'
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        firestore.collection("RotacaoQuinzenal")
+                .document(rotationID)
+                .delete()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(context, "Rotação excluída com sucesso.", Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            Toast.makeText(context, "Erro ao excluir rotação.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
     private void updateFirestoreWithStrike(String playerName) {
         // Lógica para atualizar o Firestore com o strike para o jogador playerName
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();

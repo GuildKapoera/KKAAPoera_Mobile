@@ -226,6 +226,37 @@ public class BemVindoActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
+            public void abrirNoticias (View view){
+                FirebaseAuth auth = FirebaseAuth.getInstance();
+                FirebaseUser user = auth.getCurrentUser();
+
+                if (user != null) {
+                    String uid = user.getUid();
+
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                    db.collection("Usuarios").document(uid)
+                            .get()
+                            .addOnSuccessListener(documentSnapshot -> {
+                                if (documentSnapshot.exists()) {
+                                    String rank = documentSnapshot.getString("rank");
+
+                                    Intent intent;
+                                    if ("Capo".equals(rank) || "Consigliere".equals(rank) || "Regent".equals(rank)) {
+                                        intent = new Intent(this, NoticiasActivity.class);
+
+                                    } else {
+                                        intent = new Intent(this, ListaNoticiasActivity.class);
+                                    }
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            })
+                            .addOnFailureListener(e -> {
+                                // Tratar erros de leitura do Firestore, se necessário
+                            });
+                }
+
+            }
     @Override
     protected void onResume() {
         super.onResume();

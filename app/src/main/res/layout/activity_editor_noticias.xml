@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_tela_login_reg"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textViewTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Título da Notícia"
+        android:maxLines="1"
+        android:layout_marginTop="300dp"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editTextTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTitulo"
+        android:layout_marginTop="8dp"
+        android:maxLines="1"
+        android:hint="Digite o título da notícia" />
+
+    <TextView
+        android:id="@+id/textViewConteudo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextTitulo"
+        android:layout_marginTop="16dp"
+        android:text="Conteúdo da Notícia"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editTextConteudo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewConteudo"
+        android:layout_marginTop="8dp"
+        android:hint="Digite o conteúdo da notícia"
+        android:inputType="textMultiLine"
+        android:maxLines="5"
+        android:minLines="5" />
+
+    <Button
+        android:id="@+id/buttonSalvar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextConteudo"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/kap_gold"
+        android:text="Salvar Notícia"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/buttonCancelar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonSalvar"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/kap_gold"
+        android:text="Cancelar"
+        android:textColor="#000000" />
+
+</RelativeLayout>
