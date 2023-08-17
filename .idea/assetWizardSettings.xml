@@ -307,7 +307,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/publish/baseline_publish_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/emoji_events/baseline_emoji_events_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -317,7 +317,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="baseline_publish_24_clicado" />
+                            <entry key="outputName" value="baseline_emoji_events_24_clicado" />
                             <entry key="sourceFile" value="C:\Users\wanig\AndroidStudioProjects\KAApoera2" />
                           </map>
                         </option>

@@ -106,7 +106,9 @@
             <ImageView
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:src="@drawable/baseline_emoji_events_24" />
+                android:onClick="abrirRankig"
+                android:src="@drawable/baseline_emoji_events_24"
+                android:foreground="@drawable/ranking_click_effect"/>
 
             <TextView
                 android:layout_width="wrap_content"

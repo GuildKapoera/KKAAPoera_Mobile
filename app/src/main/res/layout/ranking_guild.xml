@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_tela_login_reg"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".Activity.PerfildeUsuarioActivity">
+
+    <!-- Menu de Vocações -->
+    <LinearLayout
+        android:id="@+id/menu_vocacoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
+        android:orientation="horizontal">
+
+        <!-- Botão EK -->
+        <TextView
+            android:id="@+id/ek_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🛡️"
+            android:textSize="48dp" />
+
+        <!-- Botão ED -->
+        <TextView
+            android:id="@+id/ed_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🩺"
+            android:textSize="48dp" />
+
+        <!-- Botão RP -->
+        <TextView
+            android:id="@+id/rp_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="🏹"
+            android:textSize="48dp" />
+
+        <!-- Botão MS -->
+        <TextView
+            android:id="@+id/ms_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="☠️"
+            android:textSize="48dp" />
+
+        <!-- Botão Extra -->
+        <TextView
+            android:id="@+id/extra_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="⚜️️"
+            android:textSize="48dp" />
+
+    </LinearLayout>
+
+    <!-- Legenda Menu de Vocações -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:orientation="horizontal">
+
+        <!-- Botão EK -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="EK"
+            android:textSize="24dp" />
+
+        <!-- Botão ED -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="ED"
+            android:textSize="24dp" />
+
+        <!-- Botão RP -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="RP"
+            android:textSize="24dp" />
+
+        <!-- Botão MS -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="MS"
+            android:textSize="24dp" />
+
+        <!-- Botão Extra -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Extra"
+            android:textSize="24dp" />
+
+    </LinearLayout>
+
+    <!-- EK Linha de Skills -->
+    <LinearLayout
+        android:id="@+id/ek_line_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+
+        <!-- Botão XP -->
+        <TextView
+            android:id="@+id/ek_xp_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🏆"
+            android:textSize="32dp" />
+
+        <!-- Botão Axe -->
+        <TextView
+            android:id="@+id/ek_axe_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🪓"
+            android:textSize="32dp" />
+
+        <!-- Botão Sword -->
+        <TextView
+            android:id="@+id/ek_sword_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🗡️"
+            android:textSize="32dp" />
+
+        <!-- Botão Club -->
+        <TextView
+            android:id="@+id/ek_club_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🔨"
+            android:textSize="32dp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ek_legenda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+
+        <!-- Botão XP -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="XP"
+            android:textSize="16dp" />
+
+        <!-- Botão Axe -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Axe"
+            android:textSize="16dp" />
+
+        <!-- Botão Sword -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Sword"
+            android:textSize="16dp" />
+
+        <!-- Botão Club -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Club"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+    <!-- ED Linha de Skills -->
+    <LinearLayout
+        android:id="@+id/ed_line_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+
+        <!-- Botão XP -->
+        <TextView
+            android:id="@+id/ed_xp_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🏆"
+            android:textSize="32dp" />
+
+        <!-- Botão ML -->
+        <TextView
+            android:id="@+id/ed_ml_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🔮"
+            android:textSize="32dp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ed_legenda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+
+        <!-- Botão XP -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="XP"
+            android:textSize="16dp" />
+
+        <!-- Botão ML -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="ML"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+    <!-- RP Linha de Skills -->
+    <LinearLayout
+        android:id="@+id/rp_line_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+
+        <!-- Botão XP -->
+        <TextView
+            android:id="@+id/rp_xp_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🏆"
+            android:textSize="32dp" />
+
+        <!-- Botão Distance -->
+        <TextView
+            android:id="@+id/rp_distance_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🎯"
+            android:textSize="32dp" />
+
+        <!-- Botão ML -->
+        <TextView
+            android:id="@+id/rp_ml_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="✨"
+            android:textSize="32dp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/rp_legenda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+
+        <!-- Botão XP -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="XP"
+            android:textSize="16dp" />
+
+        <!-- Botão Distance -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Dist"
+            android:textSize="16dp" />
+
+        <!-- Botão ML -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="ML"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+    <!-- MS Linha de Skills -->
+    <LinearLayout
+        android:id="@+id/ms_line_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+
+        <!-- Botão XP -->
+        <TextView
+            android:id="@+id/ms_xp_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🏆"
+            android:textSize="32dp" />
+
+        <!-- Botão ML -->
+        <TextView
+            android:id="@+id/ms_ml_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🪄"
+            android:textSize="32dp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ms_legenda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+
+        <!-- Botão XP -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="XP"
+            android:textSize="16dp" />
+
+        <!-- Botão ML -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="ML"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+    <!-- Extra Linha de Opções -->
+    <LinearLayout
+        android:id="@+id/extra_line_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+
+        <!-- Botão Boss -->
+        <TextView
+            android:id="@+id/extra_boss_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🗿"
+            android:textSize="32dp" />
+
+        <!-- Botão Charm -->
+        <TextView
+            android:id="@+id/extra_charm_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🧿"
+            android:textSize="32dp" />
+
+        <!-- Botão Achivment -->
+        <TextView
+            android:id="@+id/extra_achiv_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="📝"
+            android:textSize="32dp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/extra_legenda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:visibility="gone">
+
+        <!-- Botão Boss -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Boss"
+            android:textSize="16dp" />
+
+        <!-- Botão Charm -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Charm"
+            android:textSize="16dp" />
+
+        <!-- Botão Achiv -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Achiv"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/top_players"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -226,6 +226,11 @@ public class BemVindoActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
+            public void abrirRankig (View view) {
+                Intent intent = new Intent(this, RankingGuild.class);
+                startActivity(intent);
+                finish();
+            }
             public void abrirNoticias (View view){
                 FirebaseAuth auth = FirebaseAuth.getInstance();
                 FirebaseUser user = auth.getCurrentUser();
