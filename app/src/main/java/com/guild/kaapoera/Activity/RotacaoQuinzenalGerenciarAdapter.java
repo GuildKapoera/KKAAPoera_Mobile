@@ -219,7 +219,8 @@ public class RotacaoQuinzenalGerenciarAdapter extends RecyclerView.Adapter<Rotac
             @Override
             public void onClick(View view) {
                 if (item != null) {
-                    deleteRotationFromFirestore(item.getRotacaoID());
+                    int itemPosition = holder.getAdapterPosition();
+                    deleteRotationFromFirestore(item.getRotacaoID(), itemPosition);
 
                 }
             }
@@ -410,7 +411,7 @@ public class RotacaoQuinzenalGerenciarAdapter extends RecyclerView.Adapter<Rotac
 
         }
     }
-    private void deleteRotationFromFirestore(String rotationID) {
+    private void deleteRotationFromFirestore(String rotationID, int position) {
         // Lógica para excluir o documento de rotação do Firestore usando o 'rotationID'
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         firestore.collection("RotacaoQuinzenal")
@@ -421,13 +422,14 @@ public class RotacaoQuinzenalGerenciarAdapter extends RecyclerView.Adapter<Rotac
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(context, "Rotação excluída com sucesso.", Toast.LENGTH_SHORT).show();
-
+                            deleteRotation(position);
                         } else {
                             Toast.makeText(context, "Erro ao excluir rotação.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
     }
+
 
     private void updateFirestoreWithStrike(String playerName) {
         // Lógica para atualizar o Firestore com o strike para o jogador playerName
@@ -446,5 +448,9 @@ public class RotacaoQuinzenalGerenciarAdapter extends RecyclerView.Adapter<Rotac
                         }
                     }
                 });
+    }
+    public void deleteRotation(int position) {
+        itemList.remove(position);
+        notifyItemRemoved(position);
     }
 }
