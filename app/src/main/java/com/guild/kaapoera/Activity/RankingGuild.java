@@ -270,7 +270,7 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         topPlayersContainer.removeAllViews();
 
         // Inflar o layout de melhores jogadores
-        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.top_players_layout, null);
+        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.ranking_top_players_layout, null);
 
         // Adicionar o layout de melhores jogadores abaixo do linear layout vazio (top_players)
         topPlayersContainer.addView(topPlayersLayout);
@@ -317,7 +317,7 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         topPlayersContainer.removeAllViews();
 
         // Inflar o layout de melhores jogadores
-        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.top_players_layout, null);
+        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.ranking_top_players_layout, null);
 
         // Adicionar o layout de melhores jogadores abaixo do linear layout vazio (top_players)
         topPlayersContainer.addView(topPlayersLayout);
@@ -364,7 +364,7 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         topPlayersContainer.removeAllViews();
 
         // Inflar o layout de melhores jogadores
-        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.top_players_layout, null);
+        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.ranking_top_players_layout, null);
 
         // Adicionar o layout de melhores jogadores abaixo do linear layout vazio (top_players)
         topPlayersContainer.addView(topPlayersLayout);
@@ -411,7 +411,7 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         topPlayersContainer.removeAllViews();
 
         // Inflar o layout de melhores jogadores
-        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.top_players_layout, null);
+        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.ranking_top_players_layout, null);
 
         // Adicionar o layout de melhores jogadores abaixo do linear layout vazio (top_players)
         topPlayersContainer.addView(topPlayersLayout);
@@ -458,7 +458,7 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         topPlayersContainer.removeAllViews();
 
         // Inflar o layout de melhores jogadores
-        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.top_players_layout, null);
+        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.ranking_top_players_layout, null);
 
         // Adicionar o layout de melhores jogadores abaixo do linear layout vazio (top_players)
         topPlayersContainer.addView(topPlayersLayout);
@@ -505,7 +505,7 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         topPlayersContainer.removeAllViews();
 
         // Inflar o layout de melhores jogadores
-        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.top_players_layout, null);
+        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.ranking_top_players_layout, null);
 
         // Adicionar o layout de melhores jogadores abaixo do linear layout vazio (top_players)
         topPlayersContainer.addView(topPlayersLayout);
@@ -552,7 +552,7 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         topPlayersContainer.removeAllViews();
 
         // Inflar o layout de melhores jogadores
-        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.top_players_layout, null);
+        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.ranking_top_players_layout, null);
 
         // Adicionar o layout de melhores jogadores abaixo do linear layout vazio (top_players)
         topPlayersContainer.addView(topPlayersLayout);
@@ -599,7 +599,7 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         topPlayersContainer.removeAllViews();
 
         // Inflar o layout de melhores jogadores
-        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.top_players_layout, null);
+        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.ranking_top_players_layout, null);
 
         // Adicionar o layout de melhores jogadores abaixo do linear layout vazio (top_players)
         topPlayersContainer.addView(topPlayersLayout);
@@ -646,7 +646,7 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         topPlayersContainer.removeAllViews();
 
         // Inflar o layout de melhores jogadores
-        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.top_players_layout, null);
+        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.ranking_top_players_layout, null);
 
         // Adicionar o layout de melhores jogadores abaixo do linear layout vazio (top_players)
         topPlayersContainer.addView(topPlayersLayout);
@@ -693,7 +693,7 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         topPlayersContainer.removeAllViews();
 
         // Inflar o layout de melhores jogadores
-        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.top_players_layout, null);
+        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.ranking_top_players_layout, null);
 
         // Adicionar o layout de melhores jogadores abaixo do linear layout vazio (top_players)
         topPlayersContainer.addView(topPlayersLayout);
@@ -740,7 +740,7 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         topPlayersContainer.removeAllViews();
 
         // Inflar o layout de melhores jogadores
-        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.top_players_layout, null);
+        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.ranking_top_players_layout, null);
 
         // Adicionar o layout de melhores jogadores abaixo do linear layout vazio (top_players)
         topPlayersContainer.addView(topPlayersLayout);
@@ -787,7 +787,7 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         topPlayersContainer.removeAllViews();
 
         // Inflar o layout de melhores jogadores
-        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.top_players_layout, null);
+        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.ranking_top_players_layout, null);
 
         // Adicionar o layout de melhores jogadores abaixo do linear layout vazio (top_players)
         topPlayersContainer.addView(topPlayersLayout);
@@ -834,7 +834,7 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         topPlayersContainer.removeAllViews();
 
         // Inflar o layout de melhores jogadores
-        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.top_players_layout, null);
+        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.ranking_top_players_layout, null);
 
         // Adicionar o layout de melhores jogadores abaixo do linear layout vazio (top_players)
         topPlayersContainer.addView(topPlayersLayout);
@@ -881,7 +881,7 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         topPlayersContainer.removeAllViews();
 
         // Inflar o layout de melhores jogadores
-        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.top_players_layout, null);
+        View topPlayersLayout = LayoutInflater.from(this).inflate(R.layout.ranking_top_players_layout, null);
 
         // Adicionar o layout de melhores jogadores abaixo do linear layout vazio (top_players)
         topPlayersContainer.addView(topPlayersLayout);

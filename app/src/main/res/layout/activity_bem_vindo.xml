@@ -159,7 +159,9 @@
             <ImageView
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:src="@drawable/baseline_content_paste_24" />
+                android:onClick="abrirServidor"
+                android:src="@drawable/baseline_content_paste_24"
+                android:foreground="@drawable/servidor_clickeffect"/>
 
             <TextView
                 android:layout_width="wrap_content"

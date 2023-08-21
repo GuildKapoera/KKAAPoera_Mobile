@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KAApoera"
         tools:targetApi="31">
+        <activity android:name=".Activity.ServidorHunteds_E_ClaimedsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.ServidorHuntedsAdapter"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity android:name=".Activity.RankingGuild"
             android:exported="false"
             android:screenOrientation="portrait"/>

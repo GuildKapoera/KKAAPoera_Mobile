@@ -231,6 +231,10 @@ public class BemVindoActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
+            public void abrirServidor (View view) {
+                Intent intent = new Intent(this, ServidorHunteds_E_ClaimedsActivity.class);
+                startActivity(intent);
+            }
             public void abrirNoticias (View view){
                 FirebaseAuth auth = FirebaseAuth.getInstance();
                 FirebaseUser user = auth.getCurrentUser();
