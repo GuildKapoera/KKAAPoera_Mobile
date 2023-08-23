@@ -588,8 +588,6 @@ public class RotacaoQuinzenalListaFERUAdapter extends RecyclerView.Adapter<Rotac
                             case "Shooter9":
                                 rotacao.setP15_Nome(nomePersonagem);
                                 rotacao.setP15_Level(levelPersonagem);
-
-
                                 break;
                         }
                         notifyDataSetChanged();

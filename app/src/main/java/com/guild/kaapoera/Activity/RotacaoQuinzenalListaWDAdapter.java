@@ -583,7 +583,6 @@ public class RotacaoQuinzenalListaWDAdapter extends RecyclerView.Adapter<Rotacao
                             case "Shooter9":
                                 rotacao.setP15_Nome(nomePersonagem);
                                 rotacao.setP15_Level(levelPersonagem);
-
                                 break;
                         }
                         notifyDataSetChanged();

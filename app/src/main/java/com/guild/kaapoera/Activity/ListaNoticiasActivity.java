@@ -18,6 +18,7 @@ public class ListaNoticiasActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewNoticias;
     private NoticiasAdapter noticiasAdapter;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,16 +31,22 @@ public class ListaNoticiasActivity extends AppCompatActivity {
         noticiasAdapter = new NoticiasAdapter(new ArrayList<>());
         recyclerViewNoticias.setAdapter(noticiasAdapter);
 
+        db = FirebaseFirestore.getInstance();
+
+        // Carregar notícias do Firestore
         carregarNoticiasDoFirestore();
     }
 
     private void carregarNoticiasDoFirestore() {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Noticias")
-                .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
+                .addSnapshotListener(this, (value, error) -> {
+                    if (error != null) {
+                        // Lidar com erros de carregamento, se necessário
+                        return;
+                    }
+
                     List<Noticia> listaNoticias = new ArrayList<>();
-                    for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                    for (QueryDocumentSnapshot documentSnapshot : value) {
                         String titulo = documentSnapshot.getString("titulo");
                         String conteudo = documentSnapshot.getString("conteudo");
                         String autor = documentSnapshot.getString("autor");
@@ -48,14 +55,12 @@ public class ListaNoticiasActivity extends AppCompatActivity {
                         Noticia noticia = new Noticia(titulo, conteudo, autor, data);
                         listaNoticias.add(noticia);
                     }
+
                     if (listaNoticias.isEmpty()) {
                         exibirToast("Não há notícia ou recado registrado até o momento.");
                     } else {
                         noticiasAdapter.setListaNoticias(listaNoticias);
                     }
-                })
-                .addOnFailureListener(e -> {
-                    // Lidar com erros de carregamento, se necessário
                 });
     }
 
