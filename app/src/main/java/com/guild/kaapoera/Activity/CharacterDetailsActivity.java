@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -41,6 +42,7 @@ public class CharacterDetailsActivity extends AppCompatActivity {
     private String comment;
     private String sex;
     private String rank;
+    private Timestamp ultimaAtualizacaoTimestamp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,7 @@ public class CharacterDetailsActivity extends AppCompatActivity {
         guildName = getIntent().getStringExtra("guildName");
         comment = getIntent().getStringExtra("comment");
         rank = getIntent().getStringExtra("rank");
+        ultimaAtualizacaoTimestamp = getIntent().getParcelableExtra("ultimaAtualizacao");
 
         // Inicializar as variáveis das caixas de texto e do botão
         editTextUserName = findViewById(R.id.editTextUserName);
@@ -141,6 +144,7 @@ public class CharacterDetailsActivity extends AppCompatActivity {
             usuario.put("telefone", userPhone);
             usuario.put("rank", rank);
             usuario.put("strike", "");
+            usuario.put("ultimaAtualizacao", ultimaAtualizacaoTimestamp);
 
             // Obtenha a referência do Firestore para a coleção "Usuarios"
             FirebaseFirestore db = FirebaseFirestore.getInstance();

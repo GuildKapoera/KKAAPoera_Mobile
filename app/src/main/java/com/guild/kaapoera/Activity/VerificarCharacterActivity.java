@@ -20,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.guild.kaapoera.R;
 import com.guild.kaapoera.Util.Config_Bd;
@@ -27,6 +28,7 @@ import com.guild.kaapoera.Util.Config_Bd;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -109,6 +111,8 @@ public class VerificarCharacterActivity extends AppCompatActivity {
                                     } else {
                                         // Obtendo a informação do sexo do personagem
                                         String sex = characterObject.getString("sex");
+                                        Date dataAtual = new Date();
+                                        Timestamp ultimaAtualizacaoTimestamp = new Timestamp(dataAtual);
 
                                         // Passando a informação do sexo para a próxima tela (Bem-Vindo)
                                         Intent intent = new Intent(VerificarCharacterActivity.this, CharacterDetailsActivity.class);
@@ -120,7 +124,9 @@ public class VerificarCharacterActivity extends AppCompatActivity {
                                         intent.putExtra("guildName", guildName);
                                         intent.putExtra("comment", comment);
                                         intent.putExtra("rank", guildRank);
+                                        intent.putExtra("ultimaAtualizacao", ultimaAtualizacaoTimestamp);
                                         startActivity(intent);
+                                        finish();
                                     }
                                 } else {
                                     Toast.makeText(VerificarCharacterActivity.this, "Este personagem não é da Kapoera", Toast.LENGTH_SHORT).show();

@@ -1,17 +1,26 @@
 package com.guild.kaapoera.Activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
@@ -24,8 +33,16 @@ import com.guild.kaapoera.Model.Usuario;
 import com.guild.kaapoera.R;
 import com.guild.kaapoera.Util.Config_Bd;
 
-public class LoginActivity extends AppCompatActivity {
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+public class LoginActivity extends AppCompatActivity {
+    private ProgressDialog progressDialog;
+    private RequestQueue requestQueue;
     EditText campoEmail, campoSenha;
     Button BotaoLogar;
     private FirebaseAuth auth;
@@ -37,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         auth = Config_Bd.AutenticacaoFirebase();
         db = FirebaseFirestore.getInstance();
+        requestQueue = Volley.newRequestQueue(this);
         inicializarComponentes();
     }
 
@@ -101,20 +119,33 @@ public class LoginActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         DocumentSnapshot document = task.getResult();
                         if (document.exists()) {
-                            String guildName = document.getString("guildName");
-                            String sex = document.getString("sex");
-                            int level = document.getLong("level").intValue();
-                            String nomePersonagem = document.getString("nomePersonagem");
-                            String nomeUsuario = document.getString("nomeUsuario");
-                            String telefone = document.getString("telefone");
-                            String vocacao = document.getString("vocacao");
-                            String world = document.getString("world");
+                            Timestamp ultimaAtualizacao = document.getTimestamp("ultimaAtualizacao");
+                            String nomePersonagem1 = document.getString("nomePersonagem");
 
-                            if (guildName != null && sex != null && level != 0 && nomePersonagem != null && nomeUsuario != null &&
-                                    telefone != null && vocacao != null && world != null) {
-                                abrirBemVindo();
+                            Date currentDate = new Date();
+                            long diffMillis = currentDate.getTime() - ultimaAtualizacao.toDate().getTime();
+                            long diffHours = diffMillis / (60 * 60 * 1000);
+
+                            if (diffHours >= 24) {
+                                // Atualiza os dados via API
+                                chamarAPIAtualizarDados(nomePersonagem1);
                             } else {
-                                abrirVerificarPersonagem();
+                                // Lê os dados atualizados e verifica condições
+                                String guildName = document.getString("guildName");
+                                String sex = document.getString("sex");
+                                int level = document.getLong("level").intValue();
+                                String nomePersonagem = document.getString("nomePersonagem");
+                                String nomeUsuario = document.getString("nomeUsuario");
+                                String telefone = document.getString("telefone");
+                                String vocacao = document.getString("vocacao");
+                                String world = document.getString("world");
+
+                                if (guildName.equals("Kapoera") && sex != null && level != 0 && nomePersonagem != null &&
+                                        nomeUsuario != null && telefone != null && vocacao != null && world != null) {
+                                    abrirBemVindo();
+                                } else {
+                                    abrirVerificarPersonagem();
+                                }
                             }
                         } else {
                             abrirVerificarPersonagem();
@@ -126,6 +157,77 @@ public class LoginActivity extends AppCompatActivity {
             });
         }
     }
+
+    private void chamarAPIAtualizarDados(String nomePersonagem) {
+        String apiUrl = "https://api.tibiadata.com/v3/character/" + Uri.encode(nomePersonagem);
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, apiUrl, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONObject characterObject = response.getJSONObject("characters").getJSONObject("character");
+
+                            int level = characterObject.getInt("level");
+                            String world = characterObject.getString("world");
+                            JSONObject guildObject = characterObject.optJSONObject("guild");
+                            String guildName = guildObject != null ? guildObject.optString("name") : "";
+                            String guildRank = guildObject != null ? guildObject.optString("rank") : "";
+
+                            // Aqui você atualiza os dados no Firestore
+                            atualizarDadosNoFirestore(level, world, guildName, guildRank);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            // Lidar com exceção
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Lidar com erro de resposta
+                    }
+                });
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    private void atualizarDadosNoFirestore(int level, String world, String guildName, String guildRank) {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Atualizando dados...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if (currentUser != null) {
+            String uid = currentUser.getUid();
+            DocumentReference userRef = db.collection("Usuarios").document(uid);
+
+            Map<String, Object> updates = new HashMap<>();
+            updates.put("level", level);
+            updates.put("world", world);
+            updates.put("guildName", guildName);
+            updates.put("rank", guildRank);
+            //Atualização da data
+            updates.put("ultimaAtualizacao", new Timestamp(new Date()));
+
+            userRef.update(updates)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                // Atualização bem-sucedida
+                                verificarInformacoesFirestore();
+                            } else {
+                                // Lidar com erro na atualização
+                            }
+                        progressDialog.dismiss();
+                        }
+                    });
+        }
+    }
+
+
 
     private void abrirVerificarPersonagem() {
         Intent i = new Intent(LoginActivity.this, VerificarCharacterActivity.class);
@@ -163,3 +265,4 @@ public class LoginActivity extends AppCompatActivity {
         BotaoLogar = findViewById(R.id.buttonLogar);
     }
 }
+
