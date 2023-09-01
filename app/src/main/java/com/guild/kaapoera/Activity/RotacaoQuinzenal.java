@@ -206,8 +206,7 @@ public class RotacaoQuinzenal extends AppCompatActivity {
 
     }
     public void voltarPaginaPrincipal(View view){
-        Intent intent = new Intent(this, BemVindoActivity.class);
-        startActivity(intent);
+
         finish();
     }
 }

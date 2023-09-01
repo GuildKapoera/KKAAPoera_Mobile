@@ -12,6 +12,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.guild.kaapoera.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ListaNoticiasActivity extends AppCompatActivity {
@@ -56,10 +57,15 @@ public class ListaNoticiasActivity extends AppCompatActivity {
                         listaNoticias.add(noticia);
                     }
 
-                    if (listaNoticias.isEmpty()) {
-                        exibirToast("Não há notícia ou recado registrado até o momento.");
-                    } else {
+                    if (!listaNoticias.isEmpty()) {
+                        // Ordenar a lista de notícias por data
+                        Collections.sort(listaNoticias, (noticia1, noticia2) ->
+                                noticia2.getData().compareTo(noticia1.getData())
+                        );
+
                         noticiasAdapter.setListaNoticias(listaNoticias);
+                    } else {
+                        exibirToast("Não há notícia ou recado registrado até o momento.");
                     }
                 });
     }

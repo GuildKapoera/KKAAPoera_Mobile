@@ -152,11 +152,6 @@ public class NoticiasActivity extends AppCompatActivity {
         textView.setText(spannableName);
     }
 
-    // Método que será chamado quando a ImageButton "Criar Anúncio" for clicada
-    public void abrirCriarAnuncio(View view) {
-        Intent intent = new Intent(this, CriarAnuncioActivity.class);
-        startActivity(intent);
-    }
 
     public void abrirEditorNoticias(View view) {
         // Código para abrir a página do editor de notícias

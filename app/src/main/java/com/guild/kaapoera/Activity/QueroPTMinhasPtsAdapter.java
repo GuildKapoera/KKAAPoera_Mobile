@@ -67,8 +67,10 @@ public class QueroPTMinhasPtsAdapter extends RecyclerView.Adapter<QueroPTMinhasP
             public void onClick(View v) {
                 String contatoRP = queroPT.getRPcontato();
                 String RPcod = queroPT.getRPcod();
+                String RPnome = queroPT.getRPnome();
+                String horarioPT = queroPT.getHorario();
                 if (contatoRP != null && !contatoRP.isEmpty()) {
-                    String whatsappUrl = "https://api.whatsapp.com/send?phone=" + RPcod + contatoRP;
+                    String whatsappUrl = "https://wa.me/" + RPcod + contatoRP + "?text=Olá, *" + RPnome + "*! Estou entrando em contato para PT as " + horarioPT + "hs do *QueroPT*. Bora caçar?";
                     Intent whatsappIntent = new Intent(Intent.ACTION_VIEW);
                     whatsappIntent.setData(Uri.parse(whatsappUrl));
                     context.startActivity(whatsappIntent);
@@ -85,8 +87,10 @@ public class QueroPTMinhasPtsAdapter extends RecyclerView.Adapter<QueroPTMinhasP
             public void onClick(View v) {
                 String contatoEK = queroPT.getEKcontato();
                 String EKcod = queroPT.getEKcod();
+                String EKnome = queroPT.getEKnome();
+                String horarioPT = queroPT.getHorario();
                 if (contatoEK != null && !contatoEK.isEmpty()) {
-                    String whatsappUrl = "https://api.whatsapp.com/send?phone=" + EKcod + contatoEK;
+                    String whatsappUrl = "https://wa.me/" + EKcod + contatoEK + "?text=Olá, *" + EKnome + "*! Estou entrando em contato para PT as " + horarioPT + "hs do *QueroPT*. Bora caçar?";
                     Intent whatsappIntent = new Intent(Intent.ACTION_VIEW);
                     whatsappIntent.setData(Uri.parse(whatsappUrl));
                     context.startActivity(whatsappIntent);
@@ -102,8 +106,10 @@ public class QueroPTMinhasPtsAdapter extends RecyclerView.Adapter<QueroPTMinhasP
             public void onClick(View v) {
                 String contatoED = queroPT.getEDcontato();
                 String EDcod = queroPT.getEDcod();
+                String EDnome = queroPT.getEDnome();
+                String horarioPT = queroPT.getHorario();
                 if (contatoED != null && !contatoED.isEmpty()) {
-                    String whatsappUrl = "https://api.whatsapp.com/send?phone=" + EDcod + contatoED;
+                    String whatsappUrl = "https://wa.me/" + EDcod + contatoED + "?text=Olá, *" + EDnome + "*! Estou entrando em contato para PT as " + horarioPT + "hs do *QueroPT*. Bora caçar?";
                     Intent whatsappIntent = new Intent(Intent.ACTION_VIEW);
                     whatsappIntent.setData(Uri.parse(whatsappUrl));
                     context.startActivity(whatsappIntent);
@@ -119,8 +125,10 @@ public class QueroPTMinhasPtsAdapter extends RecyclerView.Adapter<QueroPTMinhasP
             public void onClick(View v) {
                 String contatoMS = queroPT.getMScontato();
                 String MScod = queroPT.getMScod();
+                String MSnome = queroPT.getMSnome();
+                String horarioPT = queroPT.getHorario();
                 if (contatoMS != null && !contatoMS.isEmpty()) {
-                    String whatsappUrl = "https://api.whatsapp.com/send?phone=" + MScod + contatoMS;
+                    String whatsappUrl = "https://wa.me/" + MScod + contatoMS + "?text=Olá, *" + MSnome + "*! Estou entrando em contato para PT as " + horarioPT + "hs do *QueroPT*. Bora caçar?";
                     Intent whatsappIntent = new Intent(Intent.ACTION_VIEW);
                     whatsappIntent.setData(Uri.parse(whatsappUrl));
                     context.startActivity(whatsappIntent);

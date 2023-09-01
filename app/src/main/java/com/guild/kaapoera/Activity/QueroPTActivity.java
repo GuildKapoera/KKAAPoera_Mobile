@@ -175,8 +175,7 @@ public class QueroPTActivity extends AppCompatActivity {
 
     // Método que será chamado quando o botão "Voltar à Página Principal" for clicado
     public void voltarPaginaPrincipal(View view) {
-        Intent intent = new Intent(this, BemVindoActivity.class);
-        startActivity(intent);
+
         finish();
     }
 

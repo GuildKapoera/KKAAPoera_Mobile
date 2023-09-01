@@ -98,6 +98,7 @@ public class AtualizarDadosActivity extends AppCompatActivity {
             }
 
             // Atualizar os dados no Firestore
+            currentUser.updateEmail(email);
             String userId = currentUser.getUid();
             DocumentReference documentReference = firestore.collection("Usuarios").document(userId);
             documentReference.update("nomeUsuario", nomeUsuario, "telefone", telefone)

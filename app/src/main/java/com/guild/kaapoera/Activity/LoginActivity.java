@@ -56,8 +56,8 @@ public class LoginActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         requestQueue = Volley.newRequestQueue(this);
         inicializarComponentes();
-    }
 
+    }
     //validação de componentes
     public void validarautenticacao(View view) {
         String email = campoEmail.getText().toString();
@@ -126,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
                             long diffMillis = currentDate.getTime() - ultimaAtualizacao.toDate().getTime();
                             long diffHours = diffMillis / (60 * 60 * 1000);
 
-                            if (diffHours >= 24) {
+                            if (diffHours >= 3) {
                                 // Atualiza os dados via API
                                 chamarAPIAtualizarDados(nomePersonagem1);
                             } else {
@@ -159,6 +159,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void chamarAPIAtualizarDados(String nomePersonagem) {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Atualizando dados...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
         String apiUrl = "https://api.tibiadata.com/v3/character/" + Uri.encode(nomePersonagem);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, apiUrl, null,
@@ -169,17 +174,19 @@ public class LoginActivity extends AppCompatActivity {
                             JSONObject characterObject = response.getJSONObject("characters").getJSONObject("character");
 
                             int level = characterObject.getInt("level");
+                            String sex = characterObject.getString("sex");
                             String world = characterObject.getString("world");
                             JSONObject guildObject = characterObject.optJSONObject("guild");
                             String guildName = guildObject != null ? guildObject.optString("name") : "";
                             String guildRank = guildObject != null ? guildObject.optString("rank") : "";
 
                             // Aqui você atualiza os dados no Firestore
-                            atualizarDadosNoFirestore(level, world, guildName, guildRank);
+                            atualizarDadosNoFirestore(level, world, sex, guildName, guildRank);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                             // Lidar com exceção
+                            progressDialog.dismiss();  // Fechar ProgressDialog em caso de erro
                         }
                     }
                 },
@@ -187,17 +194,13 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // Lidar com erro de resposta
+                        progressDialog.dismiss();  // Fechar ProgressDialog em caso de erro
                     }
                 });
         requestQueue.add(jsonObjectRequest);
     }
 
-    private void atualizarDadosNoFirestore(int level, String world, String guildName, String guildRank) {
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Atualizando dados...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-
+    private void atualizarDadosNoFirestore(int level, String world, String sex, String guildName, String guildRank) {
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser != null) {
             String uid = currentUser.getUid();
@@ -205,6 +208,7 @@ public class LoginActivity extends AppCompatActivity {
 
             Map<String, Object> updates = new HashMap<>();
             updates.put("level", level);
+            updates.put("sex", sex);
             updates.put("world", world);
             updates.put("guildName", guildName);
             updates.put("rank", guildRank);
@@ -221,7 +225,7 @@ public class LoginActivity extends AppCompatActivity {
                             } else {
                                 // Lidar com erro na atualização
                             }
-                        progressDialog.dismiss();
+                            progressDialog.dismiss();  // Fechar ProgressDialog após a atualização
                         }
                     });
         }
@@ -257,7 +261,6 @@ public class LoginActivity extends AppCompatActivity {
             verificarInformacoesFirestore();
         }
     }
-
     //Inicialização de componentes
     private void inicializarComponentes() {
         campoEmail = findViewById(R.id.editTextEmailLogin);

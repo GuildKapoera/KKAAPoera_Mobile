@@ -14,6 +14,11 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.guild.kaapoera.R;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
 public class RankingGuild extends AppCompatActivity implements View.OnClickListener {
     private FirebaseFirestore db;
     private View currentTopPlayersLayout;
@@ -264,7 +269,6 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
             LinearLayout topPlayersContainer = findViewById(R.id.top_players);
             topPlayersContainer.removeView(currentTopPlayersLayout);
         }
-
         // Limpar o topPlayersContainer
         LinearLayout topPlayersContainer = findViewById(R.id.top_players);
         topPlayersContainer.removeAllViews();
@@ -279,18 +283,24 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         currentTopPlayersLayout = topPlayersLayout;
 
         // Recuperar as informações dos jogadores do Firebase e atualizar os TextViews no layout
-        DocumentReference rpDocumentRef = db.collection("Ranking").document("WkA5qlWXJ8SA959dt9f1");
+        DocumentReference rpDocumentRef = db.collection("guildRanking").document("paladins");
         rpDocumentRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    String top1Name = document.getString("rp_top_xp_1_nome");
-                    int top1Level = document.getLong("rp_top_xp_1_level").intValue();
-                    String top2Name = document.getString("rp_top_xp_2_nome");
-                    int top2Level = document.getLong("rp_top_xp_2_level").intValue();
-                    String top3Name = document.getString("rp_top_xp_3_nome");
-                    int top3Level = document.getLong("rp_top_xp_3_level").intValue();
+                    Map<String, Object> experienceMap = (Map<String, Object>) document.get("experience");
 
+                    // Converter as entradas do mapa de experiência em uma lista de pares chave-valor
+                    List<Map.Entry<String, Object>> entries = new ArrayList<>(experienceMap.entrySet());
+
+                    // Ordenar a lista de entradas com base nos níveis
+                    Collections.sort(entries, (entry1, entry2) -> {
+                        Map<String, Object> player1 = (Map<String, Object>) entry1.getValue();
+                        Map<String, Object> player2 = (Map<String, Object>) entry2.getValue();
+                        int level1 = ((Long) player1.get("level")).intValue();
+                        int level2 = ((Long) player2.get("level")).intValue();
+                        return Integer.compare(level2, level1); // Ordenando do maior para o menor
+                    });
 
                     // Encontrar os TextViews no layout inflado e atualizar com as informações dos jogadores
                     TextView top1TextView = topPlayersLayout.findViewById(R.id.top1_text_view);
@@ -298,9 +308,9 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
                     TextView top3TextView = topPlayersLayout.findViewById(R.id.top3_text_view);
 
                     // Modelo do texto exibido em tela
-                    top1TextView.setText("🥇: " + top1Name + " - " + top1Level);
-                    top2TextView.setText("🥈: " + top2Name + " - " + top2Level);
-                    top3TextView.setText("🥉: " + top3Name + " - " + top3Level);
+                    top1TextView.setText("🥇: " + ((Map<String, Object>) entries.get(0).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(0).getValue()).get("level"));
+                    top2TextView.setText("🥈: " + ((Map<String, Object>) entries.get(1).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(1).getValue()).get("level"));
+                    top3TextView.setText("🥉: " + ((Map<String, Object>) entries.get(2).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(2).getValue()).get("level"));
                 }
             }
         });
@@ -311,7 +321,6 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
             LinearLayout topPlayersContainer = findViewById(R.id.top_players);
             topPlayersContainer.removeView(currentTopPlayersLayout);
         }
-
         // Limpar o topPlayersContainer
         LinearLayout topPlayersContainer = findViewById(R.id.top_players);
         topPlayersContainer.removeAllViews();
@@ -326,18 +335,24 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         currentTopPlayersLayout = topPlayersLayout;
 
         // Recuperar as informações dos jogadores do Firebase e atualizar os TextViews no layout
-        DocumentReference rpDocumentRef = db.collection("Ranking").document("WkA5qlWXJ8SA959dt9f1");
+        DocumentReference rpDocumentRef = db.collection("guildRanking").document("paladins");
         rpDocumentRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    String top1Name = document.getString("rp_top_ml_1_nome");
-                    int top1Level = document.getLong("rp_top_ml_1_skill").intValue();
-                    String top2Name = document.getString("rp_top_ml_2_nome");
-                    int top2Level = document.getLong("rp_top_ml_2_skill").intValue();
-                    String top3Name = document.getString("rp_top_ml_3_nome");
-                    int top3Level = document.getLong("rp_top_ml_3_skill").intValue();
+                    Map<String, Object> experienceMap = (Map<String, Object>) document.get("magiclevel");
 
+                    // Converter as entradas do mapa de experiência em uma lista de pares chave-valor
+                    List<Map.Entry<String, Object>> entries = new ArrayList<>(experienceMap.entrySet());
+
+                    // Ordenar a lista de entradas com base nos níveis
+                    Collections.sort(entries, (entry1, entry2) -> {
+                        Map<String, Object> player1 = (Map<String, Object>) entry1.getValue();
+                        Map<String, Object> player2 = (Map<String, Object>) entry2.getValue();
+                        int level1 = ((Long) player1.get("skillLevel")).intValue();
+                        int level2 = ((Long) player2.get("skillLevel")).intValue();
+                        return Integer.compare(level2, level1); // Ordenando do maior para o menor
+                    });
 
                     // Encontrar os TextViews no layout inflado e atualizar com as informações dos jogadores
                     TextView top1TextView = topPlayersLayout.findViewById(R.id.top1_text_view);
@@ -345,9 +360,9 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
                     TextView top3TextView = topPlayersLayout.findViewById(R.id.top3_text_view);
 
                     // Modelo do texto exibido em tela
-                    top1TextView.setText("🥇: " + top1Name + " - " + top1Level);
-                    top2TextView.setText("🥈: " + top2Name + " - " + top2Level);
-                    top3TextView.setText("🥉: " + top3Name + " - " + top3Level);
+                    top1TextView.setText("🥇: " + ((Map<String, Object>) entries.get(0).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(0).getValue()).get("skillLevel"));
+                    top2TextView.setText("🥈: " + ((Map<String, Object>) entries.get(1).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(1).getValue()).get("skillLevel"));
+                    top3TextView.setText("🥉: " + ((Map<String, Object>) entries.get(2).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(2).getValue()).get("skillLevel"));
                 }
             }
         });
@@ -358,7 +373,6 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
             LinearLayout topPlayersContainer = findViewById(R.id.top_players);
             topPlayersContainer.removeView(currentTopPlayersLayout);
         }
-
         // Limpar o topPlayersContainer
         LinearLayout topPlayersContainer = findViewById(R.id.top_players);
         topPlayersContainer.removeAllViews();
@@ -373,18 +387,24 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         currentTopPlayersLayout = topPlayersLayout;
 
         // Recuperar as informações dos jogadores do Firebase e atualizar os TextViews no layout
-        DocumentReference rpDocumentRef = db.collection("Ranking").document("WkA5qlWXJ8SA959dt9f1");
+        DocumentReference rpDocumentRef = db.collection("guildRanking").document("paladins");
         rpDocumentRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    String top1Name = document.getString("rp_top_distance_1_nome");
-                    int top1Level = document.getLong("rp_top_distance_1_skill").intValue();
-                    String top2Name = document.getString("rp_top_distance_2_nome");
-                    int top2Level = document.getLong("rp_top_distance_2_skill").intValue();
-                    String top3Name = document.getString("rp_top_distance_3_nome");
-                    int top3Level = document.getLong("rp_top_distance_3_skill").intValue();
+                    Map<String, Object> experienceMap = (Map<String, Object>) document.get("distancefighting");
 
+                    // Converter as entradas do mapa de experiência em uma lista de pares chave-valor
+                    List<Map.Entry<String, Object>> entries = new ArrayList<>(experienceMap.entrySet());
+
+                    // Ordenar a lista de entradas com base nos níveis
+                    Collections.sort(entries, (entry1, entry2) -> {
+                        Map<String, Object> player1 = (Map<String, Object>) entry1.getValue();
+                        Map<String, Object> player2 = (Map<String, Object>) entry2.getValue();
+                        int level1 = ((Long) player1.get("skillLevel")).intValue();
+                        int level2 = ((Long) player2.get("skillLevel")).intValue();
+                        return Integer.compare(level2, level1); // Ordenando do maior para o menor
+                    });
 
                     // Encontrar os TextViews no layout inflado e atualizar com as informações dos jogadores
                     TextView top1TextView = topPlayersLayout.findViewById(R.id.top1_text_view);
@@ -392,9 +412,9 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
                     TextView top3TextView = topPlayersLayout.findViewById(R.id.top3_text_view);
 
                     // Modelo do texto exibido em tela
-                    top1TextView.setText("🥇: " + top1Name + " - " + top1Level);
-                    top2TextView.setText("🥈: " + top2Name + " - " + top2Level);
-                    top3TextView.setText("🥉: " + top3Name + " - " + top3Level);
+                    top1TextView.setText("🥇: " + ((Map<String, Object>) entries.get(0).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(0).getValue()).get("skillLevel"));
+                    top2TextView.setText("🥈: " + ((Map<String, Object>) entries.get(1).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(1).getValue()).get("skillLevel"));
+                    top3TextView.setText("🥉: " + ((Map<String, Object>) entries.get(2).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(2).getValue()).get("skillLevel"));
                 }
             }
         });
@@ -405,7 +425,6 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
             LinearLayout topPlayersContainer = findViewById(R.id.top_players);
             topPlayersContainer.removeView(currentTopPlayersLayout);
         }
-
         // Limpar o topPlayersContainer
         LinearLayout topPlayersContainer = findViewById(R.id.top_players);
         topPlayersContainer.removeAllViews();
@@ -420,18 +439,24 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         currentTopPlayersLayout = topPlayersLayout;
 
         // Recuperar as informações dos jogadores do Firebase e atualizar os TextViews no layout
-        DocumentReference rpDocumentRef = db.collection("Ranking").document("WkA5qlWXJ8SA959dt9f1");
+        DocumentReference rpDocumentRef = db.collection("guildRanking").document("knights");
         rpDocumentRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    String top1Name = document.getString("ek_top_xp_1_nome");
-                    int top1Level = document.getLong("ek_top_xp_1_level").intValue();
-                    String top2Name = document.getString("ek_top_xp_2_nome");
-                    int top2Level = document.getLong("ek_top_xp_2_level").intValue();
-                    String top3Name = document.getString("ek_top_xp_3_nome");
-                    int top3Level = document.getLong("ek_top_xp_3_level").intValue();
+                    Map<String, Object> experienceMap = (Map<String, Object>) document.get("experience");
 
+                    // Converter as entradas do mapa de experiência em uma lista de pares chave-valor
+                    List<Map.Entry<String, Object>> entries = new ArrayList<>(experienceMap.entrySet());
+
+                    // Ordenar a lista de entradas com base nos níveis
+                    Collections.sort(entries, (entry1, entry2) -> {
+                        Map<String, Object> player1 = (Map<String, Object>) entry1.getValue();
+                        Map<String, Object> player2 = (Map<String, Object>) entry2.getValue();
+                        int level1 = ((Long) player1.get("level")).intValue();
+                        int level2 = ((Long) player2.get("level")).intValue();
+                        return Integer.compare(level2, level1); // Ordenando do maior para o menor
+                    });
 
                     // Encontrar os TextViews no layout inflado e atualizar com as informações dos jogadores
                     TextView top1TextView = topPlayersLayout.findViewById(R.id.top1_text_view);
@@ -439,9 +464,9 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
                     TextView top3TextView = topPlayersLayout.findViewById(R.id.top3_text_view);
 
                     // Modelo do texto exibido em tela
-                    top1TextView.setText("🥇: " + top1Name + " - " + top1Level);
-                    top2TextView.setText("🥈: " + top2Name + " - " + top2Level);
-                    top3TextView.setText("🥉: " + top3Name + " - " + top3Level);
+                    top1TextView.setText("🥇: " + ((Map<String, Object>) entries.get(0).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(0).getValue()).get("level"));
+                    top2TextView.setText("🥈: " + ((Map<String, Object>) entries.get(1).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(1).getValue()).get("level"));
+                    top3TextView.setText("🥉: " + ((Map<String, Object>) entries.get(2).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(2).getValue()).get("level"));
                 }
             }
         });
@@ -452,7 +477,6 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
             LinearLayout topPlayersContainer = findViewById(R.id.top_players);
             topPlayersContainer.removeView(currentTopPlayersLayout);
         }
-
         // Limpar o topPlayersContainer
         LinearLayout topPlayersContainer = findViewById(R.id.top_players);
         topPlayersContainer.removeAllViews();
@@ -467,18 +491,24 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         currentTopPlayersLayout = topPlayersLayout;
 
         // Recuperar as informações dos jogadores do Firebase e atualizar os TextViews no layout
-        DocumentReference rpDocumentRef = db.collection("Ranking").document("WkA5qlWXJ8SA959dt9f1");
+        DocumentReference rpDocumentRef = db.collection("guildRanking").document("knights");
         rpDocumentRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    String top1Name = document.getString("ek_top_axe_1_nome");
-                    int top1Level = document.getLong("ek_top_axe_1_skill").intValue();
-                    String top2Name = document.getString("ek_top_axe_2_nome");
-                    int top2Level = document.getLong("ek_top_axe_2_skill").intValue();
-                    String top3Name = document.getString("ek_top_axe_3_nome");
-                    int top3Level = document.getLong("ek_top_axe_3_skill").intValue();
+                    Map<String, Object> experienceMap = (Map<String, Object>) document.get("axefighting");
 
+                    // Converter as entradas do mapa de experiência em uma lista de pares chave-valor
+                    List<Map.Entry<String, Object>> entries = new ArrayList<>(experienceMap.entrySet());
+
+                    // Ordenar a lista de entradas com base nos níveis
+                    Collections.sort(entries, (entry1, entry2) -> {
+                        Map<String, Object> player1 = (Map<String, Object>) entry1.getValue();
+                        Map<String, Object> player2 = (Map<String, Object>) entry2.getValue();
+                        int level1 = ((Long) player1.get("skillLevel")).intValue();
+                        int level2 = ((Long) player2.get("skillLevel")).intValue();
+                        return Integer.compare(level2, level1); // Ordenando do maior para o menor
+                    });
 
                     // Encontrar os TextViews no layout inflado e atualizar com as informações dos jogadores
                     TextView top1TextView = topPlayersLayout.findViewById(R.id.top1_text_view);
@@ -486,9 +516,9 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
                     TextView top3TextView = topPlayersLayout.findViewById(R.id.top3_text_view);
 
                     // Modelo do texto exibido em tela
-                    top1TextView.setText("🥇: " + top1Name + " - " + top1Level);
-                    top2TextView.setText("🥈: " + top2Name + " - " + top2Level);
-                    top3TextView.setText("🥉: " + top3Name + " - " + top3Level);
+                    top1TextView.setText("🥇: " + ((Map<String, Object>) entries.get(0).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(0).getValue()).get("skillLevel"));
+                    top2TextView.setText("🥈: " + ((Map<String, Object>) entries.get(1).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(1).getValue()).get("skillLevel"));
+                    top3TextView.setText("🥉: " + ((Map<String, Object>) entries.get(2).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(2).getValue()).get("skillLevel"));
                 }
             }
         });
@@ -499,7 +529,6 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
             LinearLayout topPlayersContainer = findViewById(R.id.top_players);
             topPlayersContainer.removeView(currentTopPlayersLayout);
         }
-
         // Limpar o topPlayersContainer
         LinearLayout topPlayersContainer = findViewById(R.id.top_players);
         topPlayersContainer.removeAllViews();
@@ -514,18 +543,24 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         currentTopPlayersLayout = topPlayersLayout;
 
         // Recuperar as informações dos jogadores do Firebase e atualizar os TextViews no layout
-        DocumentReference rpDocumentRef = db.collection("Ranking").document("WkA5qlWXJ8SA959dt9f1");
+        DocumentReference rpDocumentRef = db.collection("guildRanking").document("knights");
         rpDocumentRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    String top1Name = document.getString("ek_top_sword_1_nome");
-                    int top1Level = document.getLong("ek_top_sword_1_skill").intValue();
-                    String top2Name = document.getString("ek_top_sword_2_nome");
-                    int top2Level = document.getLong("ek_top_sword_2_skill").intValue();
-                    String top3Name = document.getString("ek_top_sword_3_nome");
-                    int top3Level = document.getLong("ek_top_sword_3_skill").intValue();
+                    Map<String, Object> experienceMap = (Map<String, Object>) document.get("swordfighting");
 
+                    // Converter as entradas do mapa de experiência em uma lista de pares chave-valor
+                    List<Map.Entry<String, Object>> entries = new ArrayList<>(experienceMap.entrySet());
+
+                    // Ordenar a lista de entradas com base nos níveis
+                    Collections.sort(entries, (entry1, entry2) -> {
+                        Map<String, Object> player1 = (Map<String, Object>) entry1.getValue();
+                        Map<String, Object> player2 = (Map<String, Object>) entry2.getValue();
+                        int level1 = ((Long) player1.get("skillLevel")).intValue();
+                        int level2 = ((Long) player2.get("skillLevel")).intValue();
+                        return Integer.compare(level2, level1); // Ordenando do maior para o menor
+                    });
 
                     // Encontrar os TextViews no layout inflado e atualizar com as informações dos jogadores
                     TextView top1TextView = topPlayersLayout.findViewById(R.id.top1_text_view);
@@ -533,9 +568,9 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
                     TextView top3TextView = topPlayersLayout.findViewById(R.id.top3_text_view);
 
                     // Modelo do texto exibido em tela
-                    top1TextView.setText("🥇: " + top1Name + " - " + top1Level);
-                    top2TextView.setText("🥈: " + top2Name + " - " + top2Level);
-                    top3TextView.setText("🥉: " + top3Name + " - " + top3Level);
+                    top1TextView.setText("🥇: " + ((Map<String, Object>) entries.get(0).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(0).getValue()).get("skillLevel"));
+                    top2TextView.setText("🥈: " + ((Map<String, Object>) entries.get(1).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(1).getValue()).get("skillLevel"));
+                    top3TextView.setText("🥉: " + ((Map<String, Object>) entries.get(2).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(2).getValue()).get("skillLevel"));
                 }
             }
         });
@@ -546,7 +581,6 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
             LinearLayout topPlayersContainer = findViewById(R.id.top_players);
             topPlayersContainer.removeView(currentTopPlayersLayout);
         }
-
         // Limpar o topPlayersContainer
         LinearLayout topPlayersContainer = findViewById(R.id.top_players);
         topPlayersContainer.removeAllViews();
@@ -561,18 +595,24 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         currentTopPlayersLayout = topPlayersLayout;
 
         // Recuperar as informações dos jogadores do Firebase e atualizar os TextViews no layout
-        DocumentReference rpDocumentRef = db.collection("Ranking").document("WkA5qlWXJ8SA959dt9f1");
+        DocumentReference rpDocumentRef = db.collection("guildRanking").document("knights");
         rpDocumentRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    String top1Name = document.getString("ek_top_club_1_nome");
-                    int top1Level = document.getLong("ek_top_club_1_skill").intValue();
-                    String top2Name = document.getString("ek_top_club_2_nome");
-                    int top2Level = document.getLong("ek_top_club_2_skill").intValue();
-                    String top3Name = document.getString("ek_top_club_3_nome");
-                    int top3Level = document.getLong("ek_top_club_3_skill").intValue();
+                    Map<String, Object> experienceMap = (Map<String, Object>) document.get("clubfighting");
 
+                    // Converter as entradas do mapa de experiência em uma lista de pares chave-valor
+                    List<Map.Entry<String, Object>> entries = new ArrayList<>(experienceMap.entrySet());
+
+                    // Ordenar a lista de entradas com base nos níveis
+                    Collections.sort(entries, (entry1, entry2) -> {
+                        Map<String, Object> player1 = (Map<String, Object>) entry1.getValue();
+                        Map<String, Object> player2 = (Map<String, Object>) entry2.getValue();
+                        int level1 = ((Long) player1.get("skillLevel")).intValue();
+                        int level2 = ((Long) player2.get("skillLevel")).intValue();
+                        return Integer.compare(level2, level1); // Ordenando do maior para o menor
+                    });
 
                     // Encontrar os TextViews no layout inflado e atualizar com as informações dos jogadores
                     TextView top1TextView = topPlayersLayout.findViewById(R.id.top1_text_view);
@@ -580,9 +620,9 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
                     TextView top3TextView = topPlayersLayout.findViewById(R.id.top3_text_view);
 
                     // Modelo do texto exibido em tela
-                    top1TextView.setText("🥇: " + top1Name + " - " + top1Level);
-                    top2TextView.setText("🥈: " + top2Name + " - " + top2Level);
-                    top3TextView.setText("🥉: " + top3Name + " - " + top3Level);
+                    top1TextView.setText("🥇: " + ((Map<String, Object>) entries.get(0).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(0).getValue()).get("skillLevel"));
+                    top2TextView.setText("🥈: " + ((Map<String, Object>) entries.get(1).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(1).getValue()).get("skillLevel"));
+                    top3TextView.setText("🥉: " + ((Map<String, Object>) entries.get(2).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(2).getValue()).get("skillLevel"));
                 }
             }
         });
@@ -593,7 +633,6 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
             LinearLayout topPlayersContainer = findViewById(R.id.top_players);
             topPlayersContainer.removeView(currentTopPlayersLayout);
         }
-
         // Limpar o topPlayersContainer
         LinearLayout topPlayersContainer = findViewById(R.id.top_players);
         topPlayersContainer.removeAllViews();
@@ -608,18 +647,24 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         currentTopPlayersLayout = topPlayersLayout;
 
         // Recuperar as informações dos jogadores do Firebase e atualizar os TextViews no layout
-        DocumentReference rpDocumentRef = db.collection("Ranking").document("WkA5qlWXJ8SA959dt9f1");
+        DocumentReference rpDocumentRef = db.collection("guildRanking").document("druids");
         rpDocumentRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    String top1Name = document.getString("ed_top_xp_1_nome");
-                    int top1Level = document.getLong("ed_top_xp_1_level").intValue();
-                    String top2Name = document.getString("ed_top_xp_2_nome");
-                    int top2Level = document.getLong("ed_top_xp_2_level").intValue();
-                    String top3Name = document.getString("ed_top_xp_3_nome");
-                    int top3Level = document.getLong("ed_top_xp_3_level").intValue();
+                    Map<String, Object> experienceMap = (Map<String, Object>) document.get("experience");
 
+                    // Converter as entradas do mapa de experiência em uma lista de pares chave-valor
+                    List<Map.Entry<String, Object>> entries = new ArrayList<>(experienceMap.entrySet());
+
+                    // Ordenar a lista de entradas com base nos níveis
+                    Collections.sort(entries, (entry1, entry2) -> {
+                        Map<String, Object> player1 = (Map<String, Object>) entry1.getValue();
+                        Map<String, Object> player2 = (Map<String, Object>) entry2.getValue();
+                        int level1 = ((Long) player1.get("level")).intValue();
+                        int level2 = ((Long) player2.get("level")).intValue();
+                        return Integer.compare(level2, level1); // Ordenando do maior para o menor
+                    });
 
                     // Encontrar os TextViews no layout inflado e atualizar com as informações dos jogadores
                     TextView top1TextView = topPlayersLayout.findViewById(R.id.top1_text_view);
@@ -627,9 +672,9 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
                     TextView top3TextView = topPlayersLayout.findViewById(R.id.top3_text_view);
 
                     // Modelo do texto exibido em tela
-                    top1TextView.setText("🥇: " + top1Name + " - " + top1Level);
-                    top2TextView.setText("🥈: " + top2Name + " - " + top2Level);
-                    top3TextView.setText("🥉: " + top3Name + " - " + top3Level);
+                    top1TextView.setText("🥇: " + ((Map<String, Object>) entries.get(0).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(0).getValue()).get("level"));
+                    top2TextView.setText("🥈: " + ((Map<String, Object>) entries.get(1).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(1).getValue()).get("level"));
+                    top3TextView.setText("🥉: " + ((Map<String, Object>) entries.get(2).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(2).getValue()).get("level"));
                 }
             }
         });
@@ -640,7 +685,6 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
             LinearLayout topPlayersContainer = findViewById(R.id.top_players);
             topPlayersContainer.removeView(currentTopPlayersLayout);
         }
-
         // Limpar o topPlayersContainer
         LinearLayout topPlayersContainer = findViewById(R.id.top_players);
         topPlayersContainer.removeAllViews();
@@ -655,18 +699,24 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         currentTopPlayersLayout = topPlayersLayout;
 
         // Recuperar as informações dos jogadores do Firebase e atualizar os TextViews no layout
-        DocumentReference rpDocumentRef = db.collection("Ranking").document("WkA5qlWXJ8SA959dt9f1");
+        DocumentReference rpDocumentRef = db.collection("guildRanking").document("druids");
         rpDocumentRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    String top1Name = document.getString("ed_top_ml_1_nome");
-                    int top1Level = document.getLong("ed_top_ml_1_skill").intValue();
-                    String top2Name = document.getString("ed_top_ml_2_nome");
-                    int top2Level = document.getLong("ed_top_ml_2_skill").intValue();
-                    String top3Name = document.getString("ed_top_ml_3_nome");
-                    int top3Level = document.getLong("ed_top_ml_3_skill").intValue();
+                    Map<String, Object> experienceMap = (Map<String, Object>) document.get("magiclevel");
 
+                    // Converter as entradas do mapa de experiência em uma lista de pares chave-valor
+                    List<Map.Entry<String, Object>> entries = new ArrayList<>(experienceMap.entrySet());
+
+                    // Ordenar a lista de entradas com base nos níveis
+                    Collections.sort(entries, (entry1, entry2) -> {
+                        Map<String, Object> player1 = (Map<String, Object>) entry1.getValue();
+                        Map<String, Object> player2 = (Map<String, Object>) entry2.getValue();
+                        int level1 = ((Long) player1.get("skillLevel")).intValue();
+                        int level2 = ((Long) player2.get("skillLevel")).intValue();
+                        return Integer.compare(level2, level1); // Ordenando do maior para o menor
+                    });
 
                     // Encontrar os TextViews no layout inflado e atualizar com as informações dos jogadores
                     TextView top1TextView = topPlayersLayout.findViewById(R.id.top1_text_view);
@@ -674,9 +724,9 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
                     TextView top3TextView = topPlayersLayout.findViewById(R.id.top3_text_view);
 
                     // Modelo do texto exibido em tela
-                    top1TextView.setText("🥇: " + top1Name + " - " + top1Level);
-                    top2TextView.setText("🥈: " + top2Name + " - " + top2Level);
-                    top3TextView.setText("🥉: " + top3Name + " - " + top3Level);
+                    top1TextView.setText("🥇: " + ((Map<String, Object>) entries.get(0).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(0).getValue()).get("skillLevel"));
+                    top2TextView.setText("🥈: " + ((Map<String, Object>) entries.get(1).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(1).getValue()).get("skillLevel"));
+                    top3TextView.setText("🥉: " + ((Map<String, Object>) entries.get(2).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(2).getValue()).get("skillLevel"));
                 }
             }
         });
@@ -687,7 +737,6 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
             LinearLayout topPlayersContainer = findViewById(R.id.top_players);
             topPlayersContainer.removeView(currentTopPlayersLayout);
         }
-
         // Limpar o topPlayersContainer
         LinearLayout topPlayersContainer = findViewById(R.id.top_players);
         topPlayersContainer.removeAllViews();
@@ -702,18 +751,24 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         currentTopPlayersLayout = topPlayersLayout;
 
         // Recuperar as informações dos jogadores do Firebase e atualizar os TextViews no layout
-        DocumentReference rpDocumentRef = db.collection("Ranking").document("WkA5qlWXJ8SA959dt9f1");
+        DocumentReference rpDocumentRef = db.collection("guildRanking").document("sorcerers");
         rpDocumentRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    String top1Name = document.getString("ms_top_xp_1_nome");
-                    int top1Level = document.getLong("ms_top_xp_1_level").intValue();
-                    String top2Name = document.getString("ms_top_xp_2_nome");
-                    int top2Level = document.getLong("ms_top_xp_2_level").intValue();
-                    String top3Name = document.getString("ms_top_xp_3_nome");
-                    int top3Level = document.getLong("ms_top_xp_3_level").intValue();
+                    Map<String, Object> experienceMap = (Map<String, Object>) document.get("experience");
 
+                    // Converter as entradas do mapa de experiência em uma lista de pares chave-valor
+                    List<Map.Entry<String, Object>> entries = new ArrayList<>(experienceMap.entrySet());
+
+                    // Ordenar a lista de entradas com base nos níveis
+                    Collections.sort(entries, (entry1, entry2) -> {
+                        Map<String, Object> player1 = (Map<String, Object>) entry1.getValue();
+                        Map<String, Object> player2 = (Map<String, Object>) entry2.getValue();
+                        int level1 = ((Long) player1.get("level")).intValue();
+                        int level2 = ((Long) player2.get("level")).intValue();
+                        return Integer.compare(level2, level1); // Ordenando do maior para o menor
+                    });
 
                     // Encontrar os TextViews no layout inflado e atualizar com as informações dos jogadores
                     TextView top1TextView = topPlayersLayout.findViewById(R.id.top1_text_view);
@@ -721,9 +776,9 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
                     TextView top3TextView = topPlayersLayout.findViewById(R.id.top3_text_view);
 
                     // Modelo do texto exibido em tela
-                    top1TextView.setText("🥇: " + top1Name + " - " + top1Level);
-                    top2TextView.setText("🥈: " + top2Name + " - " + top2Level);
-                    top3TextView.setText("🥉: " + top3Name + " - " + top3Level);
+                    top1TextView.setText("🥇: " + ((Map<String, Object>) entries.get(0).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(0).getValue()).get("level"));
+                    top2TextView.setText("🥈: " + ((Map<String, Object>) entries.get(1).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(1).getValue()).get("level"));
+                    top3TextView.setText("🥉: " + ((Map<String, Object>) entries.get(2).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(2).getValue()).get("level"));
                 }
             }
         });
@@ -734,7 +789,6 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
             LinearLayout topPlayersContainer = findViewById(R.id.top_players);
             topPlayersContainer.removeView(currentTopPlayersLayout);
         }
-
         // Limpar o topPlayersContainer
         LinearLayout topPlayersContainer = findViewById(R.id.top_players);
         topPlayersContainer.removeAllViews();
@@ -749,18 +803,24 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         currentTopPlayersLayout = topPlayersLayout;
 
         // Recuperar as informações dos jogadores do Firebase e atualizar os TextViews no layout
-        DocumentReference rpDocumentRef = db.collection("Ranking").document("WkA5qlWXJ8SA959dt9f1");
+        DocumentReference rpDocumentRef = db.collection("guildRanking").document("sorcerers");
         rpDocumentRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    String top1Name = document.getString("ms_top_ml_1_nome");
-                    int top1Level = document.getLong("ms_top_ml_1_skill").intValue();
-                    String top2Name = document.getString("ms_top_ml_2_nome");
-                    int top2Level = document.getLong("ms_top_ml_2_skill").intValue();
-                    String top3Name = document.getString("ms_top_ml_3_nome");
-                    int top3Level = document.getLong("ms_top_ml_3_skill").intValue();
+                    Map<String, Object> experienceMap = (Map<String, Object>) document.get("magiclevel");
 
+                    // Converter as entradas do mapa de experiência em uma lista de pares chave-valor
+                    List<Map.Entry<String, Object>> entries = new ArrayList<>(experienceMap.entrySet());
+
+                    // Ordenar a lista de entradas com base nos níveis
+                    Collections.sort(entries, (entry1, entry2) -> {
+                        Map<String, Object> player1 = (Map<String, Object>) entry1.getValue();
+                        Map<String, Object> player2 = (Map<String, Object>) entry2.getValue();
+                        int level1 = ((Long) player1.get("skillLevel")).intValue();
+                        int level2 = ((Long) player2.get("skillLevel")).intValue();
+                        return Integer.compare(level2, level1); // Ordenando do maior para o menor
+                    });
 
                     // Encontrar os TextViews no layout inflado e atualizar com as informações dos jogadores
                     TextView top1TextView = topPlayersLayout.findViewById(R.id.top1_text_view);
@@ -768,9 +828,9 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
                     TextView top3TextView = topPlayersLayout.findViewById(R.id.top3_text_view);
 
                     // Modelo do texto exibido em tela
-                    top1TextView.setText("🥇: " + top1Name + " - " + top1Level);
-                    top2TextView.setText("🥈: " + top2Name + " - " + top2Level);
-                    top3TextView.setText("🥉: " + top3Name + " - " + top3Level);
+                    top1TextView.setText("🥇: " + ((Map<String, Object>) entries.get(0).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(0).getValue()).get("skillLevel"));
+                    top2TextView.setText("🥈: " + ((Map<String, Object>) entries.get(1).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(1).getValue()).get("skillLevel"));
+                    top3TextView.setText("🥉: " + ((Map<String, Object>) entries.get(2).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(2).getValue()).get("skillLevel"));
                 }
             }
         });
@@ -781,7 +841,6 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
             LinearLayout topPlayersContainer = findViewById(R.id.top_players);
             topPlayersContainer.removeView(currentTopPlayersLayout);
         }
-
         // Limpar o topPlayersContainer
         LinearLayout topPlayersContainer = findViewById(R.id.top_players);
         topPlayersContainer.removeAllViews();
@@ -796,18 +855,24 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         currentTopPlayersLayout = topPlayersLayout;
 
         // Recuperar as informações dos jogadores do Firebase e atualizar os TextViews no layout
-        DocumentReference rpDocumentRef = db.collection("Ranking").document("WkA5qlWXJ8SA959dt9f1");
+        DocumentReference rpDocumentRef = db.collection("guildRanking").document("extra");
         rpDocumentRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    String top1Name = document.getString("extra_top_boss_1_nome");
-                    int top1Level = document.getLong("extra_top_boss_1_pontos").intValue();
-                    String top2Name = document.getString("extra_top_boss_2_nome");
-                    int top2Level = document.getLong("extra_top_boss_2_pontos").intValue();
-                    String top3Name = document.getString("extra_top_boss_3_nome");
-                    int top3Level = document.getLong("extra_top_boss_3_pontos").intValue();
+                    Map<String, Object> experienceMap = (Map<String, Object>) document.get("bosspoints");
 
+                    // Converter as entradas do mapa de experiência em uma lista de pares chave-valor
+                    List<Map.Entry<String, Object>> entries = new ArrayList<>(experienceMap.entrySet());
+
+                    // Ordenar a lista de entradas com base nos níveis
+                    Collections.sort(entries, (entry1, entry2) -> {
+                        Map<String, Object> player1 = (Map<String, Object>) entry1.getValue();
+                        Map<String, Object> player2 = (Map<String, Object>) entry2.getValue();
+                        int level1 = ((Long) player1.get("skillLevel")).intValue();
+                        int level2 = ((Long) player2.get("skillLevel")).intValue();
+                        return Integer.compare(level2, level1); // Ordenando do maior para o menor
+                    });
 
                     // Encontrar os TextViews no layout inflado e atualizar com as informações dos jogadores
                     TextView top1TextView = topPlayersLayout.findViewById(R.id.top1_text_view);
@@ -815,9 +880,9 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
                     TextView top3TextView = topPlayersLayout.findViewById(R.id.top3_text_view);
 
                     // Modelo do texto exibido em tela
-                    top1TextView.setText("🥇: " + top1Name + " - " + top1Level);
-                    top2TextView.setText("🥈: " + top2Name + " - " + top2Level);
-                    top3TextView.setText("🥉: " + top3Name + " - " + top3Level);
+                    top1TextView.setText("🥇: " + ((Map<String, Object>) entries.get(0).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(0).getValue()).get("skillLevel"));
+                    top2TextView.setText("🥈: " + ((Map<String, Object>) entries.get(1).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(1).getValue()).get("skillLevel"));
+                    top3TextView.setText("🥉: " + ((Map<String, Object>) entries.get(2).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(2).getValue()).get("skillLevel"));
                 }
             }
         });
@@ -828,7 +893,6 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
             LinearLayout topPlayersContainer = findViewById(R.id.top_players);
             topPlayersContainer.removeView(currentTopPlayersLayout);
         }
-
         // Limpar o topPlayersContainer
         LinearLayout topPlayersContainer = findViewById(R.id.top_players);
         topPlayersContainer.removeAllViews();
@@ -843,18 +907,24 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         currentTopPlayersLayout = topPlayersLayout;
 
         // Recuperar as informações dos jogadores do Firebase e atualizar os TextViews no layout
-        DocumentReference rpDocumentRef = db.collection("Ranking").document("WkA5qlWXJ8SA959dt9f1");
+        DocumentReference rpDocumentRef = db.collection("guildRanking").document("extra");
         rpDocumentRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    String top1Name = document.getString("extra_top_charm_1_nome");
-                    int top1Level = document.getLong("extra_top_charm_1_pontos").intValue();
-                    String top2Name = document.getString("extra_top_charm_2_nome");
-                    int top2Level = document.getLong("extra_top_charm_2_pontos").intValue();
-                    String top3Name = document.getString("extra_top_charm_3_nome");
-                    int top3Level = document.getLong("extra_top_charm_3_pontos").intValue();
+                    Map<String, Object> experienceMap = (Map<String, Object>) document.get("charmpoints");
 
+                    // Converter as entradas do mapa de experiência em uma lista de pares chave-valor
+                    List<Map.Entry<String, Object>> entries = new ArrayList<>(experienceMap.entrySet());
+
+                    // Ordenar a lista de entradas com base nos níveis
+                    Collections.sort(entries, (entry1, entry2) -> {
+                        Map<String, Object> player1 = (Map<String, Object>) entry1.getValue();
+                        Map<String, Object> player2 = (Map<String, Object>) entry2.getValue();
+                        int level1 = ((Long) player1.get("skillLevel")).intValue();
+                        int level2 = ((Long) player2.get("skillLevel")).intValue();
+                        return Integer.compare(level2, level1); // Ordenando do maior para o menor
+                    });
 
                     // Encontrar os TextViews no layout inflado e atualizar com as informações dos jogadores
                     TextView top1TextView = topPlayersLayout.findViewById(R.id.top1_text_view);
@@ -862,9 +932,9 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
                     TextView top3TextView = topPlayersLayout.findViewById(R.id.top3_text_view);
 
                     // Modelo do texto exibido em tela
-                    top1TextView.setText("🥇: " + top1Name + " - " + top1Level);
-                    top2TextView.setText("🥈: " + top2Name + " - " + top2Level);
-                    top3TextView.setText("🥉: " + top3Name + " - " + top3Level);
+                    top1TextView.setText("🥇: " + ((Map<String, Object>) entries.get(0).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(0).getValue()).get("skillLevel"));
+                    top2TextView.setText("🥈: " + ((Map<String, Object>) entries.get(1).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(1).getValue()).get("skillLevel"));
+                    top3TextView.setText("🥉: " + ((Map<String, Object>) entries.get(2).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(2).getValue()).get("skillLevel"));
                 }
             }
         });
@@ -875,7 +945,6 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
             LinearLayout topPlayersContainer = findViewById(R.id.top_players);
             topPlayersContainer.removeView(currentTopPlayersLayout);
         }
-
         // Limpar o topPlayersContainer
         LinearLayout topPlayersContainer = findViewById(R.id.top_players);
         topPlayersContainer.removeAllViews();
@@ -890,18 +959,24 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
         currentTopPlayersLayout = topPlayersLayout;
 
         // Recuperar as informações dos jogadores do Firebase e atualizar os TextViews no layout
-        DocumentReference rpDocumentRef = db.collection("Ranking").document("WkA5qlWXJ8SA959dt9f1");
+        DocumentReference rpDocumentRef = db.collection("guildRanking").document("extra");
         rpDocumentRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    String top1Name = document.getString("extra_top_achiv_1_nome");
-                    int top1Level = document.getLong("extra_top_achiv_1_pontos").intValue();
-                    String top2Name = document.getString("extra_top_achiv_2_nome");
-                    int top2Level = document.getLong("extra_top_achiv_2_pontos").intValue();
-                    String top3Name = document.getString("extra_top_achiv_3_nome");
-                    int top3Level = document.getLong("extra_top_achiv_3_pontos").intValue();
+                    Map<String, Object> experienceMap = (Map<String, Object>) document.get("achievements");
 
+                    // Converter as entradas do mapa de experiência em uma lista de pares chave-valor
+                    List<Map.Entry<String, Object>> entries = new ArrayList<>(experienceMap.entrySet());
+
+                    // Ordenar a lista de entradas com base nos níveis
+                    Collections.sort(entries, (entry1, entry2) -> {
+                        Map<String, Object> player1 = (Map<String, Object>) entry1.getValue();
+                        Map<String, Object> player2 = (Map<String, Object>) entry2.getValue();
+                        int level1 = ((Long) player1.get("skillLevel")).intValue();
+                        int level2 = ((Long) player2.get("skillLevel")).intValue();
+                        return Integer.compare(level2, level1); // Ordenando do maior para o menor
+                    });
 
                     // Encontrar os TextViews no layout inflado e atualizar com as informações dos jogadores
                     TextView top1TextView = topPlayersLayout.findViewById(R.id.top1_text_view);
@@ -909,9 +984,9 @@ public class RankingGuild extends AppCompatActivity implements View.OnClickListe
                     TextView top3TextView = topPlayersLayout.findViewById(R.id.top3_text_view);
 
                     // Modelo do texto exibido em tela
-                    top1TextView.setText("🥇: " + top1Name + " - " + top1Level);
-                    top2TextView.setText("🥈: " + top2Name + " - " + top2Level);
-                    top3TextView.setText("🥉: " + top3Name + " - " + top3Level);
+                    top1TextView.setText("🥇: " + ((Map<String, Object>) entries.get(0).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(0).getValue()).get("skillLevel"));
+                    top2TextView.setText("🥈: " + ((Map<String, Object>) entries.get(1).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(1).getValue()).get("skillLevel"));
+                    top3TextView.setText("🥉: " + ((Map<String, Object>) entries.get(2).getValue()).get("name") + " - " + ((Map<String, Object>) entries.get(2).getValue()).get("skillLevel"));
                 }
             }
         });
